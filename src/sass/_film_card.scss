@@ -1,0 +1,15 @@
+.film-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  @media screen and (min-width: 767px) {
+    width: calc(50% - 8px);
+  }
+  @media screen and (min-width: 1024px) {
+    width: calc(100% / 3 - 11px);
+  }
+  &__film-img {
+    max-width: 100%;
+    display: block;
+  }
+}

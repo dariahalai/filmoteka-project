@@ -1,0 +1,435 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/53BC9F2tpZnsGno2cLhzvGprDYS.jpg",
+            "id": 736526,
+            "title": "Troll",
+            "original_language": "no",
+            "original_title": "Troll",
+            "overview": "Deep inside the mountain of Dovre, something gigantic awakens after being trapped for a thousand years. Destroying everything in its path, the creature is fast approaching the capital of Norway. But how do you stop something you thought only existed in Norwegian folklore?",
+            "poster_path": "/ulgKdif3ubMACDltr8VZy6fyVjW.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                14,
+                28,
+                12
+            ],
+            "popularity": 204.845,
+            "release_date": "2022-12-01",
+            "video": false,
+            "vote_average": 6.5,
+            "vote_count": 44
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/iHSwvRVsRyxpX7FE7GbviaDvgGZ.jpg",
+            "id": 119051,
+            "name": "Wednesday",
+            "original_language": "en",
+            "original_name": "Wednesday",
+            "overview": "Wednesday Addams is sent to Nevermore Academy, a bizarre boarding school where she attempts to master her psychic powers, stop a monstrous killing spree of the town citizens, and solve the supernatural mystery that affected her family 25 years ago — all while navigating her new relationships.",
+            "poster_path": "/jeGtaMwGxPmQN5xM4ClnwPQcNQz.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                9648,
+                35
+            ],
+            "popularity": 3834.212,
+            "first_air_date": "2022-11-23",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/93SxdkiR3gBcbG5FxIt0DCBttul.jpg",
+            "id": 111837,
+            "name": "Willow",
+            "original_language": "en",
+            "original_name": "Willow",
+            "overview": "Many years after the events of the original film, legendary sorcerer Willow leads a group of misfit heroes on a dangerous rescue mission through a world beyond their wildest imaginations.",
+            "poster_path": "/jhdSPDlhswjN1r6O0pGP3ZvQgU8.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                10759,
+                18
+            ],
+            "popularity": 142.493,
+            "first_air_date": "2022-11-30",
+            "vote_average": 6.136,
+            "vote_count": 22,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/83IYtUhc7Vs8XYi5UYc2lUKuyMo.jpg",
+            "id": 873126,
+            "title": "My Name Is Vendetta",
+            "original_language": "it",
+            "original_title": "Il mio nome è vendetta",
+            "overview": "After old enemies kill his family, a former mafia enforcer and his feisty daughter flee to Milan, where they hide out while plotting their revenge.",
+            "poster_path": "/5bwGuv3YyqXy6QEkaq8YBTVUoxO.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                12,
+                80,
+                9648,
+                53
+            ],
+            "popularity": 51.965,
+            "release_date": "2022-11-30",
+            "video": false,
+            "vote_average": 5.605,
+            "vote_count": 19
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/rfnmMYuZ6EKOBvQLp2wqP21v7sI.jpg",
+            "id": 774752,
+            "title": "The Guardians of the Galaxy Holiday Special",
+            "original_language": "en",
+            "original_title": "The Guardians of the Galaxy Holiday Special",
+            "overview": "On a mission to make Christmas unforgettable for Quill, the Guardians head to Earth in search of the perfect present.",
+            "poster_path": "/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                35,
+                878,
+                12
+            ],
+            "popularity": 1057.592,
+            "release_date": "2022-11-25",
+            "video": false,
+            "vote_average": 7.432,
+            "vote_count": 466
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
+            "id": 436270,
+            "title": "Black Adam",
+            "original_language": "en",
+            "original_title": "Black Adam",
+            "overview": "Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.",
+            "poster_path": "/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                14,
+                878
+            ],
+            "popularity": 10405.742,
+            "release_date": "2022-10-19",
+            "video": false,
+            "vote_average": 7.3,
+            "vote_count": 2284
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4tsZ4rWTUyFROVaFXMMBPQIJ940.jpg",
+            "id": 945897,
+            "title": "A Man of Action",
+            "original_language": "es",
+            "original_title": "Un hombre de acción",
+            "overview": "Loosely inspired by the life of Lucio Urtubia, explore the figure of the so-called anarchist 'Robin Hood,' who ran a legendary counterfeiting operation in Paris that put him in the crosshairs of America's largest bank, when he managed to obtain a huge amount of money by forging traveler's checks to invest in causes he believed in.",
+            "poster_path": "/gL6lwQE5WrdQrMiisjma0uIonpT.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18,
+                36
+            ],
+            "popularity": 51.778,
+            "release_date": "2022-11-30",
+            "video": false,
+            "vote_average": 7.357,
+            "vote_count": 7
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wMNY6tU9WOUeAMRfqbCYwceOl9u.jpg",
+            "id": 1001865,
+            "title": "Scrooge: A Christmas Carol",
+            "original_language": "en",
+            "original_title": "Scrooge: A Christmas Carol",
+            "overview": "On a cold Christmas Eve, selfish miser Ebenezer Scrooge has one night left to face his past — and change the future — before time runs out.",
+            "poster_path": "/nOrnzHn9SCF6JTXfX02eSPyAAXL.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                10751,
+                14,
+                18
+            ],
+            "popularity": 16.906,
+            "release_date": "2022-11-18",
+            "video": false,
+            "vote_average": 7.5,
+            "vote_count": 3
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/yQGi8pzyIwnyyYwcMcOyQ4mblm5.jpg",
+            "id": 518896,
+            "title": "Warriors of Future",
+            "original_language": "zh",
+            "original_title": "明日戰記",
+            "overview": "When a meteor carrying a destructive plant strikes the world, a suicide squad is given hours to save their post-apocalyptic city from total collapse.",
+            "poster_path": "/vR7AY4hKaJ1GQTbfec1UAUoW2Ki.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18,
+                28,
+                878
+            ],
+            "popularity": 49.864,
+            "release_date": "2022-08-05",
+            "video": false,
+            "vote_average": 6.0,
+            "vote_count": 14
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/zCbYoH55wGokY4gDujlMEOUTUMI.jpg",
+            "id": 814338,
+            "title": "Lady Chatterley's Lover",
+            "original_language": "en",
+            "original_title": "Lady Chatterley's Lover",
+            "overview": "Unhappily married aristocrat Lady Chatterley begins a torrid affair — and falls deeply in love — with the gamekeeper on her husband's country estate.",
+            "poster_path": "/aSgl2DxPG3DuQXoaHr500KeULmT.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                10749,
+                18
+            ],
+            "popularity": 15.161,
+            "release_date": "2022-11-25",
+            "video": false,
+            "vote_average": 6.6,
+            "vote_count": 6
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/hIZFG7MK4leU4axRFKJWqrjhmxZ.jpg",
+            "id": 95403,
+            "name": "The Peripheral",
+            "original_language": "en",
+            "original_name": "The Peripheral",
+            "overview": "Stuck in a small Appalachian town, a young woman’s only escape from the daily grind is playing advanced video games. She is such a good player that a company sends her a new video game system to test…but it has a surprise in store. It unlocks all of her dreams of finding a purpose, romance, and glamour in what seems like a game…but it also puts her and her family in real danger.",
+            "poster_path": "/ccBe5BVeibdBEQU7l6P6BubajWV.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                18
+            ],
+            "popularity": 1117.479,
+            "first_air_date": "2022-10-20",
+            "vote_average": 8.18,
+            "vote_count": 322,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/wvIV32bGg6HC4dOCyXIHk9q4Lgt.jpg",
+            "id": 1042984,
+            "title": "Christmas Full of Grace",
+            "original_language": "pt",
+            "original_title": "Um Natal Cheio de Graça",
+            "overview": "After discovering a betrayal, Carlinhos takes a fun stranger to accompany him on Christmas. But Graça proves to be a madwoman capable of bringing the traditional family home down.",
+            "poster_path": "/iHRphB4zfPTuUHVrbO2vTmCLuHO.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                10749,
+                35
+            ],
+            "popularity": 64.753,
+            "release_date": "2022-11-30",
+            "video": false,
+            "vote_average": 6.0,
+            "vote_count": 8
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg",
+            "id": 76600,
+            "title": "Avatar: The Way of Water",
+            "original_language": "en",
+            "original_title": "Avatar: The Way of Water",
+            "overview": "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
+            "poster_path": "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                878,
+                28,
+                12
+            ],
+            "popularity": 646.277,
+            "release_date": "2022-12-14",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/fg9psAEDJXX0svqSd3h6KNiWPBE.jpg",
+            "id": 95480,
+            "name": "Slow Horses",
+            "original_language": "en",
+            "original_name": "Slow Horses",
+            "overview": "This quick-witted spy drama follows a dysfunctional team of MI5 agents—and their obnoxious boss, the notorious Jackson Lamb—as they navigate the espionage world’s smoke and mirrors to defend England from sinister forces.",
+            "poster_path": "/8FM8KCgZQSbLLXcZew0MSj6so1k.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                80
+            ],
+            "popularity": 72.521,
+            "first_air_date": "2022-03-31",
+            "vote_average": 7.253,
+            "vote_count": 89,
+            "origin_country": [
+                "GB"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg",
+            "id": 505642,
+            "title": "Black Panther: Wakanda Forever",
+            "original_language": "en",
+            "original_title": "Black Panther: Wakanda Forever",
+            "overview": "Queen Ramonda, Shuri, M’Baku, Okoye and the Dora Milaje fight to protect their nation from intervening world powers in the wake of King T’Challa’s death. As the Wakandans strive to embrace their next chapter, the heroes must band together with the help of War Dog Nakia and Everett Ross and forge a new path for the kingdom of Wakanda.",
+            "poster_path": "/ps2oKfhY6DL3alynlSqY97gHSsg.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                12,
+                878
+            ],
+            "popularity": 1716.673,
+            "release_date": "2022-11-09",
+            "video": false,
+            "vote_average": 7.548,
+            "vote_count": 1122
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/xEUz44bmr8EOPFQrVZ5ebxgN8Eq.jpg",
+            "id": 897192,
+            "title": "Diary of a Wimpy Kid: Rodrick Rules",
+            "original_language": "en",
+            "original_title": "Diary of a Wimpy Kid: Rodrick Rules",
+            "overview": "A new school year, his brother Rodrick teases him over and over and over and over again. Will Greg manage to get along with him? Or will a secret ruin everything?",
+            "poster_path": "/iW6ixzkrvdrcxk0umiLZMtlSl9L.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                35,
+                10751
+            ],
+            "popularity": 47.926,
+            "release_date": "2022-12-02",
+            "video": false,
+            "vote_average": 6.0,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/bbE15OM1zSvJ2w2HLwqrIh9WoLe.jpg",
+            "id": 865559,
+            "title": "Your Christmas Or Mine?",
+            "original_language": "en",
+            "original_title": "Your Christmas Or Mine?",
+            "overview": "Students Hayley and James are young and in love. After saying goodbye for Christmas at a London train station, they both make the same mad split-second decision to swap trains and surprise each other. Passing each other in the station, they are completely unaware that they have just swapped Christmases.",
+            "poster_path": "/A806wuTGJECDh9krhQAhnieQcLr.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                10749,
+                35
+            ],
+            "popularity": 37.334,
+            "release_date": "2022-12-02",
+            "video": false,
+            "vote_average": 8.0,
+            "vote_count": 2
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ujrrlw1ZwOMPe4kM09KydH2mGZe.jpg",
+            "id": 447365,
+            "title": "Guardians of the Galaxy Volume 3",
+            "original_language": "en",
+            "original_title": "Guardians of the Galaxy Volume 3",
+            "overview": "Peter Quill, still reeling from the loss of Gamora, must rally his team around him to defend the universe along with protecting one of their own. A mission that, if not completed successfully, could quite possibly lead to the end of the Guardians as we know them.",
+            "poster_path": "/bCXgdvCobMHYIGblzbaNMF4SnCm.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                12,
+                878
+            ],
+            "popularity": 51.404,
+            "release_date": "2023-05-03",
+            "video": false,
+            "vote_average": 0.0,
+            "vote_count": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/eFkaDLCP2GJiAp54kwPqKnkELU5.jpg",
+            "id": 214258,
+            "name": "Dead End",
+            "original_language": "pl",
+            "original_name": "Pewnego razu na krajowej jedynce",
+            "overview": "A group of people sharing a ride accidentally switches cars with a bank robber, who then pursues them to retrieve the stolen money he left in the trunk.",
+            "poster_path": "/j4yasPJg4bZLKv18lYZNc30xZM3.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18,
+                35
+            ],
+            "popularity": 34.635,
+            "first_air_date": "2022-12-01",
+            "vote_average": 8.0,
+            "vote_count": 2,
+            "origin_country": [
+                "PL"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/79PcXPpbDWql74h8Y00mNwbYMbS.jpg",
+            "id": 664469,
+            "title": "Amsterdam",
+            "original_language": "en",
+            "original_title": "Amsterdam",
+            "overview": "In the 1930s, three friends—a doctor, a nurse, and an attorney—witness a murder, become suspects themselves and uncover one of the most outrageous plots in North American history.",
+            "poster_path": "/6sJcVzGCwrDCBMV0DU6eRzA2UxM.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                80,
+                35,
+                36,
+                9648,
+                53
+            ],
+            "popularity": 157.124,
+            "release_date": "2022-09-27",
+            "video": false,
+            "vote_average": 6.146,
+            "vote_count": 395
+        }
+    ],
+    "total_pages": 1000,
+    "total_results": 20000
+}

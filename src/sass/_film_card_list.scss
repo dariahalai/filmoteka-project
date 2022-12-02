@@ -1,0 +1,12 @@
+.film-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0;
+  margin: 0;
+  list-style-type: none;
+  @media screen and (min-width: 767px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
