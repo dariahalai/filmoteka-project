@@ -2,14 +2,43 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  @media screen and (min-width: 767px) {
-    width: calc(50% - 8px);
-  }
-  @media screen and (min-width: 1024px) {
-    width: calc(100% / 3 - 11px);
+  &__link {
+    color: var(--main-text-color);
+    text-decoration: none;
   }
   &__film-img {
-    max-width: 100%;
-    display: block;
+    border-radius: 5px;
+    margin-bottom: 12px;
+  }
+  &__film-name {
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    letter-spacing: 0em;
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  &__footer {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    display: flex;
+    color: var(--accent-text-color);
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  &__genre {
+    margin-right: 5px;
+    &:after {
+      content: '|';
+      display: inline-block;
+      margin-left: 5px;
+    }
   }
 }

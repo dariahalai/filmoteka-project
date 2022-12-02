@@ -1,12 +1,15 @@
 .film-card-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 20px 0;
-  margin: 0;
-  list-style-type: none;
+  gap: 20px;
   @media screen and (min-width: 767px) {
-    flex-direction: row;
-    flex-wrap: wrap;
+    gap: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 16px;
+    row-gap: 32px;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
