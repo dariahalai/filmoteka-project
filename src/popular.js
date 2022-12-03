@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { renderPagination, currentPage } from './pagination.js';
 
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const MEDIA_TYPE = 'movie';
@@ -6,18 +7,15 @@ const TIME_WINDOW = 'week';
 const API = 'https://api.themoviedb.org/3/';
 const TRENDING = 'trending';
 const GENRES = 'genre/movie/list';
-const KEY_GENRES = 'current-genres';
 const IMG_PATH = 'https://image.tmdb.org/t/p/';
 const LARGE_SIZE = 'original';
 const SMALL_SIZE = 'w500';
 
-let currentPage = 0;
-let totalPages = 0;
-let genresList;
+export let genresList;
+export let totalPages = 0;
 
 getOriginGenres().then(response => {
   genresList = Array.from(response.genres);
-  console.log(genresList);
 });
 
 const galleryRef = document.querySelector('.js-gallery');
@@ -31,11 +29,11 @@ window.addEventListener('load', () => {
     totalPages = pages;
 
     renderFilmCards(results);
-    // renderPagination(page, pages);
+    renderPagination(page, pages);
   });
 });
 
-async function getPopulars(page) {
+export async function getPopulars(page) {
   try {
     const searchParams = new URLSearchParams({
       api_key: KEY,
@@ -56,7 +54,7 @@ async function getPopulars(page) {
   }
 }
 
-function renderFilmCards(data) {
+export function renderFilmCards(data) {
   let markup = data.map(
     ({
       backdrop_path,
