@@ -16,6 +16,10 @@
     pointer-events: none;
 }
 
+.body--modal-open {
+    overflow: hidden;
+}
+
 .modal {
     position: absolute;
     top: 50%;
@@ -115,7 +119,8 @@
 
 .film-info__item {
     display: grid;
-    align-items: center;
+    align-items: start;
+
     grid-template-columns: repeat(2, 1fr);
 
     &:not(:last-child) {
