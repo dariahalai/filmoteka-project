@@ -2,6 +2,7 @@
 @import './film_card_list';
 
 @import './utils/common';
+@import './utils/adaptive-mixin';
 @import './utils/variables';
 
 @import './base/reset';
@@ -10,4 +11,5 @@
 @import './base/fonts';
 
 // Components
+
 @import './components/modal-window';
