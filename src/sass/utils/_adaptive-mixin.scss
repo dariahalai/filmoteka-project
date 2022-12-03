@@ -1,0 +1,54 @@
+// Breakpoint:  phone = 320px;
+//              tablet = 768px;
+//              desktop = 1280px;
+
+// For using
+// @include for-tablet-up {
+//   your code
+// }
+
+// For phone
+@mixin for-mobile-lower {
+    @media (max-width : 319.98px) {
+        @content ;
+    }
+}
+
+@mixin for-mobile-up {
+    @media (min-width : 320px) {
+        @content ;
+    }
+}
+
+@mixin for-mobile-only {
+    @media (max-width : 767.98px) {
+        @content ;
+    }
+}
+
+// For mobile-tablet
+@mixin for-mobile-tablet-only {
+    @media (max-width : 1279.98px) {
+        @content ;
+    }
+}
+
+// For tablet
+@mixin for-tablet-only {
+    @media (min-width : 768px) and (max-width: 1279.98px) {
+        @content ;
+    }
+}
+
+@mixin for-tablet-up {
+    @media (min-width : 768px) {
+        @content ;
+    }
+}
+
+// For desktop
+@mixin for-desktop-up {
+    @media (min-width: 1280px) {
+        @content ;
+    }
+}
