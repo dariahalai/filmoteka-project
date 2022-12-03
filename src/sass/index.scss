@@ -1,7 +1,14 @@
-@import './common';
-@import './reset';
-@import './variables';
-@import './container';
-@import './button';
+
 @import './film_card';
 @import './film_card_list';
+
+@import './utils/common';
+@import './utils/variables';
+
+@import './base/reset';
+@import './base/container';
+@import './base/button';
+
+// Components
+@import './components/modal-window';
+
