@@ -1,7 +1,10 @@
 .film-card {
   width: 100%;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
+  @include for-tablet-up {
+    margin-bottom: 0;
+  }
   &__link {
     color: var(--main-text-color);
     text-decoration: none;
@@ -31,7 +34,7 @@
       line-height: 24px;
     }
   }
-  &__footer {
+  &__genre {
     font-size: 12px;
     line-height: 16px;
     font-weight: 500;
@@ -41,14 +44,6 @@
     @include for-desktop-up {
       font-size: 20px;
       line-height: 24px;
-    }
-  }
-  &__genre {
-    margin-right: 5px;
-    &:after {
-      content: '|';
-      display: inline-block;
-      margin-left: 5px;
     }
   }
 
