@@ -1,5 +1,9 @@
-@import './common';
-@import './reset';
-@import './variables';
-@import './container';
-@import './button';
+@import './utils/common';
+@import './utils/variables';
+
+@import './base/reset';
+@import './base/container';
+@import './base/button';
+
+// Components
+@import './components/modal-window';
