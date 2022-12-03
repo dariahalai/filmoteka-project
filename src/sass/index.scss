@@ -1,6 +1,3 @@
-@import './film_card';
-@import './film_card_list';
-
 @import './utils/common';
 @import './utils/adaptive-mixin';
 @import './utils/variables';
@@ -13,4 +10,9 @@
 // Components
 
 @import './components/modal-window';
+
 @import'./components/header-library';
+
+@import './components/film_card_list';
+@import './components/film_card';
+
