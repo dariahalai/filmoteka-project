@@ -12,10 +12,10 @@
     height: 398px;
     width: 100%;
     object-fit: cover;
-    @media screen and (min-width: 767px) {
+    @include for-tablet-up {
       height: 455px;
     }
-    @media screen and (min-width: 1280px) {
+    @include for-desktop-up {
       height: 574px;
     }
   }
@@ -26,7 +26,7 @@
     line-height: 16px;
     font-weight: 500;
     letter-spacing: 0em;
-    @media screen and (min-width: 1280px) {
+    @include for-desktop-up {
       font-size: 20px;
       line-height: 24px;
     }
@@ -36,8 +36,9 @@
     line-height: 16px;
     font-weight: 500;
     display: flex;
+    align-items: center;
     color: var(--accent-text-color);
-    @media screen and (min-width: 1280px) {
+    @include for-desktop-up {
       font-size: 20px;
       line-height: 24px;
     }
@@ -50,4 +51,24 @@
       margin-left: 5px;
     }
   }
+
+  //  RATING STYLES, Could be removed for popular
+  &__rating {
+    display: inline-block;
+    background-color: var(--accent-text-color);
+    color: var(--secondary-text-color);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    height: 16px;
+    padding: 0 6px;
+    margin-left: 10px;
+    @include for-desktop-up {
+      height: 20px;
+      line-height: 20px;
+      padding: 0 10px;
+    }
+  }
+  //  END RATING STYLES
 }
