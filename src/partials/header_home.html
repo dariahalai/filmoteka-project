@@ -1,24 +1,36 @@
 <header class="header">
   <div class="container">
     <nav class="header__nav">
-      <a class="header__logo" href="./index.html">
-        <svg class="header__icon" width="20" haith="20">
-          <use href="./images/sprite.svg#film"></use>
-        </svg>
-        <span class="header__text">Filmoteka</span></a
-      >
-      <ul class="header__list">
-        <li class="header__item">
-          <a class="header__link" href="./index.html">home</a>
-        </li>
-        <li class="header__item">
-          <a class="header__link" href="./library.html">my library</a>
-        </li>
-      </ul>
-      <form>
-        <input type="text" class="header__input" placeholder="Movie search" />
-        <button class="button" type="submit"></button>
-      </form>
+      <div class="header__container">
+        <div class="header__container-logo">
+          <a class="header__logo" href="./index.html">
+            <svg class="header__icon" width="20" height="20">
+              <use href="./images/sprite.svg#film"></use>
+            </svg>
+            <span class="header__text">Filmoteka</span>
+          </a>
+        </div>
+        <div class="header__container-link">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__link" href="./index.html">home</a>
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="./library.html">my library</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="header__container-form">
+        <form class="header__form">
+          <input type="text" class="header__input" placeholder="Movie search" />
+          <button class="btn" type="submit">
+            <svg class="header__icon" width="8" height="8">
+              <use href="./images/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </form>
+      </div>
     </nav>
   </div>
 </header>
