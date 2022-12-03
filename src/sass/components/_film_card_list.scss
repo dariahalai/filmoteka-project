@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  @media screen and (min-width: 767px) {
+  @include for-tablet-up {
     gap: 32px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  @media screen and (min-width: 1280px) {
+  @include for-desktop-up {
     gap: 16px;
     row-gap: 32px;
     grid-template-columns: 1fr 1fr 1fr;
