@@ -1,33 +1,39 @@
 import axios from 'axios';
+import { renderPagination, currentPage } from './pagination.js';
 
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const MEDIA_TYPE = 'movie';
 const TIME_WINDOW = 'week';
-const API = 'https://api.themoviedb.org/3/trending';
+const API = 'https://api.themoviedb.org/3/';
+const TRENDING = 'trending';
+const GENRES = 'genre/movie/list';
 const IMG_PATH = 'https://image.tmdb.org/t/p/';
-const FULL_SIZE = 'original';
+const LARGE_SIZE = 'original';
 const SMALL_SIZE = 'w500';
 
-let currentPage = 0;
-let totalPages = 0;
+export let genresList;
+export let totalPages = 0;
 
-const gallaryRef = document.querySelector('.js-gallary');
+getOriginGenres().then(response => {
+  genresList = Array.from(response.genres);
+});
 
-window.addEventListener('load', evt => {
-  gallaryRef.setHTML('');
+const galleryRef = document.querySelector('.js-gallery');
+
+window.addEventListener('load', () => {
+  galleryRef.setHTML('');
 
   getPopulars(1).then(response => {
     const { page, results, total_pages: pages } = response;
-    if (!pages) {
-      currentPage = page;
-      totalPages = pages;
-    }
-    // renderFilmCards(results);
-    // renderPagination(page, pages);
+    currentPage = page;
+    totalPages = pages;
+
+    renderFilmCards(results);
+    renderPagination(page, pages);
   });
 });
 
-async function getPopulars(page) {
+export async function getPopulars(page) {
   try {
     const searchParams = new URLSearchParams({
       api_key: KEY,
@@ -35,7 +41,7 @@ async function getPopulars(page) {
     });
 
     const response = await axios.get(
-      `${API}/${MEDIA_TYPE}/${TIME_WINDOW}?${searchParams}`
+      `${API}${TRENDING}/${MEDIA_TYPE}/${TIME_WINDOW}?${searchParams}`
     );
 
     if (response.status !== 200) {
@@ -46,4 +52,72 @@ async function getPopulars(page) {
   } catch (error) {
     console.log('Підставити картинку, сервер терміново недоступний');
   }
+}
+
+export function renderFilmCards(data) {
+  let markup = data.map(
+    ({
+      backdrop_path,
+      poster_path,
+      genre_ids,
+      id,
+      title,
+      overview,
+      release_date,
+    }) => {
+      let genresStr = getGenres(genre_ids);
+      let year = release_date.substring(0, 4);
+      if (genresStr && year) genresStr += ' | ';
+      if (!title) title = 'no information';
+
+      let largeImg = IMG_PATH + LARGE_SIZE + backdrop_path;
+      let smallImg = IMG_PATH + SMALL_SIZE + backdrop_path;
+
+      return `
+        <li class="film-card js-gallery__item">
+         	<a href="#" class="film-card__link js-gallery__link">
+            <img
+              class="film-card__film-img js-gallery__img"
+              src="${smallImg}"
+              alt="${title}"
+            />
+            <h3 class="film-card__film-name js-gallery__title">${title}</h3>
+            <p class="film-card__genre">${genresStr}${year}</p>
+          </a>
+        </li>
+							`;
+    }
+  );
+
+  galleryRef.setHTML(markup);
+}
+
+async function getOriginGenres() {
+  try {
+    const searchParams = new URLSearchParams({
+      api_key: KEY,
+    });
+
+    const response = await axios.get(`${API}${GENRES}?${searchParams}`);
+
+    if (response.status !== 200) {
+      throw new Error(response.status);
+    }
+
+    return response.data;
+  } catch (error) {
+    console.log('Підставити картинку, сервер терміново недоступний');
+  }
+}
+
+function getGenres(genreSet) {
+  let genreStr = '';
+
+  genreSet.forEach(id => {
+    for (const genre of genresList) {
+      if (genre.id === id) genreStr += genre.name + ', ';
+    }
+  });
+
+  return !genreStr ? '' : genreStr.substring(0, genreStr.length - 2);
 }
