@@ -9,6 +9,15 @@
   &__film-img {
     border-radius: 5px;
     margin-bottom: 12px;
+    height: 398px;
+    width: 100%;
+    object-fit: cover;
+    @media screen and (min-width: 767px) {
+      height: 455px;
+    }
+    @media screen and (min-width: 1280px) {
+      height: 574px;
+    }
   }
   &__film-name {
     text-transform: uppercase;
