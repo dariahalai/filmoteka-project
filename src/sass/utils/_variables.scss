@@ -1,0 +1,25 @@
+/* ШРИФТ (можна підключити @font-face)
+font-family: "Roboto";
+font-weight: 400, 500 */
+
+:root {
+    --main-text-color: #000000;
+    --secondary-text-color: #ffffff;
+    --warning-color: #ff001b;
+    --accent-text-color: #ff6b08;
+    --accent-elem-color: #ff6b01;
+    --copy-writes-color: #545454;
+    --modal-secondary-text-color: #8c8c8c;
+
+    --transition-time: 250ms;
+    --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    background-color: var(--secondary-text-color);
+    color: var(--main-text-color);
+}
