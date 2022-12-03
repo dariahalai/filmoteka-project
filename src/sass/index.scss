@@ -1,14 +1,21 @@
-
-@import './film_card';
-@import './film_card_list';
-
 @import './utils/common';
+@import './utils/adaptive-mixin';
 @import './utils/variables';
 
 @import './base/reset';
 @import './base/container';
 @import './base/button';
+@import './base/fonts';
 
 // Components
+
 @import './components/modal-window';
+
 @import './components/footer';
+
+
+@import'./components/header-library';
+
+@import './components/film_card_list';
+@import './components/film_card';
+
