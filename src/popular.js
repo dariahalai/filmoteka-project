@@ -55,7 +55,8 @@ export async function getPopulars(page) {
 }
 
 export function renderFilmCards(data) {
-  let markup = data.map(
+  let markup = '';
+  data.forEach(
     ({
       backdrop_path,
       poster_path,
@@ -71,17 +72,17 @@ export function renderFilmCards(data) {
       if (!title) title = 'no information';
 
       let largeImg = IMG_PATH + LARGE_SIZE + backdrop_path;
-      let smallImg = IMG_PATH + SMALL_SIZE + backdrop_path;
+      let smallImg = IMG_PATH + SMALL_SIZE + poster_path;
 
-      return `
-        <li class="film-card js-gallery__item">
-         	<a href="#" class="film-card__link js-gallery__link">
+      markup += `
+        <li class="film-card">
+         	<a href="#" class="film-card__link">
             <img
-              class="film-card__film-img js-gallery__img"
+              class="film-card__film-img"
               src="${smallImg}"
               alt="${title}"
             />
-            <h3 class="film-card__film-name js-gallery__title">${title}</h3>
+            <h3 class="film-card__film-name">${title}</h3>
             <p class="film-card__genre">${genresStr}${year}</p>
           </a>
         </li>
