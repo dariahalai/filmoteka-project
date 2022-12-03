@@ -92,12 +92,20 @@ async function getOriginGenres() {
   }
 }
 
-function getGenres(arr) {
+function getGenres(genreSet) {
+  let genreList = '';
   if (!genresLoaded) {
     getOriginGenres().then(response => {
       localStorage.setItem(KEY_GENRES, JSON.stringify(response));
       genresLoaded = true;
-      // return response.map(({ name, id }) => arr.includes(id)).join(', ');
     });
+
+    const genres = JSON.parse(localStorage.getItem(KEY_GENRES));
+    genreSet.forEach(genre => {
+      genreList += Object.values(Object.keys(genres).indexOf(genre.id)) + ', ';
+    });
+    console.log(genreSet, genreList);
+
+    return genreList ? '' : genreList.substring(0, genreList.length - 2);
   }
 }
