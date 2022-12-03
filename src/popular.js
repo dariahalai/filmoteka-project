@@ -13,7 +13,12 @@ const SMALL_SIZE = 'w500';
 
 let currentPage = 0;
 let totalPages = 0;
-let genresLoaded = false;
+let genresList;
+
+getOriginGenres().then(response => {
+  genresList = Array.from(response.genres);
+  console.log(genresList);
+});
 
 const galleryRef = document.querySelector('.js-gallery');
 
@@ -24,8 +29,6 @@ window.addEventListener('load', () => {
     const { page, results, total_pages: pages } = response;
     currentPage = page;
     totalPages = pages;
-
-    console.log(response);
 
     renderFilmCards(results);
     // renderPagination(page, pages);
@@ -64,14 +67,31 @@ function renderFilmCards(data) {
       overview,
       release_date,
     }) => {
-      let genres = getGenres(genre_ids);
-      if (!title) title = 'no information';
+      let genresStr = getGenres(genre_ids);
       let year = release_date.substring(0, 4);
+      if (genresStr && year) genresStr += ' | ';
+      if (!title) title = 'no information';
+
       let largeImg = IMG_PATH + LARGE_SIZE + backdrop_path;
       let smallImg = IMG_PATH + SMALL_SIZE + backdrop_path;
-      console.log(genre_ids, title, year, largeImg, smallImg);
+
+      return `
+        <li class="film-card js-gallery__item">
+         	<a href="#" class="film-card__link js-gallery__link">
+            <img
+              class="film-card__film-img js-gallery__img"
+              src="${smallImg}"
+              alt="${title}"
+            />
+            <h3 class="film-card__film-name js-gallery__title">${title}</h3>
+            <p class="film-card__genre">${genresStr}${year}</p>
+          </a>
+        </li>
+							`;
     }
   );
+
+  galleryRef.setHTML(markup);
 }
 
 async function getOriginGenres() {
@@ -93,19 +113,13 @@ async function getOriginGenres() {
 }
 
 function getGenres(genreSet) {
-  let genreList = '';
-  if (!genresLoaded) {
-    getOriginGenres().then(response => {
-      localStorage.setItem(KEY_GENRES, JSON.stringify(response));
-      genresLoaded = true;
-    });
+  let genreStr = '';
 
-    const genres = JSON.parse(localStorage.getItem(KEY_GENRES));
-    genreSet.forEach(genre => {
-      genreList += Object.values(Object.keys(genres).indexOf(genre.id)) + ', ';
-    });
-    console.log(genreSet, genreList);
+  genreSet.forEach(id => {
+    for (const genre of genresList) {
+      if (genre.id === id) genreStr += genre.name + ', ';
+    }
+  });
 
-    return genreList ? '' : genreList.substring(0, genreList.length - 2);
-  }
+  return !genreStr ? '' : genreStr.substring(0, genreStr.length - 2);
 }
