@@ -1,5 +1,8 @@
-import { renderFilmCards, getPopulars, totalPages} from './popular.js';
+import { renderFilmCards, getPopulars, totalPages } from './popular.js';
 const pagRef = document.querySelector('.js-pagination');
+const leftArrowRef = document.querySelector('.js-pagination__svg-left');
+const rightArrowRef = document.querySelector('.js-pagination__svg-right');
+const pagContainerRef = document.querySelector('.js-pagination__container');
 
 export let currentPage = 0;
 
@@ -9,11 +12,12 @@ export function renderPagination(page, pages) {
   let nextPage = page + 1;
   let twoNextPage = page + 2;
   let markup = '';
+  leftArrowRef.classList.add('is-hidden');
+  rightArrowRef.classList.add('is-hidden');
 
   if (!page || page > pages) return;
 
-  if (page > 1)
-    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-left" width="16" height="16"><use href="./images/sprite.svg#arrow-left" fill="#000000"></use></svg></li>`;
+  if (page > 1) leftArrowRef.classList.remove('is-hidden');
 
   if (page > 1) markup += `<li class="js-pagination__button-end">1</li>`;
 
@@ -34,12 +38,12 @@ export function renderPagination(page, pages) {
 
   if (page + 4 < pages) markup += `<li class="js-pagination__points">...</li>`;
 
-  if (page < pages) markup += `<li class="js-pagination__button-end">${pages}</li>`;
-
   if (page < pages)
-    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-right" width="16" height="16"><use href="./images/sprite.svg#arrow-right"></use></svg></li>`;
+    markup += `<li class="js-pagination__button-end">${pages}</li>`;
 
-  pagRef.innerHTML = markup;
+  pagContainerRef.innerHTML = markup;
+
+  if (page < pages) rightArrowRef.classList.remove('is-hidden');
 }
 
 pagRef.addEventListener('click', ({ target }) => {
