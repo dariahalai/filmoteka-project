@@ -46,7 +46,9 @@
       line-height: 24px;
     }
   }
-
+  &__footer {
+    display: flex;
+  }
   //  RATING STYLES, Could be removed for popular
   &__rating {
     display: inline-block;

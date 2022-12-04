@@ -92,7 +92,7 @@ export default class ModalFilm {
       original_title,
       genre_ids,
       overview,
-    } = data;
+    } = this.data;
 
     this.refs.posterPath.src = `https://image.tmdb.org/t/p/w500${poster_path}`;
     this.refs.posterPath.alt = `${title}`;

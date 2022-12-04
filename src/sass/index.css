@@ -333,20 +333,37 @@ img {
 }
 
 .header__library {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 45px 20px;
+  height: 230px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
   color: var(--main-text-color);
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/background-with-red-chairs-mob@2x.jpg);
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-mob@2x.jpg");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 @media (min-width: 768px) and (max-width: 1279.98px) {
   .header__library {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/background-with-red-chairs-tab@2x.jpg);
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-tab@2x.jpg");
   }
 }
 @media (min-width: 1280px) {
   .header__library {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/background-with-red-chairs-pc@2x.jpg);
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-pc@2x.jpg");
+  }
+}
+@media (min-width: 768px) and (max-width: 1279.98px) {
+  .header__library {
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-tab@2x.jpg");
+  }
+}
+@media (min-width: 1280px) {
+  .header__library {
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-pc@2x.jpg");
   }
 }
 
@@ -400,8 +417,6 @@ img {
 }
 
 .logo__svg {
-  width: 20px;
-  height: 20px;
   align-self: center;
   stroke: #818181;
   transition-property: stroke;
@@ -431,6 +446,10 @@ img {
   }
 }
 
+.menu {
+  display: flex;
+}
+
 .menu__link {
   font-size: 12px;
   line-height: 1.16;
@@ -450,22 +469,10 @@ img {
   position: relative;
 }
 
-.filter {
-  display: flex;
-  justify-content: center;
-}
-
 .filter__list {
   display: flex;
-}
-
-.filter__item {
-  display: block;
-}
-
-.filter__item {
-  width: 129.53px;
-  height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .filter__item:not(:last-child) {
@@ -477,13 +484,16 @@ img {
   }
 }
 
-.filter-button-lib {
-  display: inline-block;
+.filter__button {
+  width: 129.53px;
+  height: 44px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 14px 36.19px 12px;
   min-width: 129.53px;
   font-weight: 500;
   line-height: 1.33333;
-  text-align: center;
   text-transform: uppercase;
   color: var(--secondary-text-color);
   background: transparent;
@@ -491,16 +501,16 @@ img {
   border-radius: 5px;
 }
 @media (min-width: 768px) {
-  .filter-button-lib {
+  .filter__button {
     padding-left: 38px;
     padding-right: 38px;
     min-width: 136px;
   }
 }
 
-.button-lib__list--active,
-.button-lib__list:hover,
-.button-lib__list:focus {
+.filter__button--active,
+.filter__button:hover,
+.filter__button:focus {
   border: 1px solid var(--accent-elem-color);
   background: var(--accent-elem-color);
   box-shadow: 0 8px 43px rgba(255, 107, 1, 0.6);
@@ -584,6 +594,9 @@ img {
     font-size: 20px;
     line-height: 24px;
   }
+}
+.film-card__footer {
+  display: flex;
 }
 .film-card__rating {
   display: inline-block;
@@ -1416,6 +1429,68 @@ img {
   background-color: var(--warning-color);
 }
 
+.footer {
+  font-size: 14px;
+  color: #545454;
+  line-height: 1.17;
+  background-color: #f7f7f7;
+}
+.footer__icon {
+  margin: 0 5px;
+}
+
+.footer .container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .footer .container {
+    height: 77px;
+    font-size: 16px;
+  }
+}
+
+.goit_text {
+  display: inline-block;
+}
+
+.footer__icon {
+  -webkit-animation: heartbeat 1.2s infinite;
+          animation: heartbeat 1.2s infinite;
+}
+
+@-webkit-keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25) translateX(5%) translateY(5%);
+  }
+  25% {
+    transform: scale(1.15) translateX(2%) translateY(2%);
+  }
+  45% {
+    transform: scale(1.5) translateX(8%) translateY(8%);
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25) translateX(5%) translateY(5%);
+  }
+  25% {
+    transform: scale(1.15) translateX(2%) translateY(2%);
+  }
+  45% {
+    transform: scale(1.5) translateX(8%) translateY(8%);
+  }
+}
 .js-pagination {
   display: flex;
   justify-content: center;
