@@ -35,11 +35,6 @@
   align-items: center;
 }
 
-.js-pagination__svg-left,
-.js-pagination__svg-right {
-  fill: var(--main-text-color);
-}
-
 .js-pagination__button-end {
   @include for-mobile-up {
     display: none;
