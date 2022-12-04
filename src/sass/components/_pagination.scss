@@ -1,12 +1,13 @@
 .container__pagination {
   padding-bottom: 60px;
+  font-weight: 500;
 }
 
 .js-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000000;
+  color: var(--main-text-color);
   font-size: 12px;
   font-weight: 500;
 }
@@ -36,14 +37,14 @@
 
 .js-pagination__svg-left,
 .js-pagination__svg-right {
-  fill: #000000;
+  fill: var(--main-text-color);
 }
 
 .js-pagination__button-end {
-  @media screen and (min-width: 320px) {
+  @include for-mobile-up {
     display: none;
   }
-  @media screen and (min-width: 768px) {
+  @include for-tablet-up {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,10 +55,10 @@
 }
 
 .js-pagination__points {
-  @media screen and (min-width: 320px) {
+  @include for-mobile-up {
     display: none;
   }
-  @media screen and (min-width: 768px) {
+  @include for-tablet-up {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,8 +79,8 @@
 }
 
 .js-pagination__button-current {
-  background-color: #ff6b08;
+  background-color: var(--accent-text-color);
   border: none;
   border-radius: 5px;
-  color: #ffffff;
+  color: var(--secondary-text-color);
 }
