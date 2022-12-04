@@ -1,7 +1,4 @@
-@charset "UTF-8";
-@import '~node_modules/modern-normalize/modern-normalize.css'; /* ШРИФТ (можна підключити @font-face)
-font-family: "Roboto";
-font-weight: 400, 500 */
+@import '~node_modules/modern-normalize/modern-normalize.css';
 :root {
   --main-text-color: #000000;
   --secondary-text-color: #ffffff;
