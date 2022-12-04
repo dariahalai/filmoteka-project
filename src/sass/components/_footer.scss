@@ -1,0 +1,46 @@
+.footer {
+  font-size: 14px;
+  color: #545454;
+  line-height: 1.17;
+  background-color: #f7f7f7;
+
+  &__icon {
+    margin: 0 5px;
+  }
+}
+
+.footer .container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    height: 77px;
+    font-size: 16px;
+  }
+}
+
+.goit_text {
+  display: inline-block;
+}
+
+.footer__icon {
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.25) translateX(5%) translateY(5%);
+  }
+  25% {
+    transform: scale(1.15) translateX(2%) translateY(2%);
+  }
+  45% {
+    transform: scale(1.5) translateX(8%) translateY(8%);
+  }
+}

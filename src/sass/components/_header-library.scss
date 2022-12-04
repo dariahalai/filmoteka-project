@@ -1,25 +1,17 @@
-
-
-
 .header__library {
-<<<<<<< Updated upstream
+
   display: block;
-=======
-display: block;
->>>>>>> Stashed changes
+
+
     margin: 0 auto;
     width: 100%;
     padding: 45px 20px;
     height: 230px;
     font-family: Roboto, sans-serif;
     font-weight: 500;
-<<<<<<< Updated upstream
-    height: 230px;
-  color: var(--main-text-color);
-=======
+
     color: var(--main-text-color);
 
->>>>>>> Stashed changes
   background-image: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0.56),
@@ -30,16 +22,32 @@ display: block;
   background-repeat: no-repeat;
   background-size: cover;
 
+
 @include for-tablet-only {
         background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(images/background-with-red-chairs-tab@2x.jpg);
     }
  @include for-desktop-up {
             background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url(images/background-with-red-chairs-pc@2x.jpg);
         }
+
+  @include for-tablet-only {
+    background-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/background-with-red-chairs-tab@2x.jpg);
+  }
+  @include for-desktop-up {
+    background-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/background-with-red-chairs-pc@2x.jpg);
+  }
+
 }
-
-
-
 
 .navigation__container {
   display: flex;
@@ -49,51 +57,49 @@ display: block;
 
   @include for-mobile-only {
     margin-bottom: 45px;
-    }
-
-     @include for-tablet-only {
-     margin-bottom: 45px;
-     padding: 0;
-    }
-}
-
-
-.logo {
-    display: flex;
-    align-self: flex-end;
-   
-    @include for-mobile-only {
-     margin-right: 112px;
-        }
-
-     @include for-tablet-only {
-    margin-right: 303px;}
-
-    @include for-desktop-up {
-    margin-right: 564px;
   }
 
+  @include for-tablet-only {
+    margin-bottom: 45px;
+    padding: 0;
+  }
 }
- 
 
+.logo {
+  display: flex;
+  align-self: flex-end;
+
+  @include for-mobile-only {
+    margin-right: 112px;
+  }
+
+  @include for-tablet-only {
+    margin-right: 303px;
+  }
+
+  @include for-desktop-up {
+    margin-right: 564px;
+  }
+}
 
 .icon-film {
-    width: 24px;
-    height: 24px;
-    animation: tada;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
+  width: 24px;
+  height: 24px;
+  animation: tada;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
-
 .logo__svg {
-    width: 20px;
-    height: 20px;
-    align-self: center;
-    stroke: #818181;
-    transition-property: stroke;
-    transition-duration: .25s;
-    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+
+  width: 20px;
+  height: 20px;
+  align-self: center;
+  stroke: #818181;
+  transition-property: stroke;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
 
   @include for-tablet-only {
     margin-right: 10px;
@@ -113,20 +119,22 @@ display: block;
   }
 }
 
+
 .menu {
     display: flex;
 }
 
+
 .menu__link {
-    font-size: 12px;
-    line-height: 1.16;
-    color: var(--secondary-text-color);
-    
-    text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1.16;
+  color: var(--secondary-text-color);
+
+  text-transform: uppercase;
 }
 
 .menu__link:visited {
-    color: var(--secondary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .menu__item:not(:last-child) {
@@ -136,76 +144,62 @@ display: block;
   position: relative;
 }
 
-
 .filter {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .filter__list {
-    display: flex;
+  display: flex;
 }
 
 .filter__item {
-    display: block;
+  display: block;
 }
 
 .filter__item {
-    width: 129.53px;
-    height: 44px;
-    // @include for-tablet-up {
-    //         width: 136px;
-    //     }
+  width: 129.53px;
+  height: 44px;
+  // @include for-tablet-up {
+  //         width: 136px;
+  //     }
 }
-
-
 
 .filter__item:not(:last-child) {
-    margin-right: 19.94px;
-    @include for-tablet-up {
-        margin-right: 15px;
-        }
-
-    
+  margin-right: 19.94px;
+  @include for-tablet-up {
+    margin-right: 15px;
+  }
 }
-
-
-
 
 .filter-button-lib {
-    display: inline-block;
-    padding: 14px 36.19px 12px;
-    min-width: 129.53px;
-    font-weight: 500;
-    line-height: 1.33333;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--secondary-text-color);
-    background: transparent;
-    border: 1px solid var(--secondary-text-color);
-    border-radius: 5px;
-       
-    @include for-tablet-up {
-        padding-left: 38px;
-        padding-right: 38px;
-         min-width: 136px;
-            }
+  display: inline-block;
+  padding: 14px 36.19px 12px;
+  min-width: 129.53px;
+  font-weight: 500;
+  line-height: 1.33333;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--secondary-text-color);
+  background: transparent;
+  border: 1px solid var(--secondary-text-color);
+  border-radius: 5px;
 
-                  
-    
+  @include for-tablet-up {
+    padding-left: 38px;
+    padding-right: 38px;
+    min-width: 136px;
+  }
 }
-
-
 
 .button-lib__list--active,
 .button-lib__list:hover,
-.button-lib__list:focus{
-border: 1px solid var(--accent-elem-color);
- background: var(--accent-elem-color);
-box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
-transition-property: background-color;
-transition-duration: .25s;
- transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-cursor: pointer;
-
+.button-lib__list:focus {
+  border: 1px solid var(--accent-elem-color);
+  background: var(--accent-elem-color);
+  box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
+  transition-property: background-color;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }

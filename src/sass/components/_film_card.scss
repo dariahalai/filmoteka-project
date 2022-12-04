@@ -1,0 +1,71 @@
+.film-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  @include for-tablet-up {
+    margin-bottom: 0;
+  }
+  &__link {
+    color: var(--main-text-color);
+    text-decoration: none;
+  }
+  &__film-img {
+    border-radius: 5px;
+    margin-bottom: 12px;
+    height: 398px;
+    width: 100%;
+    object-fit: cover;
+    @include for-tablet-up {
+      height: 455px;
+    }
+    @include for-desktop-up {
+      height: 574px;
+    }
+  }
+  &__film-name {
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    letter-spacing: 0em;
+    @include for-desktop-up {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  &__genre {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: var(--accent-text-color);
+    @include for-desktop-up {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  &__footer {
+    display: flex;
+  }
+  //  RATING STYLES, Could be removed for popular
+  &__rating {
+    display: inline-block;
+    background-color: var(--accent-text-color);
+    color: var(--secondary-text-color);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    height: 16px;
+    padding: 0 6px;
+    margin-left: 10px;
+    @include for-desktop-up {
+      height: 20px;
+      line-height: 20px;
+      padding: 0 10px;
+    }
+  }
+  //  END RATING STYLES
+}
