@@ -14,7 +14,7 @@ const SMALL_SIZE = 'w500';
 let genresList;
 export let totalPages = 0;
 
- getOriginGenres().then(response => {
+getOriginGenres().then(response => {
   genresList = Array.from(response.genres);
 });
 
@@ -93,7 +93,7 @@ export function renderFilmCards(data) {
   galleryRef.setHTML(markup);
 }
 
-export async function getOriginGenres() {
+async function getOriginGenres() {
   try {
     const searchParams = new URLSearchParams({
       api_key: KEY,
@@ -111,7 +111,7 @@ export async function getOriginGenres() {
   }
 }
 
-export function getGenres(genreSet) {
+function getGenres(genreSet) {
   let genreStr = '';
 
   genreSet.forEach(id => {
