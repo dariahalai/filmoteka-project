@@ -11,7 +11,16 @@
 
 @import './components/modal-window.scss';
 
-@import'./components/header-library.scss';
+
+@import './components/header-library';
+
+@import './components/film_card_list';
+@import './components/film_card';
+@import './components/spinner';
+@import './components/home-heder';
+@import './components/footer';
+
+// @import'./components/header-library.scss';
 
 @import './components/film_card_list.scss';
 @import './components/film_card.scss';
