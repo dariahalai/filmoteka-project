@@ -11,7 +11,7 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/';
 const LARGE_SIZE = 'original';
 const SMALL_SIZE = 'w500';
 
-export let genresList;
+ let genresList;
 export let totalPages = 0;
 
 getOriginGenres().then(response => {
@@ -75,7 +75,7 @@ export function renderFilmCards(data) {
       let smallImg = IMG_PATH + SMALL_SIZE + poster_path;
 
       markup += `
-        <li class="film-card">
+      <li class="film-card">
          	<a href="#" class="film-card__link">
             <img
               class="film-card__film-img"
