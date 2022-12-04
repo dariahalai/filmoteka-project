@@ -1,15 +1,16 @@
-@import './utils/common';
-@import './utils/adaptive-mixin';
-@import './utils/variables';
+@import './utils/common.scss';
+@import './utils/adaptive-mixin.scss';
+@import './utils/variables.scss';
 
-@import './base/reset';
-@import './base/container';
-@import './base/button';
-@import './base/fonts';
+@import './base/reset.scss';
+@import './base/container.scss';
+@import './base/button.scss';
+@import './base/fonts.scss';
 
 // Components
 
-@import './components/modal-window';
+@import './components/modal-window.scss';
+
 
 @import './components/header-library';
 
@@ -18,3 +19,13 @@
 @import './components/spinner';
 @import './components/home-heder';
 @import './components/footer';
+
+// @import'./components/header-library.scss';
+
+@import './components/film_card_list.scss';
+@import './components/film_card.scss';
+@import './components/spinner.scss';
+@import './components/home-heder.scss';
+@import './components/pagination.scss';
+
+
