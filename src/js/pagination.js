@@ -13,7 +13,7 @@ export function renderPagination(page, pages) {
   if (!page || page > pages) return;
 
   if (page > 1)
-    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-left" width="16" height="16"><use href="../images/sprite.svg#arrow-left" fill="#000000"></use></svg></li>`;
+    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-left" width="16" height="16"><use href="./images/sprite.svg#arrow-left" fill="#000000"></use></svg></li>`;
 
   if (page > 1) markup += `<li class="js-pagination__button-end">1</li>`;
 
@@ -37,12 +37,12 @@ export function renderPagination(page, pages) {
   if (page < pages) markup += `<li class="js-pagination__button-end">${pages}</li>`;
 
   if (page < pages)
-    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-right" width="16" height="16"><use href="../images/sprite.svg#arrow-right"></use></svg></li>`;
+    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-right" width="16" height="16"><use href="./images/sprite.svg#arrow-right"></use></svg></li>`;
 
   pagRef.innerHTML = markup;
 }
 
- pagRef.addEventListener('click', ({ target }) => {
+pagRef.addEventListener('click', ({ target }) => {
   if (target.textContent === '...') return;
   if (target.classList.contains('js-pagination__svg-left')) currentPage -= 1;
   if (target.classList.contains('js-pagination__svg-right')) currentPage += 1;
