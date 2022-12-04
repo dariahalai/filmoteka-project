@@ -27,7 +27,7 @@ window.addEventListener('load', () => {
 
   getPopulars(1).then(response => {
     const { page, results, total_pages: pages } = response;
-    currentPage = page;
+    // currentPage = page;
     totalPages = pages;
 
     renderFilmCards(results);
