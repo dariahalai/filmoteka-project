@@ -13,9 +13,9 @@ export function renderPagination(page, pages) {
   if (!page || page > pages) return;
 
   if (page > 1)
-    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-left" width="16" height="16"><use href="./images/sprite.svg#arrow-left"></use></svg></li>`;
+    markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-left" width="16" height="16"><use href="./images/sprite.svg#arrow-left" fill="#000000"></use></svg></li>`;
 
-  if (page > 1) markup += `<li class="js-pagination__button">1</li>`;
+  if (page > 1) markup += `<li class="js-pagination__button-end">1</li>`;
 
   if (page > 4) markup += `<li class="js-pagination__points">...</li>`;
 
@@ -34,7 +34,7 @@ export function renderPagination(page, pages) {
 
   if (page + 4 < pages) markup += `<li class="js-pagination__points">...</li>`;
 
-  if (page < pages) markup += `<li class="js-pagination__button">${pages}</li>`;
+  if (page < pages) markup += `<li class="js-pagination__button-end">${pages}</li>`;
 
   if (page < pages)
     markup += `<li class="js-pagination__arrow"><svg class="js-pagination__svg-right" width="16" height="16"><use href="./images/sprite.svg#arrow-rigth"></use></svg></li>`;
