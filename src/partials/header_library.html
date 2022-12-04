@@ -1,31 +1,36 @@
-<header class=" header__library">
-    <div class="navigation__container">
+<header class=" header-library">
+    <div class="container">
+        <nav class="header__nav">
+            <div class="header__container">
         <a href="./index.html" class="logo">
-            <svg class="logo__svg" width="20" height="20">
+            <svg class="logo__svg " width="20" height="20">
                 <use href="./images/sprite.svg#film"></use>
             </svg>
             <span class="logo__text">Filmoteka</span>
         </a>
-
-        <nav class="navigation">
-            <ul class="menu list">
+       <div class="navigation__container">
+               <ul class="menu-list">
                 <li class="menu__item">
-                    <a href="./index.html" class="link menu__link menu__link-home">Home</a>
+                    <a class="link menu__link "href="./index.html">Home</a>
                 </li>
                 <li class="menu__item">
-                    <a href="./library.html" class="link menu__link menu__link-library current">Library</a>
+                    <a class="link menu__link menu__link current"href="./library.html">my Library</a>
                 </li>
             </ul>
-        </nav>
-    </div>
-  
-        <ul class="filter__list">
-            <li class="filter__item">
-                <button class="filter__button" type="button">Watched</button>
-            </li>
-            <li class="filter__item">
-                <button class="filter__button" type="button">Queue</button>
-            </li>
-        </ul>
-
+         </div>
+     </nav>
+        </div>
+    
+<div class="container">
+    <ul class="filter__list">
+    <li class="filter__item">
+        <button class="filter__button" type="button">Watched</button>
+    </li>
+    <li class="filter__item">
+        <button class="filter__button" type="button">Queue</button>
+    </li>
+</ul>
+</div>
+        
+</div>
 </header>

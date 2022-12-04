@@ -1,68 +1,78 @@
-.header__library {
-
-  display: block;
-
-
-    margin: 0 auto;
-    width: 100%;
-    padding: 45px 20px;
+.header-library {
     height: 230px;
-    font-family: Roboto, sans-serif;
-    font-weight: 500;
-
-    color: var(--main-text-color);
-
-  background-image: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    ),
-    url('../images/background-with-red-chairs-mob@2x.jpg');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-
-@include for-tablet-only {
-        background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url('../images/background-with-red-chairs-tab@2x.jpg');
-    }
- @include for-desktop-up {
-            background-image: linear-gradient(90deg, rgba(0, 0, 0, .56), rgba(0, 0, 0, .56)), url('../images/background-with-red-chairs-pc@2x.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      background-image: url(../images/background-with-red-chairs-mob.jpg);
+   
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+        background-image: url(../images/background-with-red-chairs-mob@2x.jpg)
+      }
+    
+        @media screen and (min-width: 577px) {
+        max-width: 960px;
+        height: 216px;
+        background-image: url(../images/background-with-red-chairs-tab.jpg);
+    
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+          background-image: url(../images/background-with-red-chairs-tab@2x.jpg);
         }
+      }
+    
+      @media screen and (min-width: 961px) {
+        max-width: 1600px;
+        background-image: url(../images/background-with-red-chairs-pc.jpg);
+    
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+          background-image: url(../images/background-with-red-chairs-pc@2x.jpg);
+        }
+      }
+    }
 
-  @include for-tablet-only {
-    background-image: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url('../images/background-with-red-chairs-tab@2x.jpg');
-  }
-  @include for-desktop-up {
-    background-image: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url('../images/background-with-red-chairs-pc@2x.jpg');
-  }
+ 
+    
 
-}
+.header__nav{
+  flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 44px;
+    display: flex;
+    @include for-mobile-only {
+        margin-bottom: 45px;
+      }
+
+            @include for-tablet-only {
+              margin-bottom: 45px;
+              padding: 0;
+            }
+
+                        @include for-tablet-only {
+                            margin-bottom: 45px;
+                            padding: 0;
+                          }
+            }
+
 
 .navigation__container {
-  display: flex;
+  margin-left: auto;
+ 
+}
+
+.header__container {
+  width: 100%;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 37px;
+  display: flex;
 
-  @include for-mobile-only {
-    margin-bottom: 45px;
-  }
-
-  @include for-tablet-only {
-    margin-bottom: 45px;
-    padding: 0;
-  }
 }
 
 .logo {
@@ -82,21 +92,19 @@
   }
 }
 
-.icon-film {
-  width: 24px;
-  height: 24px;
-  animation: tada;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-}
+
+
 
 .logo__svg {
-
+  height: 20px;
+  width: 20px;
+  justify-content: center;
+  margin-right: 10px;
+  display: block;
   align-self: center;
   stroke: #818181;
   transition-property: stroke;
-  transition-duration: 0.25s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ 
 
 
   @include for-tablet-only {
@@ -106,6 +114,8 @@
     margin-right: 10px;
   }
 }
+
+
 .logo__text {
   font-size: 30px;
   line-height: 1.72;
@@ -118,22 +128,22 @@
 }
 
 
-.menu {
+.menu-list{
+    margin-left: auto;
     display: flex;
 }
 
 
 .menu__link {
-  font-size: 12px;
-  line-height: 1.16;
-  color: var(--secondary-text-color);
-
   text-transform: uppercase;
+    color: var(--secondary-text-color);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.16;
 }
 
-.menu__link:visited {
-  color: var(--secondary-text-color);
-}
+
 
 .menu__item:not(:last-child) {
   margin-right: 39px;
@@ -188,4 +198,15 @@
   transition-duration: 0.25s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+}
+
+.menu__link.current:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7%;
+  width: 69px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #ff6b08;
 }
