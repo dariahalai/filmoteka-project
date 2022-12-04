@@ -1,4 +1,4 @@
-import { renderFilmCards, getPopulars, totalPages } from './popular.js';
+import { renderFilmCards, getPopulars, totalPages,genresList,totalPages } from './popular.js';
 const pagRef = document.querySelector('.js-pagination');
 
 export let currentPage = 0;
