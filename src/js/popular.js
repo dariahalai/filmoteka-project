@@ -11,10 +11,10 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/';
 const LARGE_SIZE = 'original';
 const SMALL_SIZE = 'w500';
 
- let genresList;
+let genresList;
 export let totalPages = 0;
 
-getOriginGenres().then(response => {
+ getOriginGenres().then(response => {
   genresList = Array.from(response.genres);
 });
 
@@ -93,7 +93,7 @@ export function renderFilmCards(data) {
   galleryRef.setHTML(markup);
 }
 
-async function getOriginGenres() {
+export async function getOriginGenres() {
   try {
     const searchParams = new URLSearchParams({
       api_key: KEY,
@@ -111,7 +111,7 @@ async function getOriginGenres() {
   }
 }
 
-function getGenres(genreSet) {
+export function getGenres(genreSet) {
   let genreStr = '';
 
   genreSet.forEach(id => {
