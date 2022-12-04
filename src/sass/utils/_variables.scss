@@ -6,7 +6,7 @@
   --accent-elem-color: #ff6b01;
   --copy-writes-color: #545454;
   --modal-secondary-text-color: #8c8c8c;
-  --bgc-color: #e5e5e5;
+  // --bgc-color: #e5e5e5;
 
   --transition-time: 250ms;
   --cubic: cubic-bezier(0.4, 0, 0.2, 1);
@@ -17,6 +17,6 @@ body {
   font-style: normal;
   font-size: 12px;
   letter-spacing: 0.03em;
-  background-color: var(--bgc-color);
+  // background-color: var(--bgc-color);
   color: var(--main-text-color);
 }
