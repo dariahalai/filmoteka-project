@@ -1,4 +1,5 @@
 import { renderFilmCards, getPopulars, totalPages } from './popular.js';
+
 const pagRef = document.querySelector('.js-pagination');
 const leftArrowRef = document.querySelector('.js-pagination__arrow-left');
 const rightArrowRef = document.querySelector('.js-pagination__arrow-right');

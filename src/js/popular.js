@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { renderPagination, currentPage } from './pagination.js';
-
+// імпорт файлу сховища та запис в змінну ключа
+import * as storageLocal from './local-storage.js';
+const FILM_CURRENT_PAGE = 'film-current-page';
+//
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const MEDIA_TYPE = 'movie';
 const TIME_WINDOW = 'week';
@@ -58,7 +61,7 @@ export async function getPopulars(page) {
 
 export function renderFilmCards(data) {
   let markup = '';
-  data.forEach(({ poster_path, genre_ids, title, release_date }) => {
+  data.forEach(({ id, poster_path, genre_ids, title, release_date }) => {
     let genresStr = getGenres(genre_ids);
     let year = release_date.substring(0, 4);
     if (genresStr && year) genresStr += ' | ';
@@ -75,6 +78,7 @@ export function renderFilmCards(data) {
               class="film-card__film-img"
               src="${smallImg}"
               alt="${title}"
+              id="${id}"
             />
             <h3 class="film-card__film-name">${title}</h3>
             <p class="film-card__genre">${genresStr}${year}</p>
@@ -84,6 +88,10 @@ export function renderFilmCards(data) {
   });
 
   galleryRef.setHTML(markup);
+
+  // запис в локальне сховище
+  storageLocal.save(FILM_CURRENT_PAGE, [...data]);
+  //
 }
 
 async function getOriginGenres() {
