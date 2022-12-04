@@ -139,7 +139,7 @@
 // button
 .btn {
   padding: 7px;
-
+  cursor: pointer;
   position: absolute;
   bottom: 2px;
   right: -15px;
@@ -151,6 +151,11 @@
   background-color: transparent;
   outline: none;
   border: none;
+}
+.btn:hover,
+.btn:focus {
+  transform: scale(1.5);
+  transition: var(--transition-time) var(--cubic);
 }
 .header__container-link {
   margin-left: auto;
