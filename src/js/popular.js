@@ -10,6 +10,8 @@ const GENRES = 'genre/movie/list';
 const IMG_PATH = 'https://image.tmdb.org/t/p/';
 const LARGE_SIZE = 'original';
 const SMALL_SIZE = 'w500';
+export const NO_IMAGE =
+  'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
 
 let genresList;
 export let totalPages = 0;
@@ -56,25 +58,17 @@ export async function getPopulars(page) {
 
 export function renderFilmCards(data) {
   let markup = '';
-  data.forEach(
-    ({
-      backdrop_path,
-      poster_path,
-      genre_ids,
-      id,
-      title,
-      overview,
-      release_date,
-    }) => {
-      let genresStr = getGenres(genre_ids);
-      let year = release_date.substring(0, 4);
-      if (genresStr && year) genresStr += ' | ';
-      if (!title) title = 'no information';
+  data.forEach(({ poster_path, genre_ids, title, release_date }) => {
+    let genresStr = getGenres(genre_ids);
+    let year = release_date.substring(0, 4);
+    if (genresStr && year) genresStr += ' | ';
+    if (!title) title = 'no information';
 
-      let largeImg = IMG_PATH + LARGE_SIZE + backdrop_path;
-      let smallImg = IMG_PATH + SMALL_SIZE + poster_path;
+    let smallImg = !!poster_path
+      ? IMG_PATH + SMALL_SIZE + poster_path
+      : NO_IMAGE;
 
-      markup += `
+    markup += `
       <li class="film-card">
          	<a href="#" class="film-card__link">
             <img
@@ -87,8 +81,7 @@ export function renderFilmCards(data) {
           </a>
         </li>
 							`;
-    }
-  );
+  });
 
   galleryRef.setHTML(markup);
 }

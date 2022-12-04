@@ -1,26 +1,37 @@
 .js-pagination {
   display: flex;
-	justify-content: center;
-	align-items: center;
+  justify-content: center;
+  align-items: center;
   color: #000000;
-	font-size: 12px;
-	font-weight: 500;
+  font-size: 12px;
+  font-weight: 500;
 }
 
-.js-pagination__arrow {
+.js-pagination__arrow-left,
+.js-pagination__arrow-right {
   display: flex;
-	justify-content: center;
-	align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
   border: none;
   border-radius: 5px;
   background-color: #f7f7f7;
-  color: inherit;
-	cursor: pointer;
+  cursor: pointer;
 }
 
-.js-pagination__svg-left {
+.is-hidden {
+  display: none;
+}
+
+.js-pagination__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.js-pagination__svg-left,
+.js-pagination__svg-right {
   fill: #000000;
 }
 
@@ -29,9 +40,9 @@
     display: none;
   }
   @media screen and (min-width: 768px) {
-		display: flex;
+    display: flex;
     justify-content: center;
-		align-items: center;
+    align-items: center;
   }
   padding: 16px;
   color: inherit;
@@ -45,7 +56,7 @@
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
-		align-items: center;
+    align-items: center;
   }
   padding: 16px;
   color: inherit;
@@ -53,11 +64,11 @@
 }
 
 .js-pagination__button {
-	display: flex;
-    justify-content: center;
-		align-items: center;
-	width: 40px;
-	height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
   color: inherit;
   cursor: pointer;
 }
@@ -66,5 +77,5 @@
   background-color: #ff6b08;
   border: none;
   border-radius: 5px;
-	color: #ffffff;
+  color: #ffffff;
 }
