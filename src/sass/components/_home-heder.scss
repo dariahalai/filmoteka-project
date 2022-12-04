@@ -13,9 +13,8 @@
     (min-resolution: 2dppx) {
     background-image: url(../images/abstract-background-with-red-lines-mob@2x.jpg);
   }
-  @media screen and (min-width: 577px) {
-    max-width: 960px;
-    height: 216px;
+  @media screen and (min-width: 768px) {
+    height: 219px;
     background-image: url(../images/abstract-background-with-red-lines-tab.jpg);
 
     @media (min-device-pixel-ratio: 2),
@@ -25,7 +24,8 @@
       background-image: url(../images/abstract-background-with-red-lines-tab@2x.jpg);
     }
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: 1280px) {
+    height: 216px;
     max-width: 1600px;
     background-image: url(../images/abstract-background-with-red-lines-pc.jpg);
     @media (min-device-pixel-ratio: 2),
