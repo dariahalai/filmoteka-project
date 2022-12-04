@@ -104,6 +104,7 @@
 .header__form {
   width: 100%;
   position: relative;
+  border-bottom: 1px solid var(--secondary-text-color);
 }
 
 .header__input {
@@ -118,7 +119,7 @@
   }
   padding-bottom: 4px;
   border: none;
-  border-bottom: 1px solid var(--secondary-text-color);
+  // border-bottom: 1px solid var(--secondary-text-color);
   background-color: transparent;
   outline: none;
   color: var(--secondary-text-color);
@@ -163,6 +164,17 @@
   margin-top: 60px;
   @media screen and (min-width: 768px) {
   }
+}
+.header__warning-message {
+  padding-top: 20px;
+  border: transparent;
+  outline: transparent;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--warning-color);
+
 }
 .header__container {
   width: 100%;
