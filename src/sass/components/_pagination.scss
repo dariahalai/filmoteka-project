@@ -7,7 +7,8 @@
   font-weight: 500;
 }
 
-.js-pagination__arrow {
+.js-pagination__arrow-left,
+.js-pagination__arrow-right {
   display: flex;
   justify-content: center;
   align-items: center;

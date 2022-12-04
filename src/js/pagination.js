@@ -1,7 +1,7 @@
 import { renderFilmCards, getPopulars, totalPages } from './popular.js';
 const pagRef = document.querySelector('.js-pagination');
-const leftArrowRef = document.querySelector('.js-pagination__svg-left');
-const rightArrowRef = document.querySelector('.js-pagination__svg-right');
+const leftArrowRef = document.querySelector('.js-pagination__arrow-left');
+const rightArrowRef = document.querySelector('.js-pagination__arrow-right');
 const pagContainerRef = document.querySelector('.js-pagination__container');
 
 export let currentPage = 0;
@@ -48,9 +48,19 @@ export function renderPagination(page, pages) {
 
 pagRef.addEventListener('click', ({ target }) => {
   if (target.textContent === '...') return;
+
+  if (target.classList.contains('js-pagination__arrow-left')) currentPage -= 1;
   if (target.classList.contains('js-pagination__svg-left')) currentPage -= 1;
+  if (target.classList.contains('js-pagination__use-left')) currentPage -= 1;
+
+  if (target.classList.contains('js-pagination__arrow-right')) currentPage += 1;
   if (target.classList.contains('js-pagination__svg-right')) currentPage += 1;
-  if (target.textContent) currentPage = Number(target.textContent);
+  if (target.classList.contains('js-pagination__use-right')) currentPage += 1;
+
+  if (target.classList.contains('js-pagination__button'))
+    currentPage = Number(target.textContent);
+  if (target.classList.contains('js-pagination__button-end'))
+    currentPage = Number(target.textContent);
 
   renderPagination(currentPage, totalPages);
   getPopulars(currentPage).then(response => {
