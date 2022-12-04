@@ -69,9 +69,7 @@ refs.form.addEventListener("submit", onSearchClick)
 
 function onSearchClick(evt) {
     evt.preventDefault();
-
-
-
+    ""
     movieApi.query = evt.currentTarget.elements.searchQuery.value.trim().toLowerCase();
 
 
