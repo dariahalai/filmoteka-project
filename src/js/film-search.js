@@ -1,98 +1,103 @@
 const refs = {
-    form: document.querySelector(".header__form"),
-    input: document.querySelector("header__input"),
-    formButton: document.querySelector(".btn"),
-    gallery: document.querySelector(".js-gallery"),
-    warning: document.querySelector(".header__warning"),
-}
+  form: document.querySelector('.header__form'),
+  input: document.querySelector('header__input'),
+  formButton: document.querySelector('.btn'),
+  gallery: document.querySelector('.js-gallery'),
+  warning: document.querySelector('.header__warning'),
+};
 
-console.log("hiiiii")
+console.log('hiiiii');
 
 import axios from 'axios';
-import { renderFilmCards, totalPages } from "./popular"
-import {renderPagination, currentPage} from "./pagination"
+import { renderFilmCards, totalPages } from './popular';
+import { renderPagination, currentPage } from './pagination';
 
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
-const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = 'https://api.themoviedb.org/3';
 
 export class searchMovieApi {
-    constructor() {
-        this.searchQuery = "";
-        this.page = 1;
+  constructor() {
+    this.searchQuery = '';
+    this.page = 1;
+  }
+
+  async searchMovieFetch() {
+    const searchMovieParams = new URLSearchParams({
+      api_key: KEY,
+      language: 'en-US',
+      query: `${this.searchQuery}`,
+      page: `${this.page}`,
+      include_adult: false,
+    });
+
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/search/movie?${searchMovieParams}`
+      );
+
+      if (response.status !== 200) {
+        throw new Error(response.status);
+      }
+
+      this.page += 1;
+
+      return response.data.results;
+    } catch (error) {
+      console.log(error.message);
     }
+  }
 
-    async searchMovieFetch() {
-        const searchMovieParams = new URLSearchParams({
-            api_key: KEY,
-            language: "en-US",
-            query: `${this.searchQuery}`,
-            page: `${this.page}`,
-            include_adult: false,
-        });
+  get query() {
+    return this.searchQuery;
+  }
 
-        try {
-            const response = await axios.get(`${BASE_URL}/search/movie?${searchMovieParams}`) 
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
 
-            if (response.status !== 200) {
-                    throw new Error(response.status);
-                }
-            
-            this.page += 1;
-
-            return response.data.results;
-
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-
-    get query() {
-        return this.searchQuery;
-    };
-
-    set query(newQuery) {
-        this.searchQuery = newQuery;
-    }
-
-    resetPage() {
-        this.page = 1;
-    }
-};
+  resetPage() {
+    this.page = 1;
+  }
+}
 
 const movieApi = new searchMovieApi();
 
 function clearSearch() {
-    refs.gallery.innerHTML = "";
+  refs.gallery.innerHTML = '';
 }
 
-refs.form.addEventListener("submit", onSearchClick)
+refs.form.addEventListener('submit', onSearchClick);
 
 function onSearchClick(evt) {
-    evt.preventDefault();
-    
-    movieApi.query = evt.currentTarget.elements.searchQuery.value.trim().toLowerCase();
+  evt.preventDefault();
 
-    movieApi.resetPage();
+  movieApi.query = evt.currentTarget.elements.searchQuery.value
+    .trim()
+    .toLowerCase();
 
-    movieApi.searchMovieFetch().then((data) => {
-        // const { page, results, total_pages: pages } = data;
+  movieApi.resetPage();
 
-        if (movieApi.query === "" || data.length === 0) {
-        refs.warning.insertAdjacentHTML("beforeend", `<div class="header__warning-message" >Search result not successful. Enter the correct movie name.</div>`);
+  movieApi.searchMovieFetch().then(data => {
+    // const { page, results, total_pages: pages } = data;
 
-        setTimeout(() => {
-            refs.warning.innerHTML = "";
-        }, 2000);
-        return;
+    if (movieApi.query === '' || data.length === 0) {
+      refs.warning.insertAdjacentHTML(
+        'beforeend',
+        `<div class="header__warning-message" >Search result not successful. Enter the correct movie name.</div>`
+      );
+
+      setTimeout(() => {
+        refs.warning.innerHTML = '';
+      }, 2000);
+      return;
     }
-        clearSearch();
+    clearSearch();
 
-        // totalPages = pages;
+    // totalPages = pages;
 
-        renderFilmCards(data);
-        // renderPagination(page, pages);
-        
-        // console.log("data", data)
-    }
-    )
-};
+    renderFilmCards(data);
+    // renderPagination(page, pages);
+
+    // console.log("data", data)
+  });
+}
