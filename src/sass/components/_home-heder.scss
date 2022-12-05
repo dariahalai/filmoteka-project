@@ -48,6 +48,7 @@
 }
 
 .header__text {
+  margin-left: 10px;
   display: none;
   @media screen and (min-width: 768px) {
     display: block;
@@ -104,16 +105,16 @@
 }
 
 .header__input {
-  font-size: 17px;
+  font-size: 14px;
 
   min-width: 280px;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     min-width: 336px;
   }
-  @media screen and (min-width: 900px) {
-    min-width: 396px;
+  @media screen and (min-width: 1280px) {
+    min-width: 394px;
   }
-  padding-bottom: 4px;
+
   border: none;
   // border-bottom: 1px solid var(--secondary-text-color);
   background-color: transparent;
