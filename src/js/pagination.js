@@ -1,4 +1,4 @@
-import { renderFilmCards, getPopulars, totalPages } from './popular.js';
+import { renderFilmCards, getPopulars, totalPages} from './popular.js';
 
 const pagRef = document.querySelector('.js-pagination');
 const leftArrowRef = document.querySelector('.js-pagination__arrow-left');
@@ -64,8 +64,11 @@ pagRef.addEventListener('click', ({ target }) => {
     currentPage = Number(target.textContent);
 
   renderPagination(currentPage, totalPages);
+
   getPopulars(currentPage).then(response => {
     const { results } = response;
     renderFilmCards(results);
   });
+
+  
 });

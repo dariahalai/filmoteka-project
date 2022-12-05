@@ -9,12 +9,13 @@ const refs = {
 console.log("hiiiii")
 
 import axios from 'axios';
-import { renderFilmCards } from "./popular"
+import { renderFilmCards, totalPages } from "./popular"
+import {renderPagination, currentPage} from "./pagination"
 
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const BASE_URL = "https://api.themoviedb.org/3";
 
-class searchMovieApi {
+export class searchMovieApi {
     constructor() {
         this.searchQuery = "";
         this.page = 1;
@@ -58,7 +59,6 @@ class searchMovieApi {
     }
 };
 
-
 const movieApi = new searchMovieApi();
 
 function clearSearch() {
@@ -72,23 +72,27 @@ function onSearchClick(evt) {
     
     movieApi.query = evt.currentTarget.elements.searchQuery.value.trim().toLowerCase();
 
+    movieApi.resetPage();
 
-    if (movieApi.query === "") {
-        refs.warning.insertAdjacentHTML("beforeend", `<div class="header__warning-message">Search result not successful. Enter the correct movie name and try again.</div>`);
+    movieApi.searchMovieFetch().then((data) => {
+        // const { page, results, total_pages: pages } = data;
+
+        if (movieApi.query === "" || data.length === 0) {
+        refs.warning.insertAdjacentHTML("beforeend", `<div class="header__warning-message" >Search result not successful. Enter the correct movie name.</div>`);
 
         setTimeout(() => {
             refs.warning.innerHTML = "";
-        }, 3000);
+        }, 2000);
         return;
     }
+        clearSearch();
 
-    // movieApi.resetPage();
+        // totalPages = pages;
 
-    movieApi.searchMovieFetch().then((data) => {
-    clearSearch();
-        renderFilmCards(data)
+        renderFilmCards(data);
+        // renderPagination(page, pages);
         
-        console.log(data)
+        // console.log("data", data)
     }
     )
 };
