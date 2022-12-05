@@ -45,7 +45,6 @@
 .header__icon {
   display: block;
   justify-content: center;
-  margin-right: 10px;
 }
 
 .header__text {
@@ -139,7 +138,7 @@
   cursor: pointer;
   position: absolute;
   bottom: 2px;
-  right: -15px;
+  right: 0;
 
   display: inline-flex;
   align-items: center;
@@ -176,7 +175,7 @@
   font-size: 14px;
   line-height: 1.14;
   color: var(--warning-color);
-  
+
   animation-name: changeColor;
   animation-duration: 1000ms;
   animation-timing-function: linear;
@@ -185,11 +184,11 @@
 }
 @keyframes changeColor {
   0% {
-      color: rgb(55, 29, 24);
-    }
+    color: rgb(55, 29, 24);
+  }
 
   20% {
-  color: rgb(184, 71, 52);
+    color: rgb(184, 71, 52);
   }
 
   60% {
