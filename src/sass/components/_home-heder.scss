@@ -45,7 +45,6 @@
 .header__icon {
   display: block;
   justify-content: center;
-  margin-right: 10px;
 }
 
 .header__text {
@@ -139,7 +138,7 @@
   cursor: pointer;
   position: absolute;
   bottom: 2px;
-  right: -15px;
+  right: 0;
 
   display: inline-flex;
   align-items: center;
@@ -177,6 +176,32 @@
   line-height: 1.14;
   color: var(--warning-color);
 
+  animation-name: changeColor;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes changeColor {
+  0% {
+    color: rgb(55, 29, 24);
+  }
+
+  20% {
+    color: rgb(184, 71, 52);
+  }
+
+  60% {
+    color: var(--warning-color);
+  }
+
+  20% {
+    color: rgb(184, 71, 52);
+  }
+
+  0% {
+    color: rgb(55, 29, 24);
+  }
 }
 .header__container {
   width: 100%;
