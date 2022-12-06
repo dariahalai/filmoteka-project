@@ -1,5 +1,6 @@
 import * as storageLocal from './local-storage.js';
 import ModalFilm from './modal-film';
+import { handleBackButtonClick, trailerButtonRef,  handleTrailerButtonClick} from './trailer';
 
 const refs = {
   gallery: document.querySelector('.js-gallery'),
@@ -14,6 +15,7 @@ window.addEventListener('keydown', onCloseModalEsc);
 
 function onOpenModal(e) {
   e.preventDefault();
+  trailerButtonRef.addEventListener('click', handleTrailerButtonClick);
 
   if (e.target.nodeName !== 'IMG') return;
 
@@ -26,8 +28,12 @@ function onOpenModal(e) {
 }
 
 function onCloseModal() {
+  const iframeContainer = document.querySelector('.iframe-container');
+  const trailerContainer = document.querySelector('.film__info-wrapper');
+  handleBackButtonClick(iframeContainer, trailerContainer);
   modalFilm.close();
   refs.closeBtn.removeEventListener('click', onCloseModal);
+  trailerButtonRef.removeEventListener('click', handleTrailerButtonClick);
   window.removeEventListener('keydown', onCloseModalEsc);
 }
 

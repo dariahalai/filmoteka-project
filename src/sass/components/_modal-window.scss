@@ -240,3 +240,36 @@
     border: 1px solid var(--accent-elem-color);
     background-color: var(--accent-elem-color);
 }
+.btn--trailer {
+    border: none;
+    cursor: pointer;
+}
+.iframe-container {
+    iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 440px;
+    }
+    .back-button {
+        margin-bottom: 10px;
+        font-weight: 500;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        &:before {
+            content: '←';
+            font-size: 30px;
+            color: var(--accent-elem-color);
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+    }
+}
+.trailer-error {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: red;
+    font-weight: 500;
+}

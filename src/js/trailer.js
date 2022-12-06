@@ -1,52 +1,58 @@
 import { getMovieTrailer } from './popular';
 
-const trailerButtonRef = document.getElementById('trailer');
+export const trailerButtonRef = document.getElementById('trailer');
+const trailerErrorContainer = document.getElementById('trailer-error');
+const spinner = document.querySelector('.spinner');
+
 if (!trailerButtonRef) {
   return;
 }
-let trailerIsLoading = false;
 
-const handleBackButtonClick = (modalContent, trailerContainer) => {
-  trailerContainer.setHTML(modalContent);
+export const handleBackButtonClick = (iframeContainer, trailerContainer) => {
+  trailerContainer.classList.remove('is-hidden');
+  trailerErrorContainer.innerHTML = '';
+  if (iframeContainer) {
+    iframeContainer.remove();
+  }
 };
 
 const renderYoutubeIframe = movieKey => {
   const iframe = document.createElement('iframe');
   iframe.src = `https://www.youtube.com/embed/${movieKey}`;
-  iframe.width = 560;
-  iframe.height = 315;
   iframe.frameBorder = '0';
   iframe.allowFullscreen = true;
-  const trailerContainer = document.getElementById('trailer-container');
-  const modalContent = trailerContainer.innerHTML;
-  trailerContainer.innerHTML = '';
-  trailerContainer.setHTML('<button id="back-to-modal">BACK</button>');
+  const trailerContainer = document.querySelector('.film__info-wrapper');
+  trailerContainer.classList.add('is-hidden');
+  const iframeContainer = document.createElement('div');
+  iframeContainer.classList.add('iframe-container');
+  iframeContainer.setHTML(
+    '<button class="back-button" id="back-to-modal">BACK</button>'
+  );
+  trailerContainer.after(iframeContainer);
   const backButton = document.getElementById('back-to-modal');
   backButton.addEventListener('click', () => {
-    handleBackButtonClick(modalContent, trailerContainer);
+    handleBackButtonClick(iframeContainer, trailerContainer);
     backButton.removeEventListener('click', handleBackButtonClick);
   });
-  trailerContainer.appendChild(iframe);
+  iframeContainer.appendChild(iframe);
 };
 
-const handleTrailerButtonClick = event => {
-  trailerIsLoading = true;
-  const movieId = event.target.getAttribute('data-movie-id');
+export const handleTrailerButtonClick = () => {
+  spinner.classList.remove('is-hidden');
+  const movieId = trailerButtonRef.getAttribute('data-movie-id');
   getMovieTrailer(movieId)
     .then(data => {
-      const results = data.results.filter(
-        item => item.official && item.name.includes('Official Trailer')
-      );
+      const results = data.results;
       if (!results.length) {
         throw new Error('Trailer is not available');
       }
       renderYoutubeIframe(results[0].key);
     })
     .catch(e => {
-      document.getElementById('trailer-error').innerText = e.message;
+      trailerErrorContainer.innerText = e.message;
     })
     .finally(() => {
-      trailerIsLoading = false;
+      spinner.classList.add('is-hidden');
     });
 };
 
