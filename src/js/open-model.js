@@ -1,7 +1,7 @@
 import * as storageLocal from './local-storage.js';
 import ModalFilm from './modal-film';
-///////
-import onModalBtnClick from "./local-storage-set"
+
+import { onQueueBtnClick, onWatchedBtnClick } from "./local-storage-set";
 
 const refs = {
   gallery: document.querySelector('.js-gallery'),
@@ -20,14 +20,15 @@ function onOpenModal(e) {
   if (e.target.nodeName !== 'IMG') return;
 
   const dataCurentFilm = getFilmData(e.target.id);
+
   modalFilm.modifyDataFilm(dataCurentFilm);
   modalFilm.open();
 
-//////////////////////////
-  console.log(dataCurentFilm)
-  onModalBtnClick(dataCurentFilm)
-
+///// for local-storage-set /////////
+  onWatchedBtnClick(dataCurentFilm)
+  onQueueBtnClick(dataCurentFilm)
 //////////////////////////////
+
   refs.closeBtn.addEventListener('click', onCloseModal);
   window.addEventListener('keydown', onCloseModalEsc);
 }
