@@ -16,7 +16,7 @@ btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
 function onBtnWatchedClick() {
   try {
-    let watchedFilms = localStorage.getItem('film-current-page');
+    let watchedFilms = localStorage.getItem(KEY);
     if (watchedFilms) {
       watchedFilms = JSON.parse(watchedFilms);
 
