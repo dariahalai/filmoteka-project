@@ -1,31 +1,32 @@
-<header class=" header__library">
-    <div class="navigation__container">
-        <a href="./index.html" class="logo">
-            <svg class="logo__svg" width="20" height="20">
-                <use href="./images/sprite.svg#film"></use>
-            </svg>
-            <span class="logo__text">Filmoteka</span>
-        </a>
-
-        <nav class="navigation">
-            <ul class="menu list">
-                <li class="menu__item">
-                    <a href="./index.html" class="link menu__link menu__link-home">Home</a>
+<header class=" header-library">
+    <div class="container">
+        <div class="header-lib__container">
+            <a class="header__logo" href="./index.html">
+                <svg class="header__icon" width="24" height="24">
+                  <use href="./images/sprite.svg#film"></use> 
+                </svg>
+                <span class="header__text">Filmoteka</span>
+              </a>
+            <nav class="header__nav-list">
+        <!-- <div class="navigation__container"> -->
+            <ul class="header__list">
+                <li class="header__item">
+                  <a class="header__link " href="./index.html">home</a>
                 </li>
-                <li class="menu__item">
-                    <a href="./library.html" class="link menu__link menu__link-library current">Library</a>
+                <li class="header__item">
+                  <a class="header__link header__link--current" href="./library.html">my library</a>
                 </li>
-            </ul>
-        </nav>
-    </div>
-  
+              </ul>
+            </nav>
+        </div>
+        <!-- </div> -->
         <ul class="filter__list">
             <li class="filter__item">
-                <button class="filter__button" type="button">Watched</button>
+                <button class="filter__button filter__button--active" type="button" data-action="watched">Watched</button>
             </li>
             <li class="filter__item">
-                <button class="filter__button" type="button">Queue</button>
+                <button class="filter__button" type="button" data-action="queue">Queue</button>
             </li>
-        </ul>
-
+        </ul>     
+    </div>
 </header>

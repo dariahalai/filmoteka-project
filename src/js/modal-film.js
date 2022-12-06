@@ -83,6 +83,7 @@ export default class ModalFilm {
 
   modifyDataFilm(dataImport = dataDefault) {
     this.data = dataImport;
+
     const {
       poster_path,
       title,

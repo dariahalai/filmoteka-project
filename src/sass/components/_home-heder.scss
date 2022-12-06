@@ -2,7 +2,6 @@
 
 .header {
   height: 230px;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -14,10 +13,10 @@
     (min-resolution: 2dppx) {
     background-image: url(../images/abstract-background-with-red-lines-mob@2x.jpg);
   }
-  @media screen and (min-width: 577px) {
-    max-width: 960px;
-    height: 216px;
+  @media screen and (min-width: 768px) {
+    height: 219px;
     background-image: url(../images/abstract-background-with-red-lines-tab.jpg);
+
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -25,7 +24,8 @@
       background-image: url(../images/abstract-background-with-red-lines-tab@2x.jpg);
     }
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: 1280px) {
+    height: 216px;
     max-width: 1600px;
     background-image: url(../images/abstract-background-with-red-lines-pc.jpg);
     @media (min-device-pixel-ratio: 2),
@@ -44,16 +44,12 @@
 }
 .header__icon {
   display: block;
-
-  height: 20px;
-  width: 20px;
   justify-content: center;
-  margin-right: 10px;
 }
 
 .header__text {
   display: none;
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 768px) {
     display: block;
 
     font-family: 'Roboto';
@@ -104,6 +100,7 @@
 .header__form {
   width: 100%;
   position: relative;
+  border-bottom: 1px solid var(--secondary-text-color);
 }
 
 .header__input {
@@ -118,7 +115,7 @@
   }
   padding-bottom: 4px;
   border: none;
-  border-bottom: 1px solid var(--secondary-text-color);
+  // border-bottom: 1px solid var(--secondary-text-color);
   background-color: transparent;
   outline: none;
   color: var(--secondary-text-color);
@@ -138,10 +135,10 @@
 // button
 .btn {
   padding: 7px;
-
+  cursor: pointer;
   position: absolute;
   bottom: 2px;
-  right: -15px;
+  right: 0;
 
   display: inline-flex;
   align-items: center;
@@ -150,6 +147,11 @@
   background-color: transparent;
   outline: none;
   border: none;
+}
+.btn:hover,
+.btn:focus {
+  transform: scale(1.5);
+  transition: var(--transition-time) var(--cubic);
 }
 .header__container-link {
   margin-left: auto;
@@ -162,6 +164,43 @@
   margin-right: auto;
   margin-top: 60px;
   @media screen and (min-width: 768px) {
+  }
+}
+.header__warning-message {
+  padding-top: 20px;
+  border: transparent;
+  outline: transparent;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--warning-color);
+
+  animation-name: changeColor;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes changeColor {
+  0% {
+    color: rgb(55, 29, 24);
+  }
+
+  20% {
+    color: rgb(184, 71, 52);
+  }
+
+  60% {
+    color: var(--warning-color);
+  }
+
+  20% {
+    color: rgb(184, 71, 52);
+  }
+
+  0% {
+    color: rgb(55, 29, 24);
   }
 }
 .header__container {

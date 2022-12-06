@@ -16,7 +16,6 @@ body {
   font-style: normal;
   font-size: 12px;
   letter-spacing: 0.03em;
-  background-color: var(--secondary-text-color);
   color: var(--main-text-color);
 }
 
@@ -67,6 +66,7 @@ img {
 
 .section {
   padding: 60px 0;
+  min-height: 1000px;
 }
 @media screen and (max-width: 767px) {
   .section {
@@ -332,141 +332,48 @@ img {
   background-color: var(--accent-elem-color);
 }
 
-.header__library {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  padding: 45px 20px;
+.header-library {
   height: 230px;
-  font-family: Roboto, sans-serif;
-  font-weight: 500;
-  color: var(--main-text-color);
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-mob@2x.jpg");
-  background-position: 50%;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url(../images/background-with-red-chairs-mob.jpg);
 }
-@media (min-width: 768px) and (max-width: 1279.98px) {
-  .header__library {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-tab@2x.jpg");
+@media (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .header-library {
+    background-image: url(../images/background-with-red-chairs-mob@2x.jpg);
   }
 }
-@media (min-width: 1280px) {
-  .header__library {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-pc@2x.jpg");
+@media screen and (min-width: 768px) {
+  .header-library {
+    height: 219px;
+    background-image: url(../images/background-with-red-chairs-tab.jpg);
   }
 }
-@media (min-width: 768px) and (max-width: 1279.98px) {
-  .header__library {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-tab@2x.jpg");
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .header-library {
+    background-image: url(../images/background-with-red-chairs-tab@2x.jpg);
   }
 }
-@media (min-width: 1280px) {
-  .header__library {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/background-with-red-chairs-pc@2x.jpg");
+@media screen and (min-width: 1280px) {
+  .header-library {
+    height: 216px;
+    max-width: 1600px;
+    background-image: url(../images/background-with-red-chairs-pc.jpg);
+  }
+}
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2), screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 1280px) and (min-resolution: 192dpi), screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  .header-library {
+    background-image: url(../images/background-with-red-chairs-pc@2x.jpg);
   }
 }
 
-.navigation__container {
-  display: flex;
+.header-lib__container {
+  padding-top: 40px;
+  margin-bottom: 60px;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 37px;
-}
-@media (max-width: 767.98px) {
-  .navigation__container {
-    margin-bottom: 45px;
-  }
-}
-@media (min-width: 768px) and (max-width: 1279.98px) {
-  .navigation__container {
-    margin-bottom: 45px;
-    padding: 0;
-  }
-}
-
-.logo {
   display: flex;
-  align-self: flex-end;
-}
-@media (max-width: 767.98px) {
-  .logo {
-    margin-right: 112px;
-  }
-}
-@media (min-width: 768px) and (max-width: 1279.98px) {
-  .logo {
-    margin-right: 303px;
-  }
-}
-@media (min-width: 1280px) {
-  .logo {
-    margin-right: 564px;
-  }
-}
-
-.icon-film {
-  width: 24px;
-  height: 24px;
-  -webkit-animation: tada;
-          animation: tada;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-}
-
-.logo__svg {
-  align-self: center;
-  stroke: #818181;
-  transition-property: stroke;
-  transition-duration: 0.25s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-@media (min-width: 768px) and (max-width: 1279.98px) {
-  .logo__svg {
-    margin-right: 10px;
-  }
-}
-@media (min-width: 1280px) {
-  .logo__svg {
-    margin-right: 10px;
-  }
-}
-
-.logo__text {
-  font-size: 30px;
-  line-height: 1.72;
-  font-weight: 500;
-  color: var(--secondary-text-color);
-}
-@media (max-width: 767.98px) {
-  .logo__text {
-    display: none;
-  }
-}
-
-.menu {
-  display: flex;
-}
-
-.menu__link {
-  font-size: 12px;
-  line-height: 1.16;
-  color: var(--secondary-text-color);
-  text-transform: uppercase;
-}
-
-.menu__link:visited {
-  color: var(--secondary-text-color);
-}
-
-.menu__item:not(:last-child) {
-  margin-right: 39px;
-}
-
-.menu__item {
-  position: relative;
+  justify-content: space-between;
 }
 
 .filter__list {
@@ -518,6 +425,17 @@ img {
   transition-duration: 0.25s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+}
+
+.menu__link.current:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7%;
+  width: 69px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #ff6b08;
 }
 
 @media (min-width: 768px) {
@@ -1249,25 +1167,25 @@ img {
     background-image: url(../images/abstract-background-with-red-lines-mob@2x.jpg);
   }
 }
-@media screen and (min-width: 577px) {
+@media screen and (min-width: 768px) {
   .header {
-    max-width: 960px;
-    height: 216px;
+    height: 219px;
     background-image: url(../images/abstract-background-with-red-lines-tab.jpg);
   }
 }
-@media screen and (min-width: 577px) and (min-device-pixel-ratio: 2), screen and (min-width: 577px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 577px) and (min-resolution: 192dpi), screen and (min-width: 577px) and (min-resolution: 2dppx) {
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .header {
     background-image: url(../images/abstract-background-with-red-lines-tab@2x.jpg);
   }
 }
-@media screen and (min-width: 961px) {
+@media screen and (min-width: 1280px) {
   .header {
+    height: 216px;
     max-width: 1600px;
     background-image: url(../images/abstract-background-with-red-lines-pc.jpg);
   }
 }
-@media screen and (min-width: 961px) and (min-device-pixel-ratio: 2), screen and (min-width: 961px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 961px) and (min-resolution: 192dpi), screen and (min-width: 961px) and (min-resolution: 2dppx) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2), screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 1280px) and (min-resolution: 192dpi), screen and (min-width: 1280px) and (min-resolution: 2dppx) {
   .header {
     background-image: url(../images/abstract-background-with-red-lines-pc@2x.jpg);
   }
@@ -1281,8 +1199,6 @@ img {
 
 .header__icon {
   display: block;
-  height: 20px;
-  width: 20px;
   justify-content: center;
   margin-right: 10px;
 }
@@ -1290,7 +1206,7 @@ img {
 .header__text {
   display: none;
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
   .header__text {
     display: block;
     font-family: "Roboto";
@@ -1333,6 +1249,7 @@ img {
 .header__form {
   width: 100%;
   position: relative;
+  border-bottom: 1px solid var(--secondary-text-color);
 }
 
 .header__input {
@@ -1340,7 +1257,6 @@ img {
   min-width: 280px;
   padding-bottom: 4px;
   border: none;
-  border-bottom: 1px solid var(--secondary-text-color);
   background-color: transparent;
   outline: none;
   color: var(--secondary-text-color);
@@ -1385,6 +1301,7 @@ img {
 
 .btn {
   padding: 7px;
+  cursor: pointer;
   position: absolute;
   bottom: 2px;
   right: -15px;
@@ -1394,6 +1311,12 @@ img {
   background-color: transparent;
   outline: none;
   border: none;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.5);
+  transition: var(--transition-time) var(--cubic);
 }
 
 .header__container-link {
@@ -1409,6 +1332,17 @@ img {
   margin-right: auto;
   margin-top: 60px;
 }
+.header__warning-message {
+  padding-top: 20px;
+  border: transparent;
+  outline: transparent;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--warning-color);
+}
+
 .header__container {
   width: 100%;
   display: flex;
@@ -1491,16 +1425,22 @@ img {
     transform: scale(1.5) translateX(8%) translateY(8%);
   }
 }
+.container__pagination {
+  padding-bottom: 60px;
+  font-weight: 500;
+}
+
 .js-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000000;
+  color: var(--main-text-color);
   font-size: 12px;
   font-weight: 500;
 }
 
-.js-pagination__arrow {
+.js-pagination__arrow-left,
+.js-pagination__arrow-right {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1509,12 +1449,17 @@ img {
   border: none;
   border-radius: 5px;
   background-color: #f7f7f7;
-  color: inherit;
   cursor: pointer;
 }
 
-.js-pagination__svg-left {
-  fill: #000000;
+.is-hidden {
+  display: none;
+}
+
+.js-pagination__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .js-pagination__button-end {
@@ -1522,12 +1467,12 @@ img {
   color: inherit;
   cursor: pointer;
 }
-@media screen and (min-width: 320px) {
+@media (min-width: 320px) {
   .js-pagination__button-end {
     display: none;
   }
 }
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .js-pagination__button-end {
     display: flex;
     justify-content: center;
@@ -1540,12 +1485,12 @@ img {
   color: inherit;
   cursor: none;
 }
-@media screen and (min-width: 320px) {
+@media (min-width: 320px) {
   .js-pagination__points {
     display: none;
   }
 }
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .js-pagination__points {
     display: flex;
     justify-content: center;
@@ -1564,8 +1509,8 @@ img {
 }
 
 .js-pagination__button-current {
-  background-color: #ff6b08;
+  background-color: var(--accent-text-color);
   border: none;
   border-radius: 5px;
-  color: #ffffff;
+  color: var(--secondary-text-color);
 }/*# sourceMappingURL=index.css.map */
