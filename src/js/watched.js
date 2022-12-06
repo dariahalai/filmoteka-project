@@ -1,6 +1,7 @@
-//
+import{btnQueuedRefs} from './queue';
+
 console.log('watched');
-const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
+export const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
 export const emptyRefs = document.querySelector('[data-action="empty"]');
 export const galleryLibrary = document.querySelector(
   '[data-action="list-library"]'
@@ -15,6 +16,8 @@ console.log(galleryLibrary);
 btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
 function onBtnWatchedClick() {
+  btnQueuedRefs.classList.remove('filter__button--active');
+  btnWatchedRefs.classList.add('filter__button--active');
   try {
     let watchedFilms = localStorage.getItem(KEY);
     if (watchedFilms) {
