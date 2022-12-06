@@ -113,7 +113,7 @@ async function getOriginGenres() {
   }
 }
 
-function getGenres(genreSet) {
+export function getGenres(genreSet) {
   let genreStr = '';
 
   genreSet.forEach(id => {
