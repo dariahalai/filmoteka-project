@@ -1,4 +1,9 @@
 const save = (key, value) => {
+  console.log(key)
+  console.log(value)
+
+
+
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
