@@ -1,15 +1,16 @@
 import{btnQueuedRefs} from './queue';
+import{getWatchedArray} from './local-storage-set';
 
-console.log('watched');
+// console.log('watched');
 export const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
 export const emptyRefs = document.querySelector('[data-action="empty"]');
 export const galleryLibrary = document.querySelector(
   '[data-action="list-library"]'
 );
 
-console.log(btnWatchedRefs);
-console.log(emptyRefs);
-console.log(galleryLibrary);
+// console.log(btnWatchedRefs);
+// console.log(emptyRefs);
+// console.log(galleryLibrary);
 
 // onBtnWatchedClick();
 
@@ -19,18 +20,25 @@ function onBtnWatchedClick() {
   btnQueuedRefs.classList.remove('filter__button--active');
   btnWatchedRefs.classList.add('filter__button--active');
   try {
-    let watchedFilms = localStorage.getItem(KEY);
+    let watchedFilms = localStorage.getItem("WatchedMovies");
     if (watchedFilms) {
       watchedFilms = JSON.parse(watchedFilms);
 
       renderWatchedFilmCards(watchedFilms);
 
       emptyRefs.classList.add('is-hidden');
-      console.log(watchedFilms);
+      // console.log(watchedFilms);
     }
   } catch (error) {
     console.log(error);
   }
+
+  // // or!!!
+  
+  // renderWatchedFilmCards(getWatchedArray);
+  // emptyRefs.classList.add('is-hidden');
+
+
   return;
 }
 

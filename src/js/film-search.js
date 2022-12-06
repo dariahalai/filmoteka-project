@@ -13,7 +13,8 @@ import axios from 'axios';
 // import { renderFilmCards, totalPages } from "./popular"
 // import {renderPagination, currentPage} from "./pagination"
 
-import { currentPage, nowPopular, nowSearch, renderPagination } from './pagination.js';
+// import { currentPage, nowPopular, nowSearch, renderPagination } from './pagination.js';
+import { nowPopular, nowSearch} from './pagination.js'
 import { getPopulars, renderFilmCards } from './popular.js';
 
 
