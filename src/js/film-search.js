@@ -49,25 +49,27 @@ class searchMovieApi {
 
             return response.data.results;
 
-        } catch (error) {
+        } 
+        catch (error) {
             console.log(error.message);
         }
 
     }
+    get query() {
+      return this.searchQuery;
+    }
+  
+    set query(newQuery) {
+      this.searchQuery = newQuery;
+    }
+  
+    resetPage() {
+      this.page = 1;
+    }
   }
 
-  get query() {
-    return this.searchQuery;
-  }
+ 
 
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
-
-  resetPage() {
-    this.page = 1;
-  }
-}
 
 export const movieApi = new searchMovieApi();
 
