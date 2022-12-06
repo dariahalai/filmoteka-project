@@ -18,7 +18,7 @@ const SMALL_SIZE = 'w500';
 export const NO_IMAGE =
   'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
 
-let genresList;
+export let genresList;
 export let totalPages = 0;
 
 getOriginGenres().then(response => {

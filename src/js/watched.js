@@ -1,6 +1,6 @@
-import { btnQueuedRefs } from './queue';
+import { btnQueuedRefs } from './queue.js';
 
-// import {getGenres} from './popular';
+// import {getGenres, genresList} from './popular.js';
 // import * as POPULAR from './popular';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/';
@@ -11,6 +11,8 @@ export const emptyRefs = document.querySelector('[data-action="empty"]');
 export const galleryLibrary = document.querySelector(
   '[data-action="list-library"]'
 );
+
+
 // console.log(btnWatchedRefs);
 // console.log(emptyRefs);
 console.log(galleryLibrary);
@@ -69,7 +71,7 @@ export function renderWatchedFilmCards(data) {
     })
     .join('');
 
-  galleryLibrary.insertAdjacentHTML('beforebegin', markup);
+  galleryLibrary.innerHTML= markup;
 }
 
 function clearContainer() {
