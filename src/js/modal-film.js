@@ -67,6 +67,8 @@ export default class ModalFilm {
     refs.originalTitle = document.querySelector('#film__original-title');
     refs.genre = document.querySelector('#film__genre');
     refs.overview = document.querySelector('#film__overview');
+    refs.trailer = document.querySelector('#trailer');
+    refs.filmIinfoWrapper = document.querySelector('.film__info-wrapper');
 
     return refs;
   }
@@ -93,6 +95,7 @@ export default class ModalFilm {
       original_title,
       genre_ids,
       overview,
+      id,
     } = this.data;
 
     this.refs.posterPath.src = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -104,6 +107,7 @@ export default class ModalFilm {
     this.refs.originalTitle.textContent = `${original_title}`;
     this.refs.genre.textContent = `${getGenre(genre_ids)}`;
     this.refs.overview.textContent = `${overview}`;
+    this.refs.trailer.setAttribute('data-movie-id', id);
   }
 
   get dataFilm() {

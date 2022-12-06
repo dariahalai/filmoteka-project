@@ -124,3 +124,21 @@ function getGenres(genreSet) {
 
   return !genreStr ? '' : genreStr.substring(0, genreStr.length - 2);
 }
+
+export const getMovieTrailer =  async (movieId) => {
+  try {
+    const searchParams = new URLSearchParams({
+      api_key: KEY,
+    });
+
+    const response = await axios.get(`${API}${MEDIA_TYPE}/${movieId}/videos?${searchParams}`);
+
+    if (response.status !== 200) {
+      throw new Error(response.status);
+    }
+
+    return response.data;
+  } catch (error) {
+    console.log('Підставити картинку, сервер терміново недоступний');
+  }
+}
