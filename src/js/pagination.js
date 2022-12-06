@@ -1,4 +1,5 @@
-import { renderFilmCards, getPopulars, totalPages} from './popular.js';
+import { renderFilmCards, getPopulars, totalPages } from './popular.js';
+import { movieApi } from './film-search.js';
 
 const pagRef = document.querySelector('.js-pagination');
 const leftArrowRef = document.querySelector('.js-pagination__arrow-left');
@@ -6,6 +7,10 @@ const rightArrowRef = document.querySelector('.js-pagination__arrow-right');
 const pagContainerRef = document.querySelector('.js-pagination__container');
 
 export let currentPage = 0;
+
+export let nowPopular = true;
+export let nowSearch = false;
+let currentPromise = {};
 
 export function renderPagination(page, pages) {
   let prevPage = page - 1;
@@ -65,10 +70,12 @@ pagRef.addEventListener('click', ({ target }) => {
 
   renderPagination(currentPage, totalPages);
 
-  getPopulars(currentPage).then(response => {
+  currentPromise = nowPopular
+    ? getPopulars(currentPage)
+    : movieApi.searchMovieFetch(currentPage);
+
+  currentPromise.then(response => {
     const { results } = response;
     renderFilmCards(results);
   });
-
-  
 });

@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { renderPagination, currentPage } from './pagination.js';
+
+import { renderPagination } from './pagination.js';
+
 // імпорт файлу сховища та запис в змінну ключа
 import * as storageLocal from './local-storage.js';
 const FILM_CURRENT_PAGE = 'film-current-page';
@@ -30,7 +32,6 @@ window.addEventListener('load', () => {
 
   getPopulars(1).then(response => {
     const { page, results, total_pages: pages } = response;
-    // currentPage = page;
     totalPages = pages;
 
     renderFilmCards(results);

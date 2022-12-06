@@ -1,17 +1,23 @@
-//
-// console.log('watched');
-const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
-export const emptyRefs = document.querySelector('[data-action="empty"]');
-export const galleryLibrary = document.querySelector('[data-action="list-library"]');
-// console.log(btnWatchedRefs);
-// console.log(emptyRefs);
-// console.log(galleryLibrary);
+import{btnQueuedRefs} from './queue';
 
-onBtnWatchedClick();
+console.log('watched');
+export const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
+export const emptyRefs = document.querySelector('[data-action="empty"]');
+export const galleryLibrary = document.querySelector(
+  '[data-action="list-library"]'
+);
+
+console.log(btnWatchedRefs);
+console.log(emptyRefs);
+console.log(galleryLibrary);
+
+// onBtnWatchedClick();
 
 btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
 function onBtnWatchedClick() {
+  btnQueuedRefs.classList.remove('filter__button--active');
+  btnWatchedRefs.classList.add('filter__button--active');
   try {
     let watchedFilms = localStorage.getItem(KEY);
     if (watchedFilms) {
@@ -22,23 +28,25 @@ function onBtnWatchedClick() {
       emptyRefs.classList.add('is-hidden');
       console.log(watchedFilms);
     }
-  } catch (error) {console.log(error)}
+  } catch (error) {
+    console.log(error);
+  }
   return;
 }
- 
+
 export function renderWatchedFilmCards(data) {
-  let markup = '';
-  data.forEach(({ id, poster_path, genre_ids, title, release_date }) => {
-    let genresStr = getGenres(genre_ids);
-    let year = release_date.substring(0, 4);
-    if (genresStr && year) genresStr += ' | ';
-    if (!title) title = 'no information';
+  const markup = data
+    .map(({ id, poster_path, genre_ids, title, release_date }) => {
+      let genresStr = getGenres(genre_ids);
+      let year = release_date.substring(0, 4);
+      if (genresStr && year) genresStr += ' | ';
+      if (!title) title = 'no information';
 
-    let smallImg = !!poster_path
-      ? IMG_PATH + SMALL_SIZE + poster_path
-      : NO_IMAGE;
+      let smallImg = !!poster_path
+        ? IMG_PATH + SMALL_SIZE + poster_path
+        : NO_IMAGE;
 
-    markup += `
+      return `
       <li class="film-card">
          	<a href="#" class="film-card__link">
             <img
@@ -52,6 +60,8 @@ export function renderWatchedFilmCards(data) {
           </a>
         </li>
 		`;
-  });
-  galleryLibrary.setHTML(markup);
+    })
+    .join('');
+
+  galleryLibrary.insertAdjacentHTML('beforebegin', markup);
 }
