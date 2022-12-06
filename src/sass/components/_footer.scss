@@ -1,8 +1,8 @@
 .footer {
   font-size: 14px;
-  color: #545454;
-  line-height: 1.17;
-  background-color: #f7f7f7;
+  color: var(--copy-writes-color);
+  line-height: 1.8;
+  background-color: var(--footer-bgc);
 
   &__icon {
     margin: 0 5px;
@@ -19,6 +19,7 @@
   @media screen and (min-width: 768px) {
     height: 77px;
     font-size: 16px;
+    line-height: 1.17;
   }
 }
 
