@@ -3,6 +3,8 @@ import { emptyRefs} from "./watched";
 const btnQueuedRefs = document.querySelector('button[data-action="queue"]');
 // console.log(btnQueuedRefs);
 
+onBtnQueueClick();
+
 btnQueuedRefs.addEventListener('click', onBtnQueueClick);
 
 function onBtnQueueClick() {
