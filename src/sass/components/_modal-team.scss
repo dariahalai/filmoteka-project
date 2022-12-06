@@ -5,60 +5,53 @@
   transform: translate(-50%, -50%);
 
   padding: 10px;
-  background-color: var(--secondary-text-color);
-  height: 75%;
-  // width: 95%;
+  background-color: teal;
 
-  // @media screen and (max-width: 319px) {
-  //    min-width: 300px;
-  // }
   @media screen and (max-width: 767px) {
     width: 275px;
-    height: 90%;
+    height: 420px;
   }
-  // @media screen and (min-width: 320px) {
-  //   width: 275px;
-  //   // max-height: 250px;
-  // }
+
   @media screen and (min-width: 768px) {
-    width: 680px;
-    // max-height: 250px;
+    width: 670px;
+    height: 390px;
   }
   @media screen and (min-width: 1280px) {
-    width: 1210px;
-    height: 85%;
+    width: 1000px;
+    height: 560px;
   }
 }
 
-.team-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+// .team-info {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
 
-  height: 100%;
-}
-.team-leads-info {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.team-members-info {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.team-info__card {
-  background-color: green;
-  border: 1px solid black;
-  width: 120px;
-  background-image: url(../images/film_frame.png);
-  background-size: contain;
-}
+//   height: 100%;
+// }
+// .team-leads-info {
+//   display: flex;
+//   justify-content: center;
+//   margin-bottom: 20px;
+// }
+// .team-members-info {
+//   display: flex;
+//   justify-content: center;
+//   flex-wrap: wrap;
+// }
+// .team-info__card {
+//   background-color: green;
+//   border: 1px solid black;
+//   width: 120px;
+//   background-image: url(../images/film_frame.png);
+//   background-size: contain;
+// }
 
 .modal-team__close-btn {
   position: absolute;
   top: 8px;
   right: 8px;
+  z-index: 100;
 
   display: flex;
   align-items: center;
@@ -78,15 +71,24 @@
   }
 }
 
-.spl {
-  width: 50px;
-  height: 300px;
-  text-align: center;
+.splide__slide {
+  display: flex;
+  justify-content: center;
 }
 
-.slider-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+.spl {
+  width: 800px;
+  height: 400px;
+  text-align: center;
+  background-image: url(../images/film_frame.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
+
+// .slider-container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100%;
+// }
