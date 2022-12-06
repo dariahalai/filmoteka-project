@@ -1,26 +1,30 @@
-import{btnQueuedRefs} from './queue';
-import{getWatchedArray} from './local-storage-set';
+import { btnQueuedRefs } from './queue';
 
-// console.log('watched');
-export const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
+// import {getGenres} from './popular';
+// import * as POPULAR from './popular';
+
+const IMG_PATH = 'https://image.tmdb.org/t/p/';
+const SMALL_SIZE = 'w500';
+
+const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
 export const emptyRefs = document.querySelector('[data-action="empty"]');
 export const galleryLibrary = document.querySelector(
   '[data-action="list-library"]'
 );
-
 // console.log(btnWatchedRefs);
 // console.log(emptyRefs);
-// console.log(galleryLibrary);
+console.log(galleryLibrary);
 
 // onBtnWatchedClick();
 
 btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
 function onBtnWatchedClick() {
+  clearContainer();
   btnQueuedRefs.classList.remove('filter__button--active');
   btnWatchedRefs.classList.add('filter__button--active');
   try {
-    let watchedFilms = localStorage.getItem("WatchedMovies");
+    let watchedFilms = localStorage.getItem('WatchedMovies');
     if (watchedFilms) {
       watchedFilms = JSON.parse(watchedFilms);
 
@@ -33,21 +37,15 @@ function onBtnWatchedClick() {
     console.log(error);
   }
 
-  // // or!!!
-  
-  // renderWatchedFilmCards(getWatchedArray);
-  // emptyRefs.classList.add('is-hidden');
-
-
   return;
 }
 
 export function renderWatchedFilmCards(data) {
   const markup = data
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
-      let genresStr = getGenres(genre_ids);
+      // let genresStr = getGenres(genre_ids);
       let year = release_date.substring(0, 4);
-      if (genresStr && year) genresStr += ' | ';
+      // if (genresStr && year) genresStr += ' | ';
       if (!title) title = 'no information';
 
       let smallImg = !!poster_path
@@ -64,7 +62,7 @@ export function renderWatchedFilmCards(data) {
               id="${id}"
             />
             <h3 class="film-card__film-name">${title}</h3>
-            <p class="film-card__genre">${genresStr}${year}</p>
+            <p class="film-card__genre">${'genresStr'}${year}</p>
           </a>
         </li>
 		`;
@@ -72,4 +70,8 @@ export function renderWatchedFilmCards(data) {
     .join('');
 
   galleryLibrary.insertAdjacentHTML('beforebegin', markup);
+}
+
+function clearContainer() {
+  galleryLibrary.innerHTML = '';
 }
