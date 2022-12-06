@@ -5,20 +5,15 @@ import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 
 const teamSplide = new Splide('.splide');
 teamSplide.mount();
-console.log(Splide.defaults);
-console.log(teamSplide.defaults);
 
-// teamSplide.mount();
-// console.log(teamSplide);
-// console.log(teamSplide.defaults);
-Splide.defaults = {
-  type: 'slide',
-  perPage: 4,
-  rewind: true,
-  keyboard: 'global',
-  width: 500,
-};
-console.log(Splide.defaults);
+// Splide.defaults = {
+//   type: 'slide',
+//   perPage: 4,
+//   rewind: true,
+//   keyboard: 'global',
+//   width: 500,
+// };
+// console.log(Splide.defaults);
 
 const teamModalLink = document.querySelector('.team-modal-link');
 const modal = document.querySelector('.data-modal-team');
