@@ -5,7 +5,14 @@
   transform: translate(-50%, -50%);
 
   padding: 10px;
-  background-color: teal;
+
+  background-image: url(../images/team/modal-bg-img2.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+
+  // background-color: teal;
 
   @media screen and (max-width: 767px) {
     width: 275px;
