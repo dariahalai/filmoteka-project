@@ -73,7 +73,7 @@ function setQueueMovie(queueMovies) {
 
 
     ////// Геттер масиву фульмів 'ADD to WATCHED' з локад сторедж (ключ "WatchedMovies")//////////
-function getWatchedArray() {
+export function getWatchedArray() {
     try {
         const watchedGet = localStorage.getItem("WatchedMovies")
         const watchedGetArray = JSON.parse(watchedGet)
@@ -85,7 +85,7 @@ function getWatchedArray() {
 getWatchedArray()
 
     ////// Геттер масиву фульмів 'ADD to QUEUE' з локад сторедж (ключ "QueueMovies")//////////
-function getQueueArray() {
+export function getQueueArray() {
     try {
         const queueGet = localStorage.getItem("QueueMovies")
         const queueGetArray = JSON.parse(queueGet)
