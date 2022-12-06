@@ -1,10 +1,11 @@
 const refs = {
-    form: document.querySelector(".header__form"),
-    input: document.querySelector("header__input"),
-    formButton: document.querySelector(".btn"),
-    gallery: document.querySelector(".js-gallery"),
-    warning: document.querySelector(".header__warning"),
-}
+  form: document.querySelector('.header__form'),
+  input: document.querySelector('header__input'),
+  formButton: document.querySelector('.btn'),
+  gallery: document.querySelector('.js-gallery'),
+  warning: document.querySelector('.header__warning'),
+};
+
 
 // console.log("hiiiii")
 
@@ -15,8 +16,10 @@ import axios from 'axios';
 import { currentPage, nowPopular, nowSearch, renderPagination } from './pagination.js';
 import { getPopulars, renderFilmCards } from './popular.js';
 
+
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
-const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = 'https://api.themoviedb.org/3';
+
 
 class searchMovieApi {
     constructor() {
@@ -29,7 +32,7 @@ class searchMovieApi {
             api_key: KEY,
             language: "en-US",
             query: `${this.searchQuery}`,
-            page: `${this.page}`,
+            page: page,
             include_adult: false,
         });
 
@@ -49,35 +52,40 @@ class searchMovieApi {
         } catch (error) {
             console.log(error.message);
         }
-    }
 
-    get query() {
-        return this.searchQuery;
-    };
-
-    set query(newQuery) {
-        this.searchQuery = newQuery;
     }
+  }
 
-    resetPage() {
-        this.page = 1;
-    }
-};
+  get query() {
+    return this.searchQuery;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+}
 
 export const movieApi = new searchMovieApi();
 
 function clearSearch() {
-    refs.gallery.innerHTML = "";
+  refs.gallery.innerHTML = '';
 }
 
-refs.form.addEventListener("submit", onSearchClick)
+refs.form.addEventListener('submit', onSearchClick);
 
 function onSearchClick(evt) {
-    evt.preventDefault();
-    
-    movieApi.query = evt.currentTarget.elements.searchQuery.value.trim().toLowerCase();
+  evt.preventDefault();
 
-    movieApi.resetPage();
+  movieApi.query = evt.currentTarget.elements.searchQuery.value
+    .trim()
+    .toLowerCase();
+
+  movieApi.resetPage();
+
 
     movieApi.searchMovieFetch().then((data) => {
 
@@ -92,8 +100,10 @@ function onSearchClick(evt) {
             nowSearch = false;
             getPopulars(1);
         return;
+
     }
-        clearSearch();
+    clearSearch();
+
 
         nowPopular = false;
         nowSearch = true;
@@ -102,3 +112,4 @@ function onSearchClick(evt) {
     }
     )
 };
+
