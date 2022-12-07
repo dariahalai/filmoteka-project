@@ -29,7 +29,6 @@ function onOpenModal(e) {
   modalFilm.open();
 
 ///// for local-storage and button /////////
-
   checkWatchedStorage(dataCurentFilm)
   if (refs.btnWatched.classList.contains("watched_remove")) {
       refs.btnWatched.textContent = 'REMOVE FROM WATCHED'
@@ -115,14 +114,13 @@ function onCloseModal() {
   const trailerContainer = document.querySelector('.film__info-wrapper');
   handleBackButtonClick(iframeContainer, trailerContainer);
   modalFilm.close();
-  window.location.reload()
   refs.closeBtn.removeEventListener('click', onCloseModal);
   trailerButtonRef.removeEventListener('click', handleTrailerButtonClick);
   window.removeEventListener('keydown', onCloseModalEsc);
 
     ////////////////////
-  refs.btnWatched.removeEventListener("click", onWatchedBtnClick)
-  refs.btnQueue.removeEventListener("click", onQueueBtnClick)
+  // refs.btnWatched.removeEventListener("click", onWatchedBtnClick)
+  // refs.btnQueue.removeEventListener("click", onQueueBtnClick)
 
 
   //////////Примусове перезавантаження сторінки /////////////////////////////////
