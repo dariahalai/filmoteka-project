@@ -11,6 +11,8 @@ let currentPage = 0;
 export const KEY_NOW = 'now';
 export const IN_POPULAR = '1';
 export const IN_SEARCH = '0';
+const LEFT_ARROW = '&#8592;';
+const RIGHT_ARROW = '&#8594;';
 
 export function renderPagination(page, pages) {
   let prevPage = page - 1;
@@ -18,12 +20,11 @@ export function renderPagination(page, pages) {
   let nextPage = page + 1;
   let twoNextPage = page + 2;
   let markup = '';
-  leftArrowRef.classList.add('is-hidden');
-  rightArrowRef.classList.add('is-hidden');
 
   if (!page || page > pages) return;
 
-  if (page > 1) leftArrowRef.classList.remove('is-hidden');
+  if (page > 1)
+    markup += `<li class="js-pagination__arrow-left">${LEFT_ARROW}</li>`;
 
   if (page > 1) markup += `<li class="js-pagination__button-end">1</li>`;
 
@@ -47,21 +48,18 @@ export function renderPagination(page, pages) {
   if (page < pages)
     markup += `<li class="js-pagination__button-end">${pages}</li>`;
 
-  pagContainerRef.innerHTML = markup;
+  if (page < pages)
+    markup += `<li class="js-pagination__arrow-right">${RIGHT_ARROW}</li>`;
 
-  if (page < pages) rightArrowRef.classList.remove('is-hidden');
+  pagRef.innerHTML = markup;
 }
 
 pagRef.addEventListener('click', ({ target }) => {
   if (target.textContent === '...') return;
 
   if (target.classList.contains('js-pagination__arrow-left')) currentPage -= 1;
-  if (target.classList.contains('js-pagination__svg-left')) currentPage -= 1;
-  if (target.classList.contains('js-pagination__use-left')) currentPage -= 1;
 
   if (target.classList.contains('js-pagination__arrow-right')) currentPage += 1;
-  if (target.classList.contains('js-pagination__svg-right')) currentPage += 1;
-  if (target.classList.contains('js-pagination__use-right')) currentPage += 1;
 
   if (target.classList.contains('js-pagination__button'))
     currentPage = Number(target.textContent);
