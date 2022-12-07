@@ -21,6 +21,7 @@ function onBtnWatchedClick() {
     let watchedFilms = localStorage.getItem('WatchedMovies');
     if (watchedFilms) {
       watchedFilms = JSON.parse(watchedFilms);
+      console.log("watchedFilms в ІФІ", watchedFilms)
 
       renderWatchedFilmCards(watchedFilms);
 
