@@ -1,44 +1,60 @@
-//
-// console.log('watched');
+import { btnQueuedRefs } from './queue.js';
+
+// import {getGenres, genresList} from './popular.js';
+// import * as POPULAR from './popular';
+
+const IMG_PATH = 'https://image.tmdb.org/t/p/';
+const SMALL_SIZE = 'w500';
+
 const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
 export const emptyRefs = document.querySelector('[data-action="empty"]');
-export const galleryLibrary = document.querySelector('[data-action="list-library"]');
+export const galleryLibrary = document.querySelector(
+  '[data-action="list-library"]'
+);
+
+
 // console.log(btnWatchedRefs);
 // console.log(emptyRefs);
-// console.log(galleryLibrary);
+console.log(galleryLibrary);
 
-onBtnWatchedClick();
+// onBtnWatchedClick();
 
 btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
 function onBtnWatchedClick() {
+  clearContainer();
+  btnQueuedRefs.classList.remove('filter__button--active');
+  btnWatchedRefs.classList.add('filter__button--active');
   try {
-    let watchedFilms = localStorage.getItem(KEY);
+    let watchedFilms = localStorage.getItem('WatchedMovies');
     if (watchedFilms) {
       watchedFilms = JSON.parse(watchedFilms);
 
       renderWatchedFilmCards(watchedFilms);
 
       emptyRefs.classList.add('is-hidden');
-      console.log(watchedFilms);
+      // console.log(watchedFilms);
     }
-  } catch (error) {console.log(error)}
+  } catch (error) {
+    console.log(error);
+  }
+
   return;
 }
- 
+
 export function renderWatchedFilmCards(data) {
-  let markup = '';
-  data.forEach(({ id, poster_path, genre_ids, title, release_date }) => {
-    let genresStr = getGenres(genre_ids);
-    let year = release_date.substring(0, 4);
-    if (genresStr && year) genresStr += ' | ';
-    if (!title) title = 'no information';
+  const markup = data
+    .map(({ id, poster_path, genre_ids, title, release_date }) => {
+      // let genresStr = getGenres(genre_ids);
+      let year = release_date.substring(0, 4);
+      // if (genresStr && year) genresStr += ' | ';
+      if (!title) title = 'no information';
 
-    let smallImg = !!poster_path
-      ? IMG_PATH + SMALL_SIZE + poster_path
-      : NO_IMAGE;
+      let smallImg = !!poster_path
+        ? IMG_PATH + SMALL_SIZE + poster_path
+        : NO_IMAGE;
 
-    markup += `
+      return `
       <li class="film-card">
          	<a href="#" class="film-card__link">
             <img
@@ -48,10 +64,16 @@ export function renderWatchedFilmCards(data) {
               id="${id}"
             />
             <h3 class="film-card__film-name">${title}</h3>
-            <p class="film-card__genre">${genresStr}${year}</p>
+            <p class="film-card__genre">${'genresStr'}${year}</p>
           </a>
         </li>
 		`;
-  });
-  galleryLibrary.setHTML(markup);
+    })
+    .join('');
+
+  galleryLibrary.innerHTML= markup;
+}
+
+function clearContainer() {
+  galleryLibrary.innerHTML = '';
 }

@@ -26,7 +26,6 @@
   }
   @media screen and (min-width: 1280px) {
     height: 216px;
-    max-width: 1600px;
     background-image: url(../images/abstract-background-with-red-lines-pc.jpg);
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -61,6 +60,8 @@
     // text-align: center;
 
     color: var(--secondary-text-color);
+
+    margin-left: 10px;
   }
 }
 
@@ -84,7 +85,7 @@
   padding-top: 44px;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
   @media screen and (max-width: 481px) {
     // justify-content: space-between;
@@ -104,16 +105,15 @@
 }
 
 .header__input {
-  font-size: 17px;
+  font-size: 14px;
 
   min-width: 280px;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 768px) {
     min-width: 336px;
   }
-  @media screen and (min-width: 900px) {
-    min-width: 396px;
+  @media screen and (min-width: 1280px) {
+    min-width: 394px;
   }
-  padding-bottom: 4px;
   border: none;
   // border-bottom: 1px solid var(--secondary-text-color);
   background-color: transparent;
@@ -164,6 +164,7 @@
   margin-right: auto;
   margin-top: 60px;
   @media screen and (min-width: 768px) {
+    width: 394px;
   }
 }
 .header__warning-message {
@@ -177,7 +178,7 @@
   color: var(--warning-color);
 
   animation-name: changeColor;
-  animation-duration: 1000ms;
+  animation-duration: 2000ms;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
