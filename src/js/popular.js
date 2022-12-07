@@ -101,7 +101,7 @@ export function renderFilmCards(data) {
 							`;
   });
 
-  galleryRef.setHTML(markup);
+  galleryRef.innerHTML =markup;
 
   // запис в локальне сховище
   storageLocal.save(FILM_CURRENT_PAGE, [...data]);
