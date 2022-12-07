@@ -1,4 +1,11 @@
+import axios from 'axios';
+
+import { renderPagination } from './pagination.js';
+import { renderFilmCards } from './popular.js';
+
+
 const refs = {
+
   form: document.querySelector('.header__form'),
   input: document.querySelector('header__input'),
   formButton: document.querySelector('.btn'),
@@ -15,8 +22,10 @@ import {
 } from './pagination.js';
 import { getPopulars, renderFilmCards, galleryRef } from './popular.js';
 
+
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const BASE_URL = 'https://api.themoviedb.org/3';
+
 
 class searchMovieApi {
   constructor() {
@@ -61,12 +70,34 @@ class searchMovieApi {
   }
 }
 
-export const movieApi = new searchMovieApi();
+
+export const movieApi = new SearchMovieApi();
+
+refs.inputBtnClear.style.display = "none";
 
 function clearSearch() {
   refs.gallery.innerHTML = '';
 }
 // this function will be call if input or results is empty. No possibility to check at same time, becouse error occured when search string is empty!
+
+
+refs.input.addEventListener("input", onInputClear);
+
+refs.form.addEventListener("submit", onSearchClick);
+
+function onInputClear(evt) {
+    const inputValue = refs.input.value;
+
+    if (inputValue) {
+        refs.inputBtnClear.style.display = "block";
+        
+        refs.inputBtnClear.addEventListener("click", () => {
+            refs.inputBtnClear.style.display = "none";
+            refs.input.value = "";
+            return;
+        })          
+    }
+};
 
 function emptyQueryOrNoResults() {
   refs.warning.insertAdjacentHTML(
@@ -74,11 +105,26 @@ function emptyQueryOrNoResults() {
     `<div class="header__warning-message">Search result not successful. Enter the correct movie name.</div>`
   );
 
+
   setTimeout(() => {
     refs.warning.innerHTML = '';
   }, 4000);
 
   localStorage.setItem(KEY_NOW, IN_POPULAR);
+
+
+    movieApi.searchMovieFetch().then((response) => {
+
+        const { page, results, total_pages: pages } = response;
+
+        if (!movieApi.query || !results.length) {
+        refs.warning.insertAdjacentHTML("beforeend", `<div class="header__warning-message">Search result not successful. Enter the correct movie name.</div>`);
+
+        setTimeout(() => {
+            refs.warning.innerHTML = "";
+        }, 4000);          
+
+        return;
 
   galleryRef.innerHTML = '';
 
@@ -112,7 +158,9 @@ function onSearchClick(evt) {
     if (!total_pages) {
       emptyQueryOrNoResults();
       return;
+
     }
+
 
     clearSearch();
     // Write to LS now
@@ -125,3 +173,4 @@ function onSearchClick(evt) {
     renderPagination(page, total_pages);
   });
 }
+

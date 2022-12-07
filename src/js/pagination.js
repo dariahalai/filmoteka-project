@@ -1,6 +1,8 @@
+
 import { renderFilmCards, getPopulars } from './popular.js';
 
 import { movieApi } from './film-search.js';
+
 
 const pagRef = document.querySelector('.js-pagination');
 const leftArrowRef = document.querySelector('.js-pagination__arrow-left');
@@ -68,6 +70,7 @@ pagRef.addEventListener('click', ({ target }) => {
   if (target.classList.contains('js-pagination__button-end'))
     currentPage = Number(target.textContent);
 
+
   if (localStorage.getItem(KEY_NOW) === IN_POPULAR) {
     getPopulars(currentPage).then(({ page, results, total_pages: pages }) => {
       renderFilmCards(results);
@@ -81,4 +84,5 @@ pagRef.addEventListener('click', ({ target }) => {
         renderPagination(page, pages);
       });
   }
+
 });

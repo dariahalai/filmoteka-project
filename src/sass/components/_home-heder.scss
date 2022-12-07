@@ -150,9 +150,33 @@
 }
 .btn:hover,
 .btn:focus {
-  transform: scale(1.5);
+  // transform: scale(1.5);
   transition: var(--transition-time) var(--cubic);
 }
+.header__icon-cross {
+  display: block;
+  justify-content: center;
+  margin-right: 10px;
+}
+.btn-cross {
+  padding: 7px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2px;
+    right: 30px;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-right: 0.5px solid var(--warning-color);
+    stroke: var(--secondary-text-color);
+}
+
+
 .header__container-link {
   margin-left: auto;
 }
