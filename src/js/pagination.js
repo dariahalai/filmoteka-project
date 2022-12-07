@@ -2,19 +2,20 @@ import { renderFilmCards, getPopulars } from './popular.js';
 
 import { movieApi } from './film-search.js';
 
-const pagRef = document.querySelector('.js-pagination');
-const leftArrowRef = document.querySelector('.js-pagination__arrow-left');
-const rightArrowRef = document.querySelector('.js-pagination__arrow-right');
-const pagContainerRef = document.querySelector('.js-pagination__container');
+const pagMainRef = document.querySelector('.js-pagination');
 
 let currentPage = 0;
-export const KEY_NOW = 'now';
-export const IN_POPULAR = '1';
-export const IN_SEARCH = '0';
+let currentPaginationRef = pagMainRef;
+let currentNow = 1;
+
+export const IN_MAIN_POPULAR = 1;
+export const IN_MAIN_SEARCH = 2;
+export const IN_LIBRARY = 0;
+
 const LEFT_ARROW = '&#8592;';
 const RIGHT_ARROW = '&#8594;';
 
-export function renderPagination(page, pages) {
+export function renderPagination(page, pages, now) {
   let prevPage = page - 1;
   let twoPrevPage = page - 2;
   let nextPage = page + 1;
@@ -26,7 +27,8 @@ export function renderPagination(page, pages) {
   if (page > 1)
     markup += `<li class="js-pagination__arrow-left">${LEFT_ARROW}</li>`;
 
-  if (page > 1) markup += `<li class="js-pagination__button-end">1</li>`;
+  if (page > 1)
+    markup += `<li class="js-pagination__button js-pagination__button-end">1</li>`;
 
   if (page > 4) markup += `<li class="js-pagination__points">...</li>`;
 
@@ -46,37 +48,35 @@ export function renderPagination(page, pages) {
   if (page + 4 < pages) markup += `<li class="js-pagination__points">...</li>`;
 
   if (page < pages)
-    markup += `<li class="js-pagination__button-end">${pages}</li>`;
+    markup += `<li class="js-pagination__button js-pagination__button-end">${pages}</li>`;
 
   if (page < pages)
     markup += `<li class="js-pagination__arrow-right">${RIGHT_ARROW}</li>`;
 
-  pagRef.innerHTML = markup;
-}
+  const ref = now ? pagMainRef : undefined;
+  // Here need a ref of Library pagRef
+  ref.innerHTML = markup;
 
-pagRef.addEventListener('click', ({ target }) => {
-  if (target.textContent === '...') return;
+  ref.addEventListener('click', ({ target }) => {
+    if (target.textContent === '...') return;
 
-  if (target.classList.contains('js-pagination__arrow-left')) currentPage -= 1;
+    if (target.classList.contains('js-pagination__arrow-left')) page -= 1;
 
-  if (target.classList.contains('js-pagination__arrow-right')) currentPage += 1;
+    if (target.classList.contains('js-pagination__arrow-right')) page += 1;
 
-  if (target.classList.contains('js-pagination__button'))
-    currentPage = Number(target.textContent);
-  if (target.classList.contains('js-pagination__button-end'))
-    currentPage = Number(target.textContent);
+    if (target.classList.contains('js-pagination__button'))
+      page = Number(target.textContent);
 
-  if (localStorage.getItem(KEY_NOW) === IN_POPULAR) {
-    getPopulars(currentPage).then(({ page, results, total_pages: pages }) => {
-      renderFilmCards(results);
-      renderPagination(page, pages);
-    });
-  } else {
-    movieApi
-      .searchMovieFetch(currentPage)
-      .then(({ page, results, total_pages: pages }) => {
+    if (!currentNow) {
+      console.log('Call function from Library');
+    } else {
+      const promise =
+        now === 1 ? getPopulars(page) : movieApi.searchMovieFetch(page);
+
+      promise.then(({ page, results, total_pages: pages }) => {
         renderFilmCards(results);
-        renderPagination(page, pages);
+        renderPagination(page, pages, now);
       });
-  }
-});
+    }
+  });
+}
