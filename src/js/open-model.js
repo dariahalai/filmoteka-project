@@ -13,7 +13,14 @@ const modalFilm = new ModalFilm();
 
 refs.gallery.addEventListener('click', onOpenModal);
 refs.closeBtn.addEventListener('click', onCloseModal);
-window.addEventListener('keydown', onCloseModalEsc);
+window.addEventListener('keydown', onCloseModalEsc);  
+
+function onOverlayClose(event) {
+  if (!event.target.closest(".modal") && event.target.closest('.backdrop')) {
+      onCloseModal();
+  }
+}
+document.addEventListener("click", onOverlayClose)
 
 function onOpenModal(e) {
   e.preventDefault();
