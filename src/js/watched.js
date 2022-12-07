@@ -1,18 +1,16 @@
-import{btnQueuedRefs} from './queue';
-import{getWatchedArray} from './local-storage-set';
+import { btnQueuedRefs } from './queue.js';
+import { getGenre } from './modal-film.js';
 
-// console.log('watched');
-export const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
+const IMG_PATH = 'https://image.tmdb.org/t/p/';
+const SMALL_SIZE = 'w500';
+
+export const btnWatchedRefs = document.querySelector(
+  'button[data-action="watched"]'
+);
 export const emptyRefs = document.querySelector('[data-action="empty"]');
 export const galleryLibrary = document.querySelector(
   '[data-action="list-library"]'
 );
-
-// console.log(btnWatchedRefs);
-// console.log(emptyRefs);
-// console.log(galleryLibrary);
-
-// onBtnWatchedClick();
 
 btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
@@ -20,7 +18,7 @@ function onBtnWatchedClick() {
   btnQueuedRefs.classList.remove('filter__button--active');
   btnWatchedRefs.classList.add('filter__button--active');
   try {
-    let watchedFilms = localStorage.getItem("WatchedMovies");
+    let watchedFilms = localStorage.getItem('WatchedMovies');
     if (watchedFilms) {
       watchedFilms = JSON.parse(watchedFilms);
       console.log("watchedFilms в ІФІ", watchedFilms)
@@ -28,17 +26,10 @@ function onBtnWatchedClick() {
       renderWatchedFilmCards(watchedFilms);
 
       emptyRefs.classList.add('is-hidden');
-      // console.log(watchedFilms);
     }
   } catch (error) {
     console.log(error);
   }
-
-  // // or!!!
-  
-  // renderWatchedFilmCards(getWatchedArray);
-  // emptyRefs.classList.add('is-hidden');
-
 
   return;
 }
@@ -46,7 +37,7 @@ function onBtnWatchedClick() {
 export function renderWatchedFilmCards(data) {
   const markup = data
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
-      let genresStr = getGenres(genre_ids);
+      let genresStr = getGenre(genre_ids);
       let year = release_date.substring(0, 4);
       if (genresStr && year) genresStr += ' | ';
       if (!title) title = 'no information';
@@ -72,5 +63,29 @@ export function renderWatchedFilmCards(data) {
     })
     .join('');
 
-  galleryLibrary.insertAdjacentHTML('beforebegin', markup);
+  galleryLibrary.innerHTML = markup;
 }
+
+console.log(localStorage.getItem('WatchedMovies'));
+
+function chunkWatchedFilms() {
+  const chunk = 2;
+  try {
+    let data = localStorage.getItem('WatchedMovies');
+    if (data) {
+      data = JSON.parse(data);
+      let i = 0;
+      const updateData = [];
+      while (i < data.length) {
+        updateData.push(data.slice(i, chunk + i));
+        i += chunk;
+        
+      }
+      return updateData;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+console.log(chunkWatchedFilms());

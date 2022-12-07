@@ -17,7 +17,7 @@ const dataDefault = {
   popularity: 358.799,
 };
 
-const movieGenresIds = {
+export const movieGenresIds = {
   28: 'Action',
   12: 'Adventure',
   16: 'Animation',
@@ -39,7 +39,7 @@ const movieGenresIds = {
   37: 'Western',
 };
 
-function getGenre(genre_ids) {
+export function getGenre(genre_ids) {
   return genre_ids.map(id => movieGenresIds[id]).join(', ');
 }
 
@@ -76,6 +76,7 @@ export default class ModalFilm {
   open() {
     this.refs.modal.classList.remove('is-hidden');
     this.refs.body.classList.add('body--modal-open');
+
   }
 
   close() {
@@ -108,7 +109,11 @@ export default class ModalFilm {
     this.refs.genre.textContent = `${getGenre(genre_ids)}`;
     this.refs.overview.textContent = `${overview}`;
     this.refs.trailer.setAttribute('data-movie-id', id);
-  }
+
+    if(poster_path===null){ this.refs.posterPath.src='https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'}
+    if(overview===''){this.refs.overview.textContent='No information'}
+  };
+    
 
   get dataFilm() {
     return this.data;
