@@ -10,8 +10,8 @@ const refs = {
 import axios from 'axios';
 import {
   renderPagination,
-  IN_POPULAR,
-  IN_SEARCH,
+  IN_MAIN_POPULAR,
+  IN_MAIN_SEARCH,
   KEY_NOW,
 } from './pagination.js';
 import { getPopulars, renderFilmCards, galleryRef } from './popular.js';
@@ -92,13 +92,11 @@ function emptyQueryOrNoResults() {
     refs.warning.innerHTML = '';
   }, 4000);
 
-  localStorage.setItem(KEY_NOW, IN_POPULAR);
-
   galleryRef.innerHTML = '';
 
   getPopulars(1).then(({ page, results, total_pages: pages }) => {
     renderFilmCards(results);
-    renderPagination(page, pages);
+    renderPagination(page, pages, IN_MAIN_POPULAR);
   });
 }
 
@@ -128,13 +126,11 @@ function onSearchClick(evt) {
     }
 
     clearSearch();
-    // Write to LS now
-    localStorage.setItem(KEY_NOW, IN_SEARCH);
 
     // renderFilmCards(data); Andrii
     renderFilmCards(results);
     // Add rendering of pagination
 
-    renderPagination(page, total_pages);
+    renderPagination(page, total_pages, IN_MAIN_SEARCH);
   });
 }

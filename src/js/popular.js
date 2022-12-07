@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-import { renderPagination, IN_POPULAR, KEY_NOW } from './pagination.js';
+import {
+  renderPagination,
+  IN_POPULAR,
+  KEY_NOW,
+  KEY_PAGE,
+  IN_MAIN_POPULAR,
+} from './pagination.js';
 
 // імпорт файлу сховища та запис в змінну ключа
 import * as storageLocal from './local-storage.js';
@@ -14,29 +20,28 @@ const TRENDING = 'trending';
 const GENRES = 'genre/movie/list';
 const IMG_PATH = 'https://image.tmdb.org/t/p/';
 const SMALL_SIZE = 'w500';
+
 export const NO_IMAGE =
   'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
 
 
 export let genresList;
-export let totalPages = 0;
-
 
 getOriginGenres().then(response => {
   genresList = Array.from(response.genres);
 });
 
 export const galleryRef = document.querySelector('.js-gallery');
+
 const warning = document.querySelector('.header__warning');
 
 window.addEventListener('load', () => {
   galleryRef.innerHTML = '';
-  localStorage.setItem(KEY_NOW, IN_POPULAR);
 
   getPopulars(1)
     .then(({ page, results, total_pages: pages }) => {
       renderFilmCards(results);
-      renderPagination(page, pages);
+      renderPagination(page, pages, IN_MAIN_POPULAR);
     })
     .catch(() => {
       warning.insertAdjacentHTML(
