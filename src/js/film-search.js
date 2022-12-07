@@ -63,7 +63,7 @@ class searchMovieApi {
 }
 
 export const movieApi = new searchMovieApi();
-
+refs.inputBtnClear.style.display = "none";
 function clearSearch() {
   refs.gallery.innerHTML = '';
 }
