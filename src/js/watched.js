@@ -1,28 +1,20 @@
 import { btnQueuedRefs } from './queue.js';
-
-// import {getGenres, genresList} from './popular.js';
-// import * as POPULAR from './popular';
+import { getGenre } from './modal-film.js';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/';
 const SMALL_SIZE = 'w500';
 
-const btnWatchedRefs = document.querySelector('button[data-action="watched"]');
+export const btnWatchedRefs = document.querySelector(
+  'button[data-action="watched"]'
+);
 export const emptyRefs = document.querySelector('[data-action="empty"]');
 export const galleryLibrary = document.querySelector(
   '[data-action="list-library"]'
 );
 
-
-// console.log(btnWatchedRefs);
-// console.log(emptyRefs);
-console.log(galleryLibrary);
-
-// onBtnWatchedClick();
-
 btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
 function onBtnWatchedClick() {
-  clearContainer();
   btnQueuedRefs.classList.remove('filter__button--active');
   btnWatchedRefs.classList.add('filter__button--active');
   try {
@@ -33,7 +25,6 @@ function onBtnWatchedClick() {
       renderWatchedFilmCards(watchedFilms);
 
       emptyRefs.classList.add('is-hidden');
-      // console.log(watchedFilms);
     }
   } catch (error) {
     console.log(error);
@@ -45,9 +36,9 @@ function onBtnWatchedClick() {
 export function renderWatchedFilmCards(data) {
   const markup = data
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
-      // let genresStr = getGenres(genre_ids);
+      let genresStr = getGenre(genre_ids);
       let year = release_date.substring(0, 4);
-      // if (genresStr && year) genresStr += ' | ';
+      if (genresStr && year) genresStr += ' | ';
       if (!title) title = 'no information';
 
       let smallImg = !!poster_path
@@ -64,16 +55,12 @@ export function renderWatchedFilmCards(data) {
               id="${id}"
             />
             <h3 class="film-card__film-name">${title}</h3>
-            <p class="film-card__genre">${'genresStr'}${year}</p>
+            <p class="film-card__genre">${genresStr}${year}</p>
           </a>
         </li>
 		`;
     })
     .join('');
 
-  galleryLibrary.innerHTML= markup;
-}
-
-function clearContainer() {
-  galleryLibrary.innerHTML = '';
+  galleryLibrary.innerHTML = markup;
 }

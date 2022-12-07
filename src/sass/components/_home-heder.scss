@@ -25,7 +25,9 @@
     }
   }
   @media screen and (min-width: 1280px) {
+    max-width: 1600px;
     height: 216px;
+    margin: 0 auto;
     background-image: url(../images/abstract-background-with-red-lines-pc.jpg);
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
