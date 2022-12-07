@@ -173,4 +173,7 @@ function onSearchClick(evt) {
     renderPagination(page, total_pages);
   });
 }
+    })
+  }
+    
 
