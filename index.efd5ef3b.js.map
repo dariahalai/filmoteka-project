@@ -1,0 +1,1 @@
+{"mappings":"gfAAAA,EAAA,S","sources":["src/index.js"],"sourcesContent":["import './js/pagination';\nimport './js/popular';\nimport './js/film-search';\nimport './js/open-model';\nimport './js/trailer';\nimport './js/modal-team';\nimport './js/btn-scroll';\n\n\n"],"names":["parcelRequire"],"version":3,"file":"index.efd5ef3b.js.map"}
