@@ -17,7 +17,7 @@ const dataDefault = {
   popularity: 358.799,
 };
 
-const movieGenresIds = {
+export const movieGenresIds = {
   28: 'Action',
   12: 'Adventure',
   16: 'Animation',
@@ -39,7 +39,7 @@ const movieGenresIds = {
   37: 'Western',
 };
 
-function getGenre(genre_ids) {
+export function getGenre(genre_ids) {
   return genre_ids.map(id => movieGenresIds[id]).join(', ');
 }
 
