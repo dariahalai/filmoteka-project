@@ -53,6 +53,8 @@ export async function getPopulars(page) {
       throw new Error(response.status);
     }
 
+    console.log("респонс Барчука", response.data)
+
     return response.data;
   } catch (error) {
     console.log('Підставити картинку, сервер терміново недоступний');

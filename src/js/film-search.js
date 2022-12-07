@@ -1,30 +1,28 @@
+import axios from 'axios';
+
+import { renderPagination } from './pagination.js';
+import { renderFilmCards } from './popular.js';
+
+
 const refs = {
     form: document.querySelector(".header__form"),
-    input: document.querySelector("header__input"),
+    input: document.querySelector(".header__input"),
     formButton: document.querySelector(".btn"),
     gallery: document.querySelector(".js-gallery"),
     warning: document.querySelector(".header__warning"),
+    inputBtnClear: document.querySelector(".btn-cross")
 }
-
-// console.log("hiiiii")
-
-import axios from 'axios';
-// import { renderFilmCards, totalPages } from "./popular"
-// import {renderPagination, currentPage} from "./pagination"
-
-import { currentPage, nowPopular, nowSearch, renderPagination } from './pagination.js';
-import { getPopulars, renderFilmCards } from './popular.js';
 
 const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const BASE_URL = "https://api.themoviedb.org/3";
 
-class searchMovieApi {
+export default class SearchMovieApi {
     constructor() {
         this.searchQuery = "";
         this.page = 1;
     }
 
-    async searchMovieFetch(page) {
+    async searchMovieFetch() {
         const searchMovieParams = new URLSearchParams({
             api_key: KEY,
             language: "en-US",
@@ -34,17 +32,15 @@ class searchMovieApi {
         });
 
         try {
-            const response = await axios.get(`${BASE_URL}/search/movie?${searchMovieParams}`) 
+            const response = await axios.get(`${BASE_URL}/search/movie?${searchMovieParams}`)
 
             if (response.status !== 200) {
-                    throw new Error(response.status);
-                }
+                throw new Error(response.status);
+            }
             
-            this.page += 1;
+            // this.page += 1;
 
-            console.log("data", response.data.results)
-
-            return response.data.results;
+            return response.data;
 
         } catch (error) {
             console.log(error.message);
@@ -62,15 +58,34 @@ class searchMovieApi {
     resetPage() {
         this.page = 1;
     }
+    
 };
 
-export const movieApi = new searchMovieApi();
+export const movieApi = new SearchMovieApi();
+
+refs.inputBtnClear.style.display = "none";
 
 function clearSearch() {
     refs.gallery.innerHTML = "";
 }
 
-refs.form.addEventListener("submit", onSearchClick)
+refs.input.addEventListener("input", onInputClear);
+
+refs.form.addEventListener("submit", onSearchClick);
+
+function onInputClear(evt) {
+    const inputValue = refs.input.value;
+
+    if (inputValue) {
+        refs.inputBtnClear.style.display = "block";
+        
+        refs.inputBtnClear.addEventListener("click", () => {
+            refs.inputBtnClear.style.display = "none";
+            refs.input.value = "";
+            return;
+        })          
+    }
+};
 
 function onSearchClick(evt) {
     evt.preventDefault();
@@ -79,26 +94,22 @@ function onSearchClick(evt) {
 
     movieApi.resetPage();
 
-    movieApi.searchMovieFetch().then((data) => {
+    movieApi.searchMovieFetch().then((response) => {
 
-        if (movieApi.query === "" || data.length === 0) {
+        const { page, results, total_pages: pages } = response;
+
+        if (!movieApi.query || !results.length) {
         refs.warning.insertAdjacentHTML("beforeend", `<div class="header__warning-message">Search result not successful. Enter the correct movie name.</div>`);
 
         setTimeout(() => {
             refs.warning.innerHTML = "";
-        }, 4000);
-            
-            nowPopular = true;
-            nowSearch = false;
-            getPopulars(1);
+        }, 4000);          
+
         return;
     }
         clearSearch();
 
-        nowPopular = false;
-        nowSearch = true;
-
-        renderFilmCards(data);        
+        renderFilmCards(results);
     }
     )
 };
