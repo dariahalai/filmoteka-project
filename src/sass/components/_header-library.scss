@@ -153,3 +153,94 @@
   border-radius: 2px;
   background-color: #ff6b08;
 }
+
+// ______btn_scroll________
+
+.btn-up,
+.btn-bottom {
+  position: fixed;
+  justify-content: center;
+  cursor: pointer;
+  right: 10px;
+  bottom: 200px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--accent-elem-color);
+  opacity: 1;
+
+
+}
+
+
+.btn-bottom::after,
+.btn-bottom::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, -50%);
+
+}
+
+.btn-bottom::after {
+  width: 15px;
+  height: 15px;
+  transform: translate(50%, 50%) rotate(45deg);
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+}
+
+.btn-up::before,
+.btn-up::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, -50%);
+}
+
+
+.btn-up::after {
+  width: 15px;
+  height: 15px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-top: 5px solid white;
+  border-left: 5px solid white;
+
+}
+
+.btn-bottom::after {
+  width: 15px;
+  height: 15px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+}
+
+.btn-up_hide {
+  display: none;
+}
+
+.btn-bottom_hide {
+  display: none;
+
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-up:hover {
+    background-color: gray;
+
+    opacity: 0.6;
+
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-bottom:hover {
+    background-color: gray;
+
+    opacity: 0.6;
+
+  }
+}

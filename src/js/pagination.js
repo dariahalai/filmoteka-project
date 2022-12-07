@@ -1,11 +1,18 @@
-import { renderFilmCards, getPopulars, totalPages } from './popular.js';
+
+import { renderFilmCards, getPopulars } from './popular.js';
+
+import { movieApi } from './film-search.js';
+
 
 const pagRef = document.querySelector('.js-pagination');
 const leftArrowRef = document.querySelector('.js-pagination__arrow-left');
 const rightArrowRef = document.querySelector('.js-pagination__arrow-right');
 const pagContainerRef = document.querySelector('.js-pagination__container');
 
-export let currentPage = 0;
+let currentPage = 0;
+export const KEY_NOW = 'now';
+export const IN_POPULAR = '1';
+export const IN_SEARCH = '0';
 
 export function renderPagination(page, pages) {
   let prevPage = page - 1;
@@ -63,10 +70,19 @@ pagRef.addEventListener('click', ({ target }) => {
   if (target.classList.contains('js-pagination__button-end'))
     currentPage = Number(target.textContent);
 
-  renderPagination(currentPage, totalPages);
 
-  getPopulars(currentPage).then(response => {
-    const { results } = response;
-    renderFilmCards(results);
-  });  
+  if (localStorage.getItem(KEY_NOW) === IN_POPULAR) {
+    getPopulars(currentPage).then(({ page, results, total_pages: pages }) => {
+      renderFilmCards(results);
+      renderPagination(page, pages);
+    });
+  } else {
+    movieApi
+      .searchMovieFetch(currentPage)
+      .then(({ page, results, total_pages: pages }) => {
+        renderFilmCards(results);
+        renderPagination(page, pages);
+      });
+  }
+
 });

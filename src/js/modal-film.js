@@ -67,6 +67,8 @@ export default class ModalFilm {
     refs.originalTitle = document.querySelector('#film__original-title');
     refs.genre = document.querySelector('#film__genre');
     refs.overview = document.querySelector('#film__overview');
+    refs.trailer = document.querySelector('#trailer');
+    refs.filmIinfoWrapper = document.querySelector('.film__info-wrapper');
 
     return refs;
   }
@@ -74,6 +76,7 @@ export default class ModalFilm {
   open() {
     this.refs.modal.classList.remove('is-hidden');
     this.refs.body.classList.add('body--modal-open');
+
   }
 
   close() {
@@ -93,6 +96,7 @@ export default class ModalFilm {
       original_title,
       genre_ids,
       overview,
+      id,
     } = this.data;
 
     this.refs.posterPath.src = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -104,7 +108,12 @@ export default class ModalFilm {
     this.refs.originalTitle.textContent = `${original_title}`;
     this.refs.genre.textContent = `${getGenre(genre_ids)}`;
     this.refs.overview.textContent = `${overview}`;
-  }
+    this.refs.trailer.setAttribute('data-movie-id', id);
+
+    if(poster_path===null){ this.refs.posterPath.src='https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'}
+    if(overview===''){this.refs.overview.textContent='No information'}
+  };
+    
 
   get dataFilm() {
     return this.data;

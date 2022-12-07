@@ -1,30 +1,26 @@
 <header class="header">
-  <div class="container">
-    <nav class="header__nav">
-      <div class="header__container">
-        <div class="header__container-logo">
+    <div class="container">
+      <div class="header__containe">
+        <nav class="header__nav">
           <a class="header__logo" href="./index.html">
             <svg class="header__icon" width="24" height="24">
-              <use href="./images/sprite.svg#film"></use> 
+              <use href="./images/sprite.svg#film"></use>
             </svg>
             <span class="header__text">Filmoteka</span>
           </a>
-        </div>
-        <div class="header__container-link">
+
           <ul class="header__list">
             <li class="header__item">
-              <a class="header__link header__link--current" href="./index.html"
-                >home</a
-              >
+              <a href="./index.html" class="header__link header__link--current">Home</a>
             </li>
             <li class="header__item">
-              <a class="header__link" href="./library.html">my library</a>
+              <a href="./library.html" class="header__link">My library</a>
             </li>
           </ul>
-        </div>
-      </div>
-      <div class="header__container-form">
+        </nav>
+        <div class="header__container-form">
         <form class="header__form">
+
           <input type="text" class="header__input" name="searchQuery" placeholder="Movie search" />
           <button class="btn-cross" type="button">
             <svg class="header__icon-cross" width="12" height="12">
@@ -33,13 +29,20 @@
           </button>
             
           <button class="btn" type="submit">
+
             <svg class="header__icon" width="12" height="12">
               <use href="./images/sprite.svg#search"></use>
             </svg>
           </button>
         </form>
         <div class="header__warning"></div>
+        </div>
       </div>
-    </nav>
-  </div>
+
+    </div>
 </header>
+
+
+
+<div class="btn-up btn-up_hide"></div>
+
