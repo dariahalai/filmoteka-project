@@ -1,6 +1,8 @@
+
 import { renderFilmCards, getPopulars } from './popular.js';
 
 import { movieApi } from './film-search.js';
+
 
 const pagMainRef = document.querySelector('.js-pagination');
 
@@ -74,6 +76,7 @@ export function renderPagination(page, pages, now) {
         now === 1 ? getPopulars(page) : movieApi.searchMovieFetch(page);
 
       promise.then(({ page, results, total_pages: pages }) => {
+
         renderFilmCards(results);
         renderPagination(page, pages, now);
       });

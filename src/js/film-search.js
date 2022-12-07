@@ -1,9 +1,10 @@
 const refs = {
-  form: document.querySelector('.header__form'),
-  input: document.querySelector('header__input'),
-  formButton: document.querySelector('.btn'),
-  gallery: document.querySelector('.js-gallery'),
-  warning: document.querySelector('.header__warning'),
+  form: document.querySelector(".header__form"),
+    input: document.querySelector(".header__input"),
+    formButton: document.querySelector(".btn"),
+    gallery: document.querySelector(".js-gallery"),
+    warning: document.querySelector(".header__warning"),
+    inputBtnClear: document.querySelector(".btn-cross")
 };
 
 import axios from 'axios';
@@ -62,12 +63,25 @@ class searchMovieApi {
 }
 
 export const movieApi = new searchMovieApi();
-
+refs.inputBtnClear.style.display = "none";
 function clearSearch() {
   refs.gallery.innerHTML = '';
 }
 // this function will be call if input or results is empty. No possibility to check at same time, becouse error occured when search string is empty!
+refs.input.addEventListener("input", onInputClear);
+function onInputClear(evt) {
+  const inputValue = refs.input.value;
 
+  if (inputValue) {
+      refs.inputBtnClear.style.display = "block";
+
+      refs.inputBtnClear.addEventListener("click", () => {
+          refs.inputBtnClear.style.display = "none";
+          refs.input.value = "";
+          return;
+      })          
+  }
+};
 function emptyQueryOrNoResults() {
   refs.warning.insertAdjacentHTML(
     'beforeend',
@@ -90,7 +104,6 @@ refs.form.addEventListener('submit', onSearchClick);
 
 function onSearchClick(evt) {
   evt.preventDefault();
-
   movieApi.query = evt.currentTarget.elements.searchQuery.value
     .trim()
     .toLowerCase();

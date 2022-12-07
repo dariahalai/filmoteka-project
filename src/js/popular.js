@@ -24,6 +24,7 @@ const SMALL_SIZE = 'w500';
 export const NO_IMAGE =
   'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
 
+
 export let genresList;
 
 getOriginGenres().then(response => {
@@ -69,6 +70,8 @@ export async function getPopulars(page) {
       throw new Error(response.status);
     }
 
+    console.log("респонс Барчука", response.data)
+
     return response.data;
   } catch (error) {
     console.log('Підставити картинку, сервер терміново недоступний');
@@ -103,7 +106,7 @@ export function renderFilmCards(data) {
 							`;
   });
 
-  galleryRef.setHTML(markup);
+  galleryRef.innerHTML =markup;
 
   // запис в локальне сховище
   storageLocal.save(FILM_CURRENT_PAGE, [...data]);
