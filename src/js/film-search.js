@@ -14,9 +14,8 @@ import {
   IN_MAIN_SEARCH,
   KEY_NOW,
 } from './pagination.js';
-import { getPopulars, renderFilmCards, galleryRef } from './popular.js';
+import { KEY, getPopulars, renderFilmCards, galleryRef } from './popular.js';
 
-const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 class searchMovieApi {

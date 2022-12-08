@@ -1,17 +1,18 @@
 // $ npm install @splidejs/splide
 
 import Splide from '@splidejs/splide';
-import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
+import { Grid } from '@splidejs/splide-extension-grid';
+import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
 
 const teamSplide = new Splide('.splide', {
   type: 'slide',
   perPage: 4,
   rewind: true,
   keyboard: 'global',
-  gap: 10,
-  arrows: false,
+  gap: 15,
+  arrows: true,
   rewind: false,
-  pagination: false,
+  pagination: true,
   mediaQuery: 'max',
   breakpoints: {
     767: {
@@ -38,7 +39,7 @@ function teamModalShow(evt) {
   modalPoster.classList.remove('is-hidden');
   setTimeout(() => {
     modalPoster.classList.add('is-hidden');
-  }, 1500);
+  }, 2000);
 
   modal.classList.toggle('is-hidden');
   document.body.classList.toggle('body--modal-open');

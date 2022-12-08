@@ -131,7 +131,7 @@ function onCloseModal() {
 
 
   //////////Примусове перезавантаження сторінки /////////////////////////////////
-  window.location.reload()
+  // window.location.reload()
 }
 
 function onCloseModalEsc(e) {
