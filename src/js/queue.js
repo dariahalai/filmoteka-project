@@ -1,13 +1,20 @@
-import { emptyRefs, btnWatchedRefs, IMG_PATH, SMALL_SIZE, galleryLibrary } from './watched';
+import {
+  emptyRefs,
+  btnWatchedRefs,
+  IMG_PATH,
+  SMALL_SIZE,
+  galleryLibrary,
+} from './watched';
 
 // import { renderWatchedFilmCards } from './watched';
 import { getGenre } from './modal-film.js';
+
+import { IN_LIBRARY, renderPagination } from './pagination.js';
 
 export const pagLibRef = document.querySelector('.js-pagination');
 export const btnQueuedRefs = document.querySelector(
   'button[data-action="queue"]'
 );
-
 
 const QUEUE_KEY = 'QueueMovies';
 
@@ -16,10 +23,9 @@ window.addEventListener('load', () => onBtnQueueClick());
 btnQueuedRefs.addEventListener('click', onBtnQueueClick);
 
 function onBtnQueueClick() {
-  
   btnQueuedRefs.classList.add('filter__button--active');
   btnWatchedRefs.classList.remove('filter__button--active');
-  let page = 0;
+  let page = 1;
   // try {
   //   let queueFilms = localStorage.getItem(QUEUE_KEY);
   //   // let page = 0;
@@ -35,26 +41,27 @@ function onBtnQueueClick() {
   // } catch (error) {
   //   console.log(error);
   // }
-  renderQueuedFilmCards(page)
+  renderQueuedFilmCards(page);
   emptyRefs.classList.add('is-hidden');
+  // Rendering pagination. Andrii
+  renderPagination();
   return;
 }
 
+export function renderQueuedFilmCards(page) {
+  let markup = chunkQueueFilms();
+  [page]
+    .map(({ id, poster_path, genre_ids, title, release_date }) => {
+      let genresStr = getGenre(genre_ids);
+      let year = release_date.substring(0, 4);
+      if (genresStr && year) genresStr += ' | ';
+      if (!title) title = 'no information';
 
-export function renderQueuedFilmCards(page) { 
-  
- let markup = chunkQueueFilms()[page]
-   .map(({ id, poster_path, genre_ids, title, release_date }) => {
-     let genresStr = getGenre(genre_ids);
-     let year = release_date.substring(0, 4);
-     if (genresStr && year) genresStr += ' | ';
-     if (!title) title = 'no information';
+      let smallImg = !!poster_path
+        ? IMG_PATH + SMALL_SIZE + poster_path
+        : NO_IMAGE;
 
-     let smallImg = !!poster_path
-       ? IMG_PATH + SMALL_SIZE + poster_path
-       : NO_IMAGE;
-
-     return `
+      return `
      <li class="film-card">
           <a href="#" class="film-card__link">
            <img
@@ -68,10 +75,10 @@ export function renderQueuedFilmCards(page) {
          </a>
        </li>
    `;
-   })
-   .join('');
+    })
+    .join('');
 
- galleryLibrary.innerHTML = markup;
+  galleryLibrary.innerHTML = markup;
 }
 
 // Функція ділить queue films на масиви, в кожному по 20 фільмів(обєктів)
@@ -87,7 +94,7 @@ export function chunkQueueFilms() {
       const updateData = [];
       while (i < data.length) {
         updateData.push(data.slice(i, chunk + i));
-        i += chunk;        
+        i += chunk;
       }
       return updateData;
     }
@@ -97,4 +104,3 @@ export function chunkQueueFilms() {
 }
 
 console.log(chunkQueueFilms());
-

@@ -1,12 +1,12 @@
 import spinnerToggle from './spinner';
 
 const refs = {
-  form: document.querySelector(".header__form"),
-    input: document.querySelector(".header__input"),
-    formButton: document.querySelector(".btn"),
-    gallery: document.querySelector(".js-gallery"),
-    warning: document.querySelector(".header__warning"),
-    inputBtnClear: document.querySelector(".btn-cross")
+  form: document.querySelector('.header__form'),
+  input: document.querySelector('.header__input'),
+  formButton: document.querySelector('.btn'),
+  gallery: document.querySelector('.js-gallery'),
+  warning: document.querySelector('.header__warning'),
+  inputBtnClear: document.querySelector('.btn-cross'),
 };
 
 import axios from 'axios';
@@ -14,13 +14,12 @@ import {
   renderPagination,
   IN_MAIN_POPULAR,
   IN_MAIN_SEARCH,
-  KEY_NOW,
 } from './pagination.js';
 import { KEY, getPopulars, renderFilmCards, galleryRef } from './popular.js';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-class searchMovieApi {
+export class searchMovieApi {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
@@ -64,25 +63,25 @@ class searchMovieApi {
 }
 
 export const movieApi = new searchMovieApi();
-refs.inputBtnClear.style.display = "none";
+refs.inputBtnClear.style.display = 'none';
 function clearSearch() {
   refs.gallery.innerHTML = '';
 }
 // this function will be call if input or results is empty. No possibility to check at same time, becouse error occured when search string is empty!
-refs.input.addEventListener("input", onInputClear);
+refs.input.addEventListener('input', onInputClear);
 function onInputClear(evt) {
   const inputValue = refs.input.value;
 
   if (inputValue) {
-      refs.inputBtnClear.style.display = "block";
+    refs.inputBtnClear.style.display = 'block';
 
-      refs.inputBtnClear.addEventListener("click", () => {
-          refs.inputBtnClear.style.display = "none";
-          refs.input.value = "";
-          return;
-      })          
+    refs.inputBtnClear.addEventListener('click', () => {
+      refs.inputBtnClear.style.display = 'none';
+      refs.input.value = '';
+      return;
+    });
   }
-};
+}
 function emptyQueryOrNoResults() {
   refs.warning.insertAdjacentHTML(
     'beforeend',

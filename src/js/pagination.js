@@ -1,4 +1,3 @@
-
 import { renderFilmCards, getPopulars } from './popular.js';
 import spinnerToggle from './spinner';
 import { movieApi } from './film-search.js';
@@ -8,9 +7,9 @@ window.addEventListener('load', spinnerToggle);
 
 const pagMainRef = document.querySelector('.js-pagination');
 
-let currentPage = 0;
-let currentPaginationRef = pagMainRef;
 let currentNow = 1;
+let currentRef = pagMainRef;
+let currentPage = 1;
 
 export const IN_MAIN_POPULAR = 1;
 export const IN_MAIN_SEARCH = 2;
@@ -25,6 +24,9 @@ export function renderPagination(page, pages, now) {
   let nextPage = page + 1;
   let twoNextPage = page + 2;
   let markup = '';
+
+  currentRef = now ? pagMainRef : pagLibRef;
+  currentNow = now;
 
   if (!page || page > pages) return;
 
@@ -57,34 +59,42 @@ export function renderPagination(page, pages, now) {
   if (page < pages)
     markup += `<li class="js-pagination__arrow-right">${RIGHT_ARROW}</li>`;
 
-  const ref = now ? pagMainRef : undefined;
   // pagLibRef
   // Here need a ref of Library pagRef
-  ref.innerHTML = markup;
-
-  ref.addEventListener('click', ({ target }) => {
-    if (target.textContent === '...') return;
-
-    if (target.classList.contains('js-pagination__arrow-left')) page -= 1;
-
-    if (target.classList.contains('js-pagination__arrow-right')) page += 1;
-
-    if (target.classList.contains('js-pagination__button'))
-      page = Number(target.textContent);
-
-    if (!currentNow) {
-      console.log('Call function from Library');
-      // renderQueuedFilmCards(page);
-    } else {spinnerToggle();
-      const promise =
-        now === 1 ? getPopulars(page) : movieApi.searchMovieFetch(page);
-
-      promise.then(({ page, results, total_pages: pages }) => {
-
-        renderFilmCards(results);
-        renderPagination(page, pages, now);
-        spinnerToggle();
-      });
-    }
-  });
+  currentRef.innerHTML = markup;
 }
+
+currentRef.addEventListener('click', ({ target }) => {
+  if (target.textContent === '...') return;
+
+  if (target.classList.contains('js-pagination__arrow-left')) currentPage -= 1;
+
+  if (target.classList.contains('js-pagination__arrow-right')) currentPage += 1;
+
+  if (target.classList.contains('js-pagination__button'))
+    currentPage = Number(target.textContent);
+
+
+
+  if (!currentNow) {
+    console.log('Call function from Library');
+    // renderQueuedFilmCards(page);
+  } else {
+    if (currentNow === 1) {spinnerToggle();
+      getPopulars(currentPage).then(({ page, results, total_pages: pages }) => {
+        renderFilmCards(results);
+
+        renderPagination(page, pages, currentNow);
+        spinnerToggle();
+
+      });
+    } else {
+      movieApi
+        .searchMovieFetch(currentPage)
+        .then(({ page, results, total_pages: pages }) => {
+          renderFilmCards(results);
+          renderPagination(page, pages, currentNow);
+        });
+    }
+  }
+});
