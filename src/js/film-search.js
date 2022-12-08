@@ -1,3 +1,5 @@
+import spinnerToggle from './spinner';
+
 const refs = {
   form: document.querySelector(".header__form"),
     input: document.querySelector(".header__input"),
@@ -103,6 +105,7 @@ function emptyQueryOrNoResults() {
 refs.form.addEventListener('submit', onSearchClick);
 
 function onSearchClick(evt) {
+  spinnerToggle();
   evt.preventDefault();
   movieApi.query = evt.currentTarget.elements.searchQuery.value
     .trim()
@@ -122,6 +125,7 @@ function onSearchClick(evt) {
     // If no results - show Popular
     if (!total_pages) {
       emptyQueryOrNoResults();
+      spinnerToggle();
       return;
     }
 
@@ -132,5 +136,6 @@ function onSearchClick(evt) {
     // Add rendering of pagination
 
     renderPagination(page, total_pages, IN_MAIN_SEARCH);
+    spinnerToggle();
   });
 }
