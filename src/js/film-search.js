@@ -124,8 +124,8 @@ function onSearchClick(evt) {
     const { page, total_pages, results } = data;
     // If no results - show Popular
     if (!total_pages) {
-      emptyQueryOrNoResults();
       spinnerToggle();
+      emptyQueryOrNoResults();
       return;
     }
 
@@ -134,7 +134,7 @@ function onSearchClick(evt) {
     // renderFilmCards(data); Andrii
     renderFilmCards(results);
     // Add rendering of pagination
-
+    spinnerToggle();
     renderPagination(page, total_pages, IN_MAIN_SEARCH);
     spinnerToggle();
   });

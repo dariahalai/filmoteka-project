@@ -1,8 +1,8 @@
 
 import { renderFilmCards, getPopulars } from './popular.js';
-import spinnerToggle from './spinner'
+import spinnerToggle from './spinner';
 import { movieApi } from './film-search.js';
-// import {pagLibRef, renderQueuedFilmCards} from './queue.js';
+
 spinnerToggle();
 window.addEventListener('load', spinnerToggle);
 
@@ -63,7 +63,6 @@ export function renderPagination(page, pages, now) {
   ref.innerHTML = markup;
 
   ref.addEventListener('click', ({ target }) => {
-    
     if (target.textContent === '...') return;
 
     if (target.classList.contains('js-pagination__arrow-left')) page -= 1;
