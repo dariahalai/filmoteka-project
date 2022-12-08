@@ -1,12 +1,6 @@
 import axios from 'axios';
 
-import {
-  renderPagination,
-  IN_POPULAR,
-  KEY_NOW,
-  KEY_PAGE,
-  IN_MAIN_POPULAR,
-} from './pagination.js';
+import { renderPagination, IN_MAIN_POPULAR } from './pagination.js';
 
 // імпорт файлу сховища та запис в змінну ключа
 import * as storageLocal from './local-storage.js';
@@ -23,7 +17,6 @@ const SMALL_SIZE = 'w500';
 
 export const NO_IMAGE =
   'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
-
 
 export let genresList;
 
@@ -60,6 +53,7 @@ export async function getPopulars(page) {
     const searchParams = new URLSearchParams({
       api_key: KEY,
       page: page,
+      include_adult: false,
     });
 
     const response = await axios.get(
@@ -70,7 +64,7 @@ export async function getPopulars(page) {
       throw new Error(response.status);
     }
 
-    console.log("респонс Барчука", response.data)
+    console.log('респонс Барчука', response.data);
 
     return response.data;
   } catch (error) {
@@ -106,7 +100,7 @@ export function renderFilmCards(data) {
 							`;
   });
 
-  galleryRef.innerHTML =markup;
+  galleryRef.innerHTML = markup;
 
   // запис в локальне сховище
   storageLocal.save(FILM_CURRENT_PAGE, [...data]);
@@ -134,6 +128,7 @@ async function getOriginGenres() {
 export function getGenres(genreSet) {
   let genreStr = '';
 
+  if (!genreSet) return '';
   genreSet.forEach(id => {
     for (const genre of genresList) {
       if (genre.id === id) genreStr += genre.name + ', ';
