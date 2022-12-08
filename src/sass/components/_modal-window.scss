@@ -103,11 +103,11 @@
 
 }
 
-.film__text-info-wrapper {
-    @include for-tablet-up {
-        max-width: 264px;
-    }
-}
+// .film__text-info-wrapper {
+//     @include for-tablet-up {
+//         max-width: 264px;
+//     }
+// }
 
 .film__img {
     border-radius: 5px;
@@ -210,14 +210,14 @@
 }
 
 .film__overview {
-    max-width: 240px;
-    max-height: 236px;
+    // max-width: 240px;
+    // max-height: 236px;
 
     overflow-y: auto;
 
-    @include for-tablet-up {
-        max-width: 264px;
-    }
+    // @include for-tablet-up {
+    //     max-width: 264px;
+    // }
 
     @include for-desktop-up {
         max-width: 391px;
