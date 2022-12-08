@@ -133,7 +133,6 @@ function onSearchClick(evt) {
     // renderFilmCards(data); Andrii
     renderFilmCards(results);
     // Add rendering of pagination
-    spinnerToggle();
     renderPagination(page, total_pages, IN_MAIN_SEARCH);
     spinnerToggle();
   });
