@@ -13,8 +13,6 @@
   background-repeat: no-repeat;
   border-radius: 10px;
 
-  // background-position: center center;  
-
   @media screen and (max-width: 767px) {
     width: 275px;
     height: 700px;
@@ -66,7 +64,6 @@
 
 .team-member {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
