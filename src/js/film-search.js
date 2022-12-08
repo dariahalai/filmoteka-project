@@ -1,3 +1,5 @@
+import spinnerToggle from './spinner';
+
 const refs = {
   form: document.querySelector(".header__form"),
     input: document.querySelector(".header__input"),
@@ -103,7 +105,8 @@ function emptyQueryOrNoResults() {
 refs.form.addEventListener('submit', onSearchClick);
 
 function onSearchClick(evt) {
-  evt.preventDefault();
+  spinnerToggle();
+  evt.preventDefault();  
   movieApi.query = evt.currentTarget.elements.searchQuery.value
     .trim()
     .toLowerCase();
@@ -121,6 +124,7 @@ function onSearchClick(evt) {
     const { page, total_pages, results } = data;
     // If no results - show Popular
     if (!total_pages) {
+      spinnerToggle();
       emptyQueryOrNoResults();
       return;
     }
@@ -130,7 +134,7 @@ function onSearchClick(evt) {
     // renderFilmCards(data); Andrii
     renderFilmCards(results);
     // Add rendering of pagination
-
+    spinnerToggle();
     renderPagination(page, total_pages, IN_MAIN_SEARCH);
   });
 }

@@ -2,7 +2,7 @@
 import { renderFilmCards, getPopulars } from './popular.js';
 
 import { movieApi } from './film-search.js';
-
+import spinnerToggle from './spinner';
 
 const pagMainRef = document.querySelector('.js-pagination');
 
@@ -60,6 +60,7 @@ export function renderPagination(page, pages, now) {
   ref.innerHTML = markup;
 
   ref.addEventListener('click', ({ target }) => {
+    spinnerToggle()
     if (target.textContent === '...') return;
 
     if (target.classList.contains('js-pagination__arrow-left')) page -= 1;
@@ -79,6 +80,7 @@ export function renderPagination(page, pages, now) {
 
         renderFilmCards(results);
         renderPagination(page, pages, now);
+        spinnerToggle();
       });
     }
   });
