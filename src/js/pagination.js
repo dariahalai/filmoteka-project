@@ -3,6 +3,8 @@ import { renderFilmCards, getPopulars } from './popular.js';
 import spinnerToggle from './spinner'
 import { movieApi } from './film-search.js';
 // import {pagLibRef, renderQueuedFilmCards} from './queue.js';
+spinnerToggle();
+window.addEventListener('load', spinnerToggle);
 
 const pagMainRef = document.querySelector('.js-pagination');
 
