@@ -1,15 +1,12 @@
 import { renderFilmCards, getPopulars } from './popular.js';
 
 import { movieApi } from './film-search.js';
-
-import { renderQueuedFilmCards, chunkQueueFilms, pagLibRef } from './queue';
 // import {pagLibRef, renderQueuedFilmCards} from './queue.js';
 
 const pagMainRef = document.querySelector('.js-pagination');
 
 let currentNow = 1;
 let currentRef = pagMainRef;
-let currentPromise = getPopulars;
 let currentPage = 1;
 
 export const IN_MAIN_POPULAR = 1;
@@ -28,14 +25,6 @@ export function renderPagination(page, pages, now) {
 
   currentRef = now ? pagMainRef : pagLibRef;
   currentNow = now;
-
-  console.log('in pagination', currentRef, currentNow);
-
-  if (!now) {
-    currentPromise = {};
-  } else {
-    currentPromise = now === 1 ? getPopulars : movieApi.searchMovieFetch;
-  }
 
   if (!page || page > pages) return;
 
@@ -83,7 +72,7 @@ currentRef.addEventListener('click', ({ target }) => {
   if (target.classList.contains('js-pagination__button'))
     currentPage = Number(target.textContent);
 
-  console.log('now ->', currentNow, currentPage, currentRef, currentPromise);
+  console.log('now ->', currentNow, currentPage, currentRef);
 
   if (!currentNow) {
     console.log('Call function from Library');
