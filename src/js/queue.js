@@ -9,9 +9,9 @@ import {
 // import { renderWatchedFilmCards } from './watched';
 import { getGenre } from './modal-film.js';
 
-import { IN_LIBRARY, renderPagination } from './pagination.js';
+// import { IN_LIBRARY, renderPagination } from './pagination.js';
 
-export const pagLibRef = document.querySelector('.js-pagination');
+// export const pagLibRef = document.querySelector('.js-pagination');
 export const btnQueuedRefs = document.querySelector(
   'button[data-action="queue"]'
 );
@@ -25,7 +25,7 @@ btnQueuedRefs.addEventListener('click', onBtnQueueClick);
 function onBtnQueueClick() {
   btnQueuedRefs.classList.add('filter__button--active');
   btnWatchedRefs.classList.remove('filter__button--active');
-  let page = 1;
+  let page = 0;
   // try {
   //   let queueFilms = localStorage.getItem(QUEUE_KEY);
   //   // let page = 0;
@@ -44,37 +44,37 @@ function onBtnQueueClick() {
   renderQueuedFilmCards(page);
   emptyRefs.classList.add('is-hidden');
   // Rendering pagination. Andrii
-  renderPagination();
+  // renderPagination();
   return;
 }
 
-export function renderQueuedFilmCards(page) {
-  let markup = chunkQueueFilms();
-  [page]
+export function renderQueuedFilmCards(page) { 
+
+  let markup = chunkQueueFilms()[page]
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
       let genresStr = getGenre(genre_ids);
       let year = release_date.substring(0, 4);
       if (genresStr && year) genresStr += ' | ';
       if (!title) title = 'no information';
-
+ 
       let smallImg = !!poster_path
         ? IMG_PATH + SMALL_SIZE + poster_path
         : NO_IMAGE;
-
+ 
       return `
-     <li class="film-card">
-          <a href="#" class="film-card__link">
-           <img
-             class="film-card__film-img"
-             src="${smallImg}"
-             alt="${title}"
-             id="${id}"
-           />
-           <h3 class="film-card__film-name">${title}</h3>
-           <p class="film-card__genre">${genresStr}${year}</p>
-         </a>
-       </li>
-   `;
+      <li class="film-card">
+           <a href="#" class="film-card__link">
+            <img
+              class="film-card__film-img"
+              src="${smallImg}"
+              alt="${title}"
+              id="${id}"
+            />
+            <h3 class="film-card__film-name">${title}</h3>
+            <p class="film-card__genre">${genresStr}${year}</p>
+          </a>
+        </li>
+    `;
     })
     .join('');
 
