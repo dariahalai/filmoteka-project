@@ -2,7 +2,7 @@
 import { renderFilmCards, getPopulars } from './popular.js';
 
 import { movieApi } from './film-search.js';
-
+// import {pagLibRef, renderQueuedFilmCards} from './queue.js';
 
 const pagMainRef = document.querySelector('.js-pagination');
 
@@ -56,6 +56,7 @@ export function renderPagination(page, pages, now) {
     markup += `<li class="js-pagination__arrow-right">${RIGHT_ARROW}</li>`;
 
   const ref = now ? pagMainRef : undefined;
+  // pagLibRef
   // Here need a ref of Library pagRef
   ref.innerHTML = markup;
 
@@ -71,6 +72,7 @@ export function renderPagination(page, pages, now) {
 
     if (!currentNow) {
       console.log('Call function from Library');
+      // renderQueuedFilmCards(page);
     } else {
       const promise =
         now === 1 ? getPopulars(page) : movieApi.searchMovieFetch(page);

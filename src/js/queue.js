@@ -3,6 +3,7 @@ import { emptyRefs, btnWatchedRefs, IMG_PATH, SMALL_SIZE, galleryLibrary } from 
 // import { renderWatchedFilmCards } from './watched';
 import { getGenre } from './modal-film.js';
 
+export const pagLibRef = document.querySelector('.js-pagination');
 export const btnQueuedRefs = document.querySelector(
   'button[data-action="queue"]'
 );
