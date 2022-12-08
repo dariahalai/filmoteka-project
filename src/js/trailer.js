@@ -9,7 +9,7 @@ if (!trailerButtonRef) {
 }
 
 export const handleBackButtonClick = (iframeContainer, trailerContainer) => {
-  trailerContainer.classList.remove('is-hidden');
+  trailerContainer.classList.remove('display-none');
   trailerErrorContainer.innerHTML = '';
   if (iframeContainer) {
     iframeContainer.remove();
@@ -22,7 +22,7 @@ const renderYoutubeIframe = movieKey => {
   iframe.frameBorder = '0';
   iframe.allowFullscreen = true;
   const trailerContainer = document.querySelector('.film__info-wrapper');
-  trailerContainer.classList.add('is-hidden');
+  trailerContainer.classList.add('display-none');
   const iframeContainer = document.createElement('div');
   iframeContainer.classList.add('iframe-container');
   iframeContainer.setHTML(
