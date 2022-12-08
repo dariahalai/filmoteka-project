@@ -1,3 +1,5 @@
+import spinnerToggle from './spinner';
+
 const refs = {
   form: document.querySelector('.header__form'),
   input: document.querySelector('.header__input'),
@@ -13,9 +15,8 @@ import {
   IN_MAIN_POPULAR,
   IN_MAIN_SEARCH,
 } from './pagination.js';
-import { getPopulars, renderFilmCards, galleryRef } from './popular.js';
+import { KEY, getPopulars, renderFilmCards, galleryRef } from './popular.js';
 
-const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 export class searchMovieApi {
@@ -102,6 +103,7 @@ function emptyQueryOrNoResults() {
 refs.form.addEventListener('submit', onSearchClick);
 
 function onSearchClick(evt) {
+  spinnerToggle();
   evt.preventDefault();
   movieApi.query = evt.currentTarget.elements.searchQuery.value
     .trim()
@@ -120,6 +122,7 @@ function onSearchClick(evt) {
     const { page, total_pages, results } = data;
     // If no results - show Popular
     if (!total_pages) {
+      spinnerToggle();
       emptyQueryOrNoResults();
       return;
     }
@@ -129,7 +132,7 @@ function onSearchClick(evt) {
     // renderFilmCards(data); Andrii
     renderFilmCards(results);
     // Add rendering of pagination
-
     renderPagination(page, total_pages, IN_MAIN_SEARCH);
+    spinnerToggle();
   });
 }

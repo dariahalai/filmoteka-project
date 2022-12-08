@@ -1,7 +1,9 @@
 import { renderFilmCards, getPopulars } from './popular.js';
-
+import spinnerToggle from './spinner';
 import { movieApi } from './film-search.js';
-// import {pagLibRef, renderQueuedFilmCards} from './queue.js';
+
+spinnerToggle();
+window.addEventListener('load', spinnerToggle);
 
 const pagMainRef = document.querySelector('.js-pagination');
 
@@ -72,16 +74,19 @@ currentRef.addEventListener('click', ({ target }) => {
   if (target.classList.contains('js-pagination__button'))
     currentPage = Number(target.textContent);
 
-  console.log('now ->', currentNow, currentPage, currentRef);
+
 
   if (!currentNow) {
     console.log('Call function from Library');
     // renderQueuedFilmCards(page);
   } else {
-    if (currentNow === 1) {
+    if (currentNow === 1) {spinnerToggle();
       getPopulars(currentPage).then(({ page, results, total_pages: pages }) => {
         renderFilmCards(results);
+
         renderPagination(page, pages, currentNow);
+        spinnerToggle();
+
       });
     } else {
       movieApi
