@@ -40,7 +40,7 @@ function onBtnWatchedClick() {
 
 export function renderWatchedFilmCards(page) { 
   
-   markup = chunkWatchedFilms()[page]
+  let markup = chunkWatchedFilms()[page]
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
       let genresStr = getGenre(genre_ids);
       let year = release_date.substring(0, 4);

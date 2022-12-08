@@ -42,7 +42,7 @@ function onBtnQueueClick() {
 
 export function renderQueuedFilmCards(page) { 
   
-  markup = chunkQueueFilms()[page]
+ let markup = chunkQueueFilms()[page]
    .map(({ id, poster_path, genre_ids, title, release_date }) => {
      let genresStr = getGenre(genre_ids);
      let year = release_date.substring(0, 4);
