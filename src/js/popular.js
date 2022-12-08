@@ -12,7 +12,7 @@ import {
 import * as storageLocal from './local-storage.js';
 const FILM_CURRENT_PAGE = 'film-current-page';
 //
-const KEY = '9068359f92c010fa6a3cf763f10a0606';
+export const KEY = '9068359f92c010fa6a3cf763f10a0606';
 const MEDIA_TYPE = 'movie';
 const TIME_WINDOW = 'week';
 const API = 'https://api.themoviedb.org/3/';
