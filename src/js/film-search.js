@@ -15,7 +15,8 @@ import {
   IN_MAIN_POPULAR,
   IN_MAIN_SEARCH,
 } from './pagination.js';
-import { KEY, getPopulars, renderFilmCards, galleryRef } from './popular.js';
+import { getPopulars, renderFilmCards, galleryRef } from './popular.js';
+import { KEY } from './constants';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -63,6 +64,9 @@ export class searchMovieApi {
 }
 
 export const movieApi = new searchMovieApi();
+if (!refs.inputBtnClear) {
+  return;
+}
 refs.inputBtnClear.style.display = 'none';
 function clearSearch() {
   refs.gallery.innerHTML = '';

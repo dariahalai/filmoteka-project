@@ -1,15 +1,13 @@
 import axios from 'axios';
 
 import { renderPagination, IN_MAIN_POPULAR } from './pagination.js';
+import { KEY, MEDIA_TYPE, API } from './constants';
 
 // імпорт файлу сховища та запис в змінну ключа
 import * as storageLocal from './local-storage.js';
 const FILM_CURRENT_PAGE = 'film-current-page';
 //
-export const KEY = '9068359f92c010fa6a3cf763f10a0606';
-const MEDIA_TYPE = 'movie';
 const TIME_WINDOW = 'week';
-const API = 'https://api.themoviedb.org/3/';
 const TRENDING = 'trending';
 const GENRES = 'genre/movie/list';
 const IMG_PATH = 'https://image.tmdb.org/t/p/';
@@ -137,23 +135,3 @@ export function getGenres(genreSet) {
 
   return !genreStr ? '' : genreStr.substring(0, genreStr.length - 2);
 }
-
-export const getMovieTrailer = async movieId => {
-  try {
-    const searchParams = new URLSearchParams({
-      api_key: KEY,
-    });
-
-    const response = await axios.get(
-      `${API}${MEDIA_TYPE}/${movieId}/videos?${searchParams}`
-    );
-
-    if (response.status !== 200) {
-      throw new Error(response.status);
-    }
-
-    return response.data;
-  } catch (error) {
-    // console.log('Підставити картинку, сервер терміново недоступний');
-  }
-};
