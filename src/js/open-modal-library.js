@@ -55,7 +55,7 @@ function getFilmData(filmId) {
 }
 
 function onOverlayClose(e) {
-  e.preventDefault();
+  // e.preventDefault();
 
   if (!e.target.closest('.modal') && e.target.closest('.backdrop')) {
     onCloseModal();

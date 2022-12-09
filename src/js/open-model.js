@@ -43,15 +43,15 @@ function onOpenModal(e) {
   
   checkWatchedStorage(dataCurentFilm)
   if (refs.btnWatched.classList.contains("watched_remove")) {
-    refs.btnWatched.textContent = 'REMOVE FROM WATCHED'
-  } else {
+    refs.btnWatched.textContent = 'REMOVE FROM WATCHED'} 
+  else if(refs.btnWatched.classList.contains("watched_send")){
     refs.btnWatched.textContent = 'ADD TO WATCHED'
   }
 
   checkQueueStorage(dataCurentFilm)
   if (refs.btnQueue.classList.contains("queue_remove")) {
-      refs.btnQueue.textContent = 'REMOVE FROM QUEUE'
-  } else {
+      refs.btnQueue.textContent = 'REMOVE FROM QUEUE'}
+  else if (refs.btnWatched.classList.contains("queue_send")){
     refs.btnQueue.textContent = 'ADD TO QUEUE'
   }
     
@@ -82,7 +82,7 @@ function onOpenModal(e) {
         getWatchedArray.splice(watchedFilmIndex, 1)
         localStorage.setItem("WatchedMovies", JSON.stringify(getWatchedArray))
       } catch (error) {
-      console.error('Get state error: ', error.message);
+      // console.error('Get state error: ', error.message);
     }
 }
   
@@ -113,7 +113,7 @@ function onOpenModal(e) {
         localStorage.setItem("QueueMovies", JSON.stringify(getQueueArray))
 
     } catch (error) {
-      console.error('Get state error: ', error.message);
+      // console.error('Get state error: ', error.message);
     }
   }
 ///////////////////end of local-storage ///////////
@@ -165,7 +165,7 @@ function checkWatchedStorage(currentFilm) {
           refs.btnWatched.textContent = 'ADD TO WATCHED'
         }
     } catch (error) {
-      console.error('Get state error: ', error.message);
+      // console.error('Get state error: ', error.message);
       refs.btnWatched.classList.replace("watched_remove", "watched_send")
     }
 }
@@ -183,7 +183,7 @@ function checkQueueStorage(currentFilm) {
           refs.btnQueue.textContent = 'ADD TO QUEUE'
         }
     } catch (error) {
-      console.error('Get state error: ', error.message);
+      // console.error('Get state error: ', error.message);
       refs.btnQueue.classList.replace("queue_remove", "queue_send")
     }
 }

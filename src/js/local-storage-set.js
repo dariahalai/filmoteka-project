@@ -1,10 +1,12 @@
 //////// send to storage "ADD to WATCHED" movies
 
 let watchedMovies = []
+
 export function sendWatchedToStorage() {
+    let currentFilm;
   try {
     const storageFilm = localStorage.getItem("CurrentFilm")
-      currentFilm = JSON.parse(storageFilm)
+    currentFilm = JSON.parse(storageFilm)
     } catch (error) {
     }
     watchedMovies = localStorage.getItem("WatchedMovies")
@@ -30,8 +32,10 @@ function setWatchedMovie(watchedMovies) {
 }
 
 //////// send to storage "ADD to QUEUE" movies
-let queueMovies = []
+let queueMovies = [];
+
 export function sendQueueToStorage() {
+    let currentFilm;
     try {
     const storageFilm = localStorage.getItem("CurrentFilm")
       currentFilm = JSON.parse(storageFilm)
