@@ -122,9 +122,8 @@ function onCloseModal() {
 
   refs.closeBtn.removeEventListener('click', onCloseModal);
   window.removeEventListener('keydown', onCloseModalEsc);
-  onBtnQueueClick();
-  onBtnWatchedClick();
-    // window.location.reload()
+
+    window.location.reload()
 }
 
 function onCloseModalEsc(e) {
@@ -179,6 +178,8 @@ function checkQueueStorage(currentFilm) {
         } else {
           refs.btnQueue.classList.replace("queue_remove", "queue_send")
           refs.btnQueue.textContent = 'ADD TO QUEUE'
+   
+
         }
     } catch (error) {
       // console.error('Get state error: ', error.message);
