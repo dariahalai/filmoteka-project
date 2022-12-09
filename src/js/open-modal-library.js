@@ -8,7 +8,7 @@ const refs = {
     '.filter__item>.filter__button--active'
   ),
 };
-console.log(refs.activLibraryBtn.textContent);
+// console.log(refs.activLibraryBtn.textContent);
 const modalFilm = new ModalFilm();
 
 refs.gallery.addEventListener('click', onOpenModal);

@@ -77,7 +77,7 @@ currentRef.addEventListener('click', ({ target }) => {
 
 
   if (!currentNow) {
-    console.log('Call function from Library');
+    // console.log('Call function from Library');
     // renderQueuedFilmCards(page);
   } else {
     if (currentNow === 1) {spinnerToggle();

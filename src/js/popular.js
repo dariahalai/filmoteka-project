@@ -64,11 +64,11 @@ export async function getPopulars(page) {
       throw new Error(response.status);
     }
 
-    console.log('респонс Барчука', response.data);
+    // console.log('респонс Барчука', response.data);
 
     return response.data;
   } catch (error) {
-    console.log('Підставити картинку, сервер терміново недоступний');
+    // console.log('Підставити картинку, сервер терміново недоступний');
   }
 }
 
@@ -154,6 +154,6 @@ export const getMovieTrailer = async movieId => {
 
     return response.data;
   } catch (error) {
-    console.log('Підставити картинку, сервер терміново недоступний');
+    // console.log('Підставити картинку, сервер терміново недоступний');
   }
 };

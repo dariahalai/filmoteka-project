@@ -3,7 +3,7 @@ import { getGenre } from './modal-film.js';
 
 export const IMG_PATH = 'https://image.tmdb.org/t/p/';
 export const SMALL_SIZE = 'w500';
-const WATCHED_KEY = 'WatchedMovies';
+// const WATCHED_KEY = 'WatchedMovies';
 
 
 export const btnWatchedRefs = document.querySelector(
@@ -19,28 +19,23 @@ btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 function onBtnWatchedClick() {
   btnQueuedRefs.classList.remove('filter__button--active');
   btnWatchedRefs.classList.add('filter__button--active');
-  // try {
-    let page = 0;
-    // let watchedFilms = localStorage.getItem(WATCHED_KEY);
-    // if (watchedFilms) {
-    //   watchedFilms = JSON.parse(watchedFilms);
-    //   console.log("watchedFilms в ІФІ", watchedFilms)
-
-      // watchedFilms = chunkWatchedFilms()[page];
-      renderWatchedFilmCards(page);
+  try {
+    let watchedFilms = localStorage.getItem('WatchedMovies');
+    if (watchedFilms) {
+      watchedFilms = JSON.parse(watchedFilms);
+      renderWatchedFilmCards(watchedFilms);
 
       emptyRefs.classList.add('is-hidden');
-    // }
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
+    }
+  } catch (error) {
+    console.log(error);
+  }
   return;
 }
 
-export function renderWatchedFilmCards(page) { 
-  
-  let markup = chunkWatchedFilms()[page]
+
+export function renderWatchedFilmCards(data) {
+  const markup = data
     .map(({ id, poster_path, genre_ids, title, release_date }) => {
       let genresStr = getGenre(genre_ids);
       let year = release_date.substring(0, 4);
@@ -50,7 +45,6 @@ export function renderWatchedFilmCards(page) {
       let smallImg = !!poster_path
         ? IMG_PATH + SMALL_SIZE + poster_path
         : NO_IMAGE;
-
       return `
       <li class="film-card">
          	<a href="#" class="film-card__link">
@@ -70,29 +64,3 @@ export function renderWatchedFilmCards(page) {
 
   galleryLibrary.innerHTML = markup;
 }
-
-
-// Функція ділить watched films на масиви, в кожному по 20 фільмів(обєктів)
-
-export function chunkWatchedFilms() {
-  // дільник, кількість фільмів на сторінці
-  const chunk = 20;
-  try {
-    let data = localStorage.getItem(WATCHED_KEY);
-    if (data) {
-      data = JSON.parse(data);
-      let i = 0;
-      const updateData = [];
-      while (i < data.length) {
-        updateData.push(data.slice(i, chunk + i));
-        i += chunk;
-        
-      }
-      return updateData;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-console.log(chunkWatchedFilms());
