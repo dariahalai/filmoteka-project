@@ -137,10 +137,7 @@ function onCloseModalEsc(e) {
 }
 
 function getFilmData(filmId) {
-  const filmList =
-    refs.activLibraryBtn.textContent === 'Queue'
-      ? storageLocal.load('QueueMovies')
-      : storageLocal.load('WatchedMovies');
+  const filmList = storageLocal.load('QueueMovies').concat(storageLocal.load('WatchedMovies'));
   return filmList.find(film => film.id === Number(filmId));
 }
 
