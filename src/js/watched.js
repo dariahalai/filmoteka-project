@@ -1,6 +1,7 @@
 import { btnQueuedRefs } from './queue.js';
 import { getGenre } from './modal-film.js';
 
+
 export const IMG_PATH = 'https://image.tmdb.org/t/p/';
 export const SMALL_SIZE = 'w500';
 // const WATCHED_KEY = 'WatchedMovies';
@@ -16,7 +17,7 @@ export const galleryLibrary = document.querySelector(
 
 btnWatchedRefs.addEventListener('click', onBtnWatchedClick);
 
-function onBtnWatchedClick() {
+export function onBtnWatchedClick() {
   btnQueuedRefs.classList.remove('filter__button--active');
   btnWatchedRefs.classList.add('filter__button--active');
   try {

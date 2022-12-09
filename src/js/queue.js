@@ -16,7 +16,7 @@ window.addEventListener('load', () => onBtnQueueClick());
 
 btnQueuedRefs.addEventListener('click', onBtnQueueClick);
 
-function onBtnQueueClick() {
+export function onBtnQueueClick() {
   btnQueuedRefs.classList.add('filter__button--active');
   btnWatchedRefs.classList.remove('filter__button--active');
   try {
