@@ -1,7 +1,6 @@
 // $ npm install @splidejs/splide
 
 import Splide from '@splidejs/splide';
-import { Grid } from '@splidejs/splide-extension-grid';
 import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
 
 const teamSplide = new Splide('.splide', {
@@ -11,8 +10,7 @@ const teamSplide = new Splide('.splide', {
   keyboard: 'global',
   gap: 15,
   arrows: true,
-  rewind: false,
-  pagination: true,
+  pagination: false,
   mediaQuery: 'max',
   breakpoints: {
     767: {
